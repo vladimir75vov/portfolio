@@ -1,4 +1,6 @@
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
+import morgan from "morgan";
 
 const host = '127.0.0.1';
 const port = 7000;
@@ -7,31 +9,16 @@ const defRouter = '/api/v1/';
 const app = express();
 const productRouter = express.Router();
 
-productRouter.get('/home', (req, res) => {
-    res.status(200).type('json');
-    res.send(req.query.aaa)
-});
+productRouter.get('/', (req, res) => {
+    const users = [
+        {id: 1, name: 'John', email: 'john@example.com'},
+        {id: 2, name: 'John2', email: '2@example.com'}
+    ];
+    return res.status(200).json({users});
+})
 
-productRouter.get('/about', (req, res) => {
-    res.status(200).type('text/plain');
-    res.send('About page');
-});
-
-productRouter.post('/admin', (req, res) => {
-    res.status(200).type('text/plain');
-    res.send('Create admin request');
-});
-
-productRouter.post('/api/user', (req, res) => {
-    res.status(200).type('text/plain');
-    res.send('Create user request');
-});
-
-productRouter.use((req, res) => {
-    res.status(404).type('text/plain');
-    res.send('Not found');
-});
-
+app.use(cors());
+app.use(morgan('dev'))
 app.use(defRouter, productRouter);
 app.use('/resources/images',express.static('resources/images'));
 app.use('/resources/files',express.static('resources/files'));
