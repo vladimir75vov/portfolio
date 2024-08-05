@@ -1,1 +1,1 @@
-npm run dev
+supervisor app/app.js

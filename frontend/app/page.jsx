@@ -1,108 +1,331 @@
-'use client'
+"use client";
 
-import {useEffect, useState} from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
-  const [data, setData] = useState(null);
-  const name = { first: "John", last: "Doe" }
-
-  const fetchData = async () => {
-    await fetch("http://127.0.0.1:7000/api/v1/").then(r => r.text()).then(r => setData(r));
-  }
-  fetchData()
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {!data ? "Loading..." : data }
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing &nbsp;
-          <code className="font-mono font-bold">app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-
-          </a>
+    <main className="">
+      <div className="bg-gradient-to-br from-gray-900 to-gray-700 min-h-screen text-white font-sans">
+        <header className="container mx-auto px-4 py-8">
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold">Andrew Nelson</h1>
+            <nav className="flex space-x-8">
+              <Link href="#" className="hover:underline">
+                About Me
+              </Link>{" "}
+              <Link href="#" className="hover:underline">
+                Case Studies
+              </Link>{" "}
+              <Link href="#" className="hover:underline">
+                Articles
+              </Link>{" "}
+              <Link href="#" className="hover:underline">
+                Projects
+              </Link>
+            </nav>
+          </div>
+        </header>
+        <main className="container mx-auto px-4 py-16">
+          <div className="text-center">
+            <h2 className="text-5xl font-bold mb-4">Andrew Nelson.</h2>{" "}
+            <p className="text-lg font-medium mb-8">
+              I design and build meaningful experiences.
+            </p>{" "}
+            <p className="text-gray-400 mb-8">
+              {" "}
+              I am a digital polymath - a constantly evolving digital creator
+              driven by a passion for lifelong learning and the desire to leave
+              a lasting impact.{" "}
+            </p>
+            <div className="flex justify-center space-x-4">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Contact Me
+              </button>
+              <Link href="#" className="text-blue-500 hover:underline">
+                LinkedIn
+              </Link>
+            </div>
+          </div>
+        </main>
+        <footer className="container mx-auto px-4 py-8 text-center">
+          <p className="text-gray-500 text-sm">&copy; 2023 Andrew Nelson</p>
+        </footer>
+      </div>
+      <div className="bg-gray-900 text-white font-sans min-h-screen">
+        <div className="container mx-auto px-4 py-16">
+          <h1 className="text-3xl font-bold text-center mb-8">
+            {" "}
+            Featured Projects{" "}
+          </h1>{" "}
+          <p className="text-lg text-center mb-16">
+            {" "}
+            Focused on the experience, driven by the engineering.{" "}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-gray-800 rounded-lg p-8">
+              <h2 className="text-2xl font-bold mb-4">My Supply Co.</h2>{" "}
+              <p className="text-lg mb-6">
+                {" "}
+                D2C & B2B ecommerce site and blog with elegant solutions for a
+                complex codebase and customer journey.{" "}
+              </p>
+              <div className="flex flex-wrap gap-4 mb-6">
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>PHP</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>MYSQL</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>JAVASCRIPT</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>JQUERY</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>WOOCOMMERCE</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>WORDPRESS</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>HTML5</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>SCSS</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>GIT(HUB)</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>GA4/GTM/EEC</span>{" "}
+                  </span>
+                </div>
+                <div className="bg-gray-700 rounded-lg px-4 py-2">
+                  <span className="flex items-center gap-2">
+                    {" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      {" "}
+                      <path
+                        fillRule="evenodd"
+                        d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                        clipRule="evenodd"
+                      />{" "}
+                    </svg>{" "}
+                    <span>CSS3</span>{" "}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-lg font-medium">
+                  {" "}
+                  Explore more <span aria-hidden="true">→</span>{" "}
+                </span>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="bg-gray-800 rounded-lg p-8">
+                <div className="absolute -top-4 -right-4">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div className="h-full bg-gray-800 rounded-lg overflow-hidden">
+                  <Image
+                    alt="Project Image"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
       </div>
     </main>
   );
