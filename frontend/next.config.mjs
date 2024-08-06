@@ -1,11 +1,15 @@
+import dotenv from "dotenv";
+
+dotenv.config({ path: "../.env" });
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
     async rewrites() {
         return [
             {
-                source: '/api/v1/:path*',
-                destination: 'http://127.0.0.1:7000/api/v1/:path*',
+                source: `${process.env.BACKEND_API_PATH}:path*`,
+                destination: `http://${process.env.BACKEND_IP}:${process.env.BACKEND_PORT}${process.env.BACKEND_API_PATH}:path*`,
             }
         ]
     }

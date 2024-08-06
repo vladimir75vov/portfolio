@@ -11,9 +11,7 @@
     "node": true,
     "es6": true
   },
-  "plugins": [
-    "simple-import-sort"
-  ],
+  "plugins": ["simple-import-sort"],
   "settings": {
     "react": {
       "version": "detect"
