@@ -2,7 +2,9 @@ import requests
 import datetime
 import concurrent.futures
 
-HOST = 'http://127.0.0.1:7000/'
+from dotenv import load_dotenv, dotenv_values
+
+HOST = 'http://127.0.0.1:4000/'
 API_PATH = 'api/v1/'
 ENDPOINT = HOST + API_PATH
 MAX_THREADS = 50

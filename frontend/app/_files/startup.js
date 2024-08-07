@@ -6,7 +6,7 @@ dotenv.config({ path: "../.env" });
 
 const ls = spawn("cmd", [
   "/C",
-  `next dev --hostname ${process.env.FRONTEND_IP || "127.0.0.1"} --port ${process.env.FRONTEND_PORT || 3000} `,
+  `npx kill-port --port ${process.env.FRONTEND_PORT || 3000} && next dev --hostname ${process.env.FRONTEND_IP || "127.0.0.1"} --port ${process.env.FRONTEND_PORT || 3000} `,
 ]);
 
 ls.stdout.on("data", (data) => {
