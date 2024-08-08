@@ -1,13 +1,25 @@
 "use client";
 
+import TypeWriter from "../../components/singles/typeWriter.jsx";
+
+const _hats = [
+  {
+    suffix: "Hello, my name is",
+  },
+  {
+    suffix: "const Vladimir = ( name, passion ) =>",
+  },
+];
+
 function Home() {
   return (
     <div>
       <section className="flex justify-center items-center text-center min-h-screen h-px">
         <div>
           <div className="animate-fadeInDown">
+            <TypeWriter appendClass="float-left" hats={_hats} />
             <h1 className="uppercase font-light tracking-widest text-4xl sm:text-6xl animate-textHue bg-gradient-to-l from-red-400 to-green-400 bg-clip-text text-transparent">
-              vladimir75vov
+              Vladimir Budaev
             </h1>
           </div>
           <hr className="my-5 border-none h-px bg-light-gray" />
