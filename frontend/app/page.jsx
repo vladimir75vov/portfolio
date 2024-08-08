@@ -11,15 +11,19 @@ export default function Home() {
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold">Andrew Nelson</h1>
             <nav className="flex space-x-8">
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <Link href="#" className="hover:underline">
                 About Me
               </Link>{" "}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <Link href="#" className="hover:underline">
                 Case Studies
               </Link>{" "}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <Link href="#" className="hover:underline">
                 Articles
               </Link>{" "}
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <Link href="#" className="hover:underline">
                 Projects
               </Link>
@@ -39,9 +43,11 @@ export default function Home() {
               a lasting impact.{" "}
             </p>
             <div className="flex justify-center space-x-4">
+              {/* eslint-disable-next-line react/button-has-type */}
               <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Contact Me
               </button>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <Link href="#" className="text-blue-500 hover:underline">
                 LinkedIn
               </Link>

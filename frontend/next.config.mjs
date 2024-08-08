@@ -12,6 +12,16 @@ const nextConfig = {
                 destination: `http://${process.env.BACKEND_IP}:${process.env.BACKEND_PORT}${process.env.BACKEND_API_PATH}:path*`,
             }
         ]
+    },
+    async redirects() {
+        return [
+            // Basic redirect
+            {
+                source: '/',
+                destination: '/home',
+                permanent: true,
+            },
+        ]
     }
 };
 

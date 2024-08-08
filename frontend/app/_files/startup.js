@@ -10,5 +10,6 @@ const ls = spawn("cmd", [
 ]);
 
 ls.stdout.on("data", (data) => {
+  // eslint-disable-next-line no-console
   console.log(`${data}`);
 });

@@ -30,7 +30,7 @@ app.use("/resources/files", express.static("resources/files"));
 app.listen(
   Number(process.env.BACKEND_PORT || 4000),
   String(process.env.BACKEND_IP || "127.0.0.1"),
-  function () {
+  () => {
     console.log(
       `Backend listens http://${process.env.BACKEND_IP || "127.0.0.1"}:${process.env.BACKEND_PORT || 4000}${process.env.BACKEND_API_PATH}`,
     );
