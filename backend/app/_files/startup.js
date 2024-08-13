@@ -1,14 +1,15 @@
 import { spawn } from "node:child_process";
-
 import dotenv from "dotenv";
 
 dotenv.config({ path: "../.env" });
 
-const ls = spawn("cmd", [
-  "/C",
-  `npx kill-port --port ${process.env.BACKEND_PORT || 4000} && supervisor app/app.js`,
-]);
+const getCommand = () => {
+  const port = process.env.BACKEND_PORT || 4000;
+  return `npx kill-port --port ${port} && supervisor app/app.js`;
+};
+
+const ls = spawn("cmd", ["/C", getCommand()]);
 
 ls.stdout.on("data", (data) => {
-  console.log(`${data}`);
+  console.log(data.toString());
 });

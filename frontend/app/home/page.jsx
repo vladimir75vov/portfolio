@@ -4,7 +4,7 @@ import TypeWriter from "../../components/singles/typeWriter.jsx";
 
 const _hats = [
   {
-    suffix: "Hello, my name is",
+    suffix: "Hello, my name is                   ",
   },
   {
     suffix: "const Vladimir = ( name, passion ) =>",
@@ -30,45 +30,8 @@ function Home() {
       </section>
       <section className="flex justify-center mx-auto items-center w-full px-10 md:px-24 my-40 max-w-screen-xl">
         <div className="flex flex-col md:flex-row justify-center items-center gap-10">
-          <div className="flex flex-col text-left">
-            <p>
-              I currently work as a Senior Full Stack Developer at{" "}
-              <a
-                href="https://www.getunleash.io/"
-                target="_blank"
-                className="underline"
-                rel="noreferrer"
-              >
-                Unleash
-              </a>
-              .
-            </p>
-            <p>
-              Unleash is a{" "}
-              <a
-                href="https://docs.getunleash.io/topics/feature-flags/feature-flag-best-practices"
-                target="_blank"
-                className="underline"
-                rel="noreferrer"
-              >
-                feature flag
-              </a>{" "}
-              management solution built with large enterprises in mind.
-            </p>
-            <p>
-              It is{" "}
-              <a
-                href="https://github.com/unleash/unleash"
-                target="_blank"
-                className="underline"
-                rel="noreferrer"
-              >
-                open source
-              </a>
-              , private, secure, scalable, and trusted by developers all over
-              the world.
-            </p>
-          </div>
+          <div className="flex flex-col text-left" />
+          <h1 />
         </div>
       </section>
     </div>
