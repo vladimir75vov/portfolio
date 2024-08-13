@@ -24,8 +24,8 @@ productRouter.get("/", (request, response) => {
 app.use(cors());
 app.use(morgan("dev"));
 app.use(process.env.BACKEND_API_PATH || "/api/v1/", productRouter);
-app.use("/resources/images", express.static("resources/images"));
-app.use("/resources/files", express.static("resources/files"));
+productRouter.use("/resources/images", express.static("resources/images"));
+productRouter.use("/resources/files", express.static("resources/files"));
 
 app.listen(
   Number(process.env.BACKEND_PORT || 4000),
