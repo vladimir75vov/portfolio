@@ -5,7 +5,7 @@ import concurrent.futures
 from dotenv import load_dotenv, dotenv_values
 
 HOST = 'http://127.0.0.1:4000/'
-API_PATH = 'api/v1/'
+API_PATH = 'api/v1/resources/files/video/kek.mp4'
 ENDPOINT = HOST + API_PATH
 MAX_THREADS = 50
 CONCURRENT_THREADS = 2000

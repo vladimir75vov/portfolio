@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import TypeWriter from "../../components/singles/typeWriter.jsx";
+import TypeWriter from "../../components/typeWriter.jsx";
 
 const _hats = [
   {
@@ -33,7 +33,6 @@ function Home() {
           />
           Your browser does not support the video tag.
         </video>
-
         <div className="absolute top-0 left-0 w-full h-full bg-opacity-50 bg-black">
           <h1 className="text-4xl text-center mt-20 font-bold text-white">
             <section className="flex justify-center items-center text-center min-h-screen h-px">
@@ -50,14 +49,14 @@ function Home() {
                 </h2>
               </div>
             </section>
-            <section className="flex justify-center mx-auto items-center w-full ">
-              <div className="flex flex-col md:flex-row justify-center items-center gap-10">
-                <div className="flex flex-col text-left" />
-              </div>
-            </section>
           </h1>
         </div>
       </div>
+      <section className="flex justify-center mx-auto items-center w-full ">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-10">
+          <div className="flex flex-col text-left">content</div>
+        </div>
+      </section>
     </div>
   );
 }
