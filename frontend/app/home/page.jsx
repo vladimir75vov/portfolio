@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { SiCodersrank } from "react-icons/si";
 import TypeWriter from "../../components/typeWriter.jsx";
 
 const _hats = [
@@ -10,6 +11,24 @@ const _hats = [
   {
     suffix: "const Vladimir = ( name, passion ) =>",
   },
+];
+
+const _stack = [
+  "JAVASCRIPT",
+  "NODEJS",
+  "REACT",
+  "NEXTJS",
+  "JQUERY",
+  "PHP",
+  "WORDPRESS",
+  "WOOCOMMERCE",
+  "GA4/GTM",
+  "HTML5",
+  "CSS3",
+  "SASS",
+  "GIT",
+  "MYSQL",
+  "MONGODB",
 ];
 
 function Home() {
@@ -58,32 +77,20 @@ function Home() {
           <div className="container mx-auto">
             <div className="flex flex-wrap items-center">
               <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto">
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded-lg bg-blueGray-700">
+                <div className="relative flex flex-col min-w-0 break-words bg-black w-full shadow-lg rounded-lg bg-blueGray-700">
                   <img
                     alt="..."
                     src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=700&amp;q=80"
                     className="w-full align-middle rounded-t-lg"
                   />
                   <blockquote className="relative p-8 mb-4">
-                    <svg
-                      preserveAspectRatio="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 583 95"
-                      className="absolute left-0 w-full block h-95-px -top-94-px"
-                    >
-                      <polygon
-                        points="-30,95 583,95 583,65"
-                        className="text-blueGray-700 fill-current"
-                      />
-                    </svg>
-                    <h4 className="text-xl font-bold text-white">
-                      Great for your awesome project
-                    </h4>
+                    <h4 className="text-xl font-bold text-white">Technical</h4>
                     <p className="text-md font-light mt-2 text-white">
-                      Putting together a page has never been easier than
-                      matching together pre-made components. From landing pages
-                      presentation to login areas, you can easily customise and
-                      built your pages.
+                      As a creative technologist, I craft intuitive digital
+                      experiences using a diverse set of tools and
+                      languages.Technical As a creative technologist, I craft
+                      intuitive digital experiences using a diverse set of tools
+                      and languages.
                     </p>
                   </blockquote>
                 </div>
@@ -155,42 +162,23 @@ function Home() {
             <div className="container mx-auto overflow-hidden pb-20">
               <div className="flex flex-wrap items-center">
                 <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
-                  <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-                    <i className="fas fa-sitemap text-xl" />
+                  <div className="text-blueGray-500  text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
+                    <SiCodersrank className="text-black h-10 w-10" />
                   </div>
                   <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                    CSS Components
+                    Technologies I love to build with
                   </h3>
                   <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-                    Every element that you need in a product comes built in as a
-                    component. All components fit perfectly with each other and
-                    can have different colours.
+                    I deeply enjoy solving problems through code. From the front
+                    end all the way to the back end and the APIs in-between. No
+                    project is too challenging for me.
                   </p>
-                  <div className="block pb-6">
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                      Buttons
-                    </span>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                      Inputs
-                    </span>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                      Labels
-                    </span>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                      Menus
-                    </span>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                      Navbars
-                    </span>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                      Pagination
-                    </span>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                      Progressbars
-                    </span>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-                      Typography
-                    </span>
+                  <div className="block pb-6 animate-textHue bg-gradient-to-l from-red-400 to-green-400 bg-clip-text text-transparent text-xs">
+                    {_stack.map((item) => (
+                      <span className="font-semibold inline-block py-1 px-2 uppercase last:mr-0 mr-2 mt-2">
+                        {item}
+                      </span>
+                    ))}
                   </div>
                   <a
                     href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/alerts/notus?ref=nnjs-index"
