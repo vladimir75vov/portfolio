@@ -8,7 +8,7 @@ import {
   SiVk,
   SiWhatsapp,
 } from "react-icons/si";
-import LinkOpenNewTab from "../linkOpenNewTab.jsx";
+import LinkOpenNewTabComp from "../linkOpenNewTabComp.jsx";
 
 function Footer() {
   return (
@@ -20,29 +20,29 @@ function Footer() {
 
         <ul className="flex justify-center mt-5 space-x-5">
           <li>
-            <LinkOpenNewTab url="https://t.me/vladimir75vov">
+            <LinkOpenNewTabComp url="https://t.me/vladimir75vov">
               <SiTelegram />
-            </LinkOpenNewTab>
+            </LinkOpenNewTabComp>
           </li>
           <li>
-            <LinkOpenNewTab url="https://vk.com/vladimir75vov">
+            <LinkOpenNewTabComp url="https://vk.com/vladimir75vov">
               <SiVk />
-            </LinkOpenNewTab>
+            </LinkOpenNewTabComp>
           </li>
           <li>
-            <LinkOpenNewTab url="https://wa.me/89037095173">
+            <LinkOpenNewTabComp url="https://wa.me/89037095173">
               <SiWhatsapp />
-            </LinkOpenNewTab>
+            </LinkOpenNewTabComp>
           </li>
           <li>
-            <LinkOpenNewTab url="https://discordapp.com/users/289114042763575296">
+            <LinkOpenNewTabComp url="https://discordapp.com/users/289114042763575296">
               <SiDiscord />
-            </LinkOpenNewTab>
+            </LinkOpenNewTabComp>
           </li>
           <li>
-            <LinkOpenNewTab url="https://github.com/vladimir75vov">
+            <LinkOpenNewTabComp url="https://github.com/vladimir75vov">
               <SiGithub />
-            </LinkOpenNewTab>
+            </LinkOpenNewTabComp>
           </li>
         </ul>
       </div>

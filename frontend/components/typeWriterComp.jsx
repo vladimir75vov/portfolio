@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function TypeWriter({ appendClass, hats, prefix }) {
+function TypeWriterComp({ appendClass, hats, prefix }) {
   const [currentHat, setCurrentHat] = useState(0);
   const [collapseClass, setCollapseClass] = useState("w-full");
 
@@ -46,4 +46,4 @@ function TypeWriter({ appendClass, hats, prefix }) {
   );
 }
 
-export default TypeWriter;
+export default TypeWriterComp;

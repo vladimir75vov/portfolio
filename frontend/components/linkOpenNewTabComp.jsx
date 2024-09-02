@@ -1,6 +1,6 @@
 import React from "react";
 
-function LinkOpenNewTab({ url, children }) {
+function LinkOpenNewTabComp({ url, children }) {
   function openInNewTab(_url) {
     window.open(_url, "_blank").focus();
   }
@@ -11,4 +11,4 @@ function LinkOpenNewTab({ url, children }) {
   );
 }
 
-export default LinkOpenNewTab;
+export default LinkOpenNewTabComp;
