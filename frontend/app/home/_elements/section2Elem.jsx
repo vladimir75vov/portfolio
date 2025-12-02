@@ -35,8 +35,8 @@ function Section2Elem() {
           challenging for me.
         </p>
         <div className="block pb-6 animate-textHue bg-gradient-to-l from-red-400 to-green-400 bg-clip-text text-transparent text-xs">
-          {_stack.map((item) => (
-            <span className="font-semibold inline-block py-1 px-2 uppercase last:mr-0 mr-2 mt-2">
+          {_stack.map((item, index) => (
+            <span key={index} className="font-semibold inline-block py-1 px-2 uppercase last:mr-0 mr-2 mt-2">
               {item}
             </span>
           ))}

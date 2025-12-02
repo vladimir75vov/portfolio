@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global button transitions: make interactive elements feel smooth */
+button,
+.btn,
+[role="button"] {
+	transition: background-color 180ms ease, color 180ms ease, transform 180ms ease, opacity 180ms ease, box-shadow 180ms ease;
+}
+
+/* Small utility to slightly scale on press for elements that use transform */
+.btn-press:active {
+	transform: scale(0.98);
+}
