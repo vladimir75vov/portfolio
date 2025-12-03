@@ -30,14 +30,19 @@ function TypeWriterComp({ appendClass, hats, prefix }) {
   }, [hats.length]);
 
   return (
-    <div className={`flex flex-col gap-4 h-auto  ${appendClass}`}>
-      <div className="flex gap-2 text-2xl md:text-4xl mx-auto text-white">
-        <div className="whitespace-nowrap ml-auto text-white">
+    <div className={`flex flex-col gap-2 h-auto ${appendClass}`}>
+      {/* Первая строка - статический текст */}
+      {prefix || hats[currentHat].prep ? (
+        <div className="text-xl md:text-3xl text-white text-center whitespace-nowrap">
           {prefix}
-          {hats[currentHat].prep ? ` ${hats[currentHat].prep} ` : ""}
+          {hats[currentHat].prep ? ` ${hats[currentHat].prep}` : ""}
         </div>
+      ) : null}
+      
+      {/* Вторая строка - анимированный typewriter */}
+      <div className="flex justify-center">
         <div
-          className={`font-bold border-b-2 border-b-blue-400 border-r-2 pr-1 animate-cursor overflow-hidden whitespace-nowrap transition-width ease-in-out duration-1000 mr-auto text-white ${collapseClass}`}
+          className={`font-bold text-2xl md:text-4xl border-b-2 border-b-blue-400 border-r-2 pr-1 animate-cursor overflow-hidden whitespace-nowrap transition-all ease-in-out duration-1000 text-white ${collapseClass}`}
         >
           {hats[currentHat].suffix}
         </div>

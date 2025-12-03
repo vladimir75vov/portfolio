@@ -6,7 +6,7 @@ function TypeWriterElem() {
   const { t } = useContext(LanguageContext);
   const _hats = [
     {
-      suffix: t("hero.hi") + "                   ",
+      suffix: t("hero.hi"),
     },
     {
       suffix: "const Vladimir = ( name, passion ) =>",

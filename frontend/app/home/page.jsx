@@ -64,10 +64,10 @@ function Home() {
         <VideoElem />
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/30 via-black/20 to-black/40" style={{ transition: 'background-color 260ms ease' }}>
           <div className="flex justify-center items-center text-center min-h-screen">
-            <div className="px-4 max-w-5xl">
-              <div className="animate-fadeInDown">
+            <div className="px-4 max-w-5xl w-full">
+              <div className="animate-fadeInDown flex flex-col items-center gap-4">
                 <TypeWriterElem />
-                <h1 className="uppercase font-light tracking-widest text-4xl sm:text-6xl lg:text-7xl animate-textHue bg-gradient-to-r from-red-400 via-purple-400 to-green-400 bg-clip-text text-transparent mt-4">
+                <h1 className="uppercase font-light tracking-widest text-4xl sm:text-6xl lg:text-7xl animate-textHue bg-gradient-to-r from-red-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
                   {useContext(LanguageContext).t("hero.titleName")}
                 </h1>
               </div>
