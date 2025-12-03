@@ -1,76 +1,92 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LanguageContext } from "../../../context/LanguageContext.jsx";
 
 function Section4Elem() {
+  const { lang } = useContext(LanguageContext);
+  
+  const benefits = [
+    {
+      icon: "⚡",
+      titleEn: "High Performance",
+      titleRu: "Высокая производительность",
+      descEn: "Optimized code and efficient architecture for fast, scalable applications",
+      descRu: "Оптимизированный код и эффективная архитектура для быстрых масштабируемых приложений"
+    },
+    {
+      icon: "🎯",
+      titleEn: "Quality Focused",
+      titleRu: "Фокус на качестве",
+      descEn: "Comprehensive testing, code reviews, and best practices implementation",
+      descRu: "Комплексное тестирование, ревью кода и внедрение лучших практик"
+    },
+    {
+      icon: "🔒",
+      titleEn: "Security First",
+      titleRu: "Безопасность прежде всего",
+      descEn: "Secure coding practices and data protection in every project",
+      descRu: "Безопасная разработка и защита данных в каждом проекте"
+    },
+    {
+      icon: "📱",
+      titleEn: "Responsive Design",
+      titleRu: "Адаптивный дизайн",
+      descEn: "Beautiful interfaces that work seamlessly across all devices",
+      descRu: "Красивые интерфейсы, идеально работающие на всех устройствах"
+    },
+    {
+      icon: "🔄",
+      titleEn: "Continuous Support",
+      titleRu: "Постоянная поддержка",
+      descEn: "Ongoing maintenance, updates, and technical assistance",
+      descRu: "Постоянное обслуживание, обновления и техническая помощь"
+    },
+    {
+      icon: "💡",
+      titleEn: "Innovation Driven",
+      titleRu: "Инновационный подход",
+      descEn: "Implementing cutting-edge technologies and modern solutions",
+      descRu: "Внедрение передовых технологий и современных решений"
+    }
+  ];
+
   return (
-    <section className="container mx-auto px-4 pb-32 pt-48">
-      <div className="items-center flex flex-wrap">
-        <div className="w-full md:w-5/12 ml-auto px-12 md:px-4">
-          <div className="md:pr-12">
-            <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-              <i className="fas fa-file-alt text-xl" />
-            </div>
-            <h3 className="text-3xl font-semibold">Complex Documentation</h3>
-            <p className="mt-4 text-lg leading-relaxed text-blueGray-500">
-              This extension comes a lot of fully coded examples that help you
-              get started faster. You can adjust the colors and also the
-              programming language. You can change the text and images and
-              you're good to go.
-            </p>
-            <ul className="list-none mt-6">
-              <li className="py-2">
-                <div className="flex items-center">
-                  <div>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                      <i className="fas fa-fingerprint" />
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="text-blueGray-500">
-                      Built by Developers for Developers
-                    </h4>
-                  </div>
-                </div>
-              </li>
-              <li className="py-2">
-                <div className="flex items-center">
-                  <div>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                      <i className="fab fa-html5" />
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="text-blueGray-500">
-                      Carefully crafted code for Components
-                    </h4>
-                  </div>
-                </div>
-              </li>
-              <li className="py-2">
-                <div className="flex items-center">
-                  <div>
-                    <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-blueGray-50 mr-3">
-                      <i className="far fa-paper-plane" />
-                    </span>
-                  </div>
-                  <div>
-                    <h4 className="text-blueGray-500">
-                      Dynamic Javascript Components
-                    </h4>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
+    <section className="py-20 bg-gradient-to-b from-transparent to-[var(--bg-secondary)]">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            {lang === "en" ? "Why Choose Me" : "Почему выбирают меня"}
+          </h2>
+          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
+            {lang === "en"
+              ? "Commitment to excellence, proven track record, and dedication to delivering exceptional results"
+              : "Стремление к совершенству, проверенный опыт и преданность достижению исключительных результатов"}
+          </p>
         </div>
-        <div className="w-full md:w-6/12 mr-auto px-4 pt-24 md:pt-0">
-          <div className="relative flex flex-col min-w-0 w-full mb-6 mt-48 md:mt-0">
-            <div className="w-full xl p-12 overflow-hidden">
-              <img
-                className="mx-auto w-full transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
-                src="/api/v1/resources/images/macbook.svg"
-              />
+
+        {/* Benefits Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((benefit, idx) => (
+            <div
+              key={idx}
+              className="group relative bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-xl p-8 hover:border-blue-500/50 transition-all duration-300 overflow-hidden"
+            >
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              
+              <div className="relative z-10">
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-blue-400 transition-colors">
+                  {lang === "en" ? benefit.titleEn : benefit.titleRu}
+                </h3>
+                <p className="text-[var(--text-muted)] leading-relaxed">
+                  {lang === "en" ? benefit.descEn : benefit.descRu}
+                </p>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

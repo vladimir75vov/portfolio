@@ -1,82 +1,73 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LanguageContext } from "../../../context/LanguageContext.jsx";
 
 function Section1Elem() {
+  const { lang } = useContext(LanguageContext);
+  
+  const features = [
+    {
+      icon: "💻",
+      titleEn: "Frontend Development",
+      titleRu: "Frontend разработка",
+      descEn: "Creating modern, responsive interfaces with React, TypeScript, and cutting-edge technologies",
+      descRu: "Создание современных, адаптивных интерфейсов на React, TypeScript и передовых технологиях"
+    },
+    {
+      icon: "⚙️",
+      titleEn: "Backend Systems",
+      titleRu: "Backend системы",
+      descEn: "Building robust server-side applications with Node.js, C#, Python, and efficient databases",
+      descRu: "Построение надёжных серверных приложений на Node.js, C#, Python и эффективных базах данных"
+    },
+    {
+      icon: "🧪",
+      titleEn: "Testing & QA",
+      titleRu: "Тестирование и QA",
+      descEn: "Ensuring quality through comprehensive testing, bug tracking, and continuous improvement",
+      descRu: "Обеспечение качества через комплексное тестирование, отслеживание багов и постоянное улучшение"
+    },
+    {
+      icon: "🚀",
+      titleEn: "Automation",
+      titleRu: "Автоматизация",
+      descEn: "Implementing AI-powered automation, desktop tools, and process optimization solutions",
+      descRu: "Внедрение AI-автоматизации, десктопных инструментов и решений для оптимизации процессов"
+    }
+  ];
+
   return (
-    <section className="flex flex-wrap items-center">
-      <div className="w-10/12 md:w-6/12 lg:w-4/12 px-12 md:px-4 mr-auto ml-auto">
-        <div className="relative flex flex-col min-w-0 break-words bg-black w-full shadow-lg rounded-lg bg-blueGray-700">
-          <img
-            alt="..."
-            src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=700&amp;q=80"
-            className="w-full align-middle rounded-t-lg"
-          />
-          <blockquote className="relative p-8 mb-4">
-            <h4 className="text-xl font-bold text-white">Technical</h4>
-            <p className="text-md font-light mt-2 text-white">
-              As a creative technologist, I craft intuitive digital experiences
-              using a diverse set of tools and languages.Technical As a creative
-              technologist, I craft intuitive digital experiences using a
-              diverse set of tools and languages.
-            </p>
-          </blockquote>
+    <section className="py-20">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            {lang === "en" ? "What I Offer" : "Что я предлагаю"}
+          </h2>
+          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
+            {lang === "en" 
+              ? "Professional full-stack development services with focus on quality, performance, and user experience"
+              : "Профессиональные услуги full-stack разработки с фокусом на качество, производительность и пользовательский опыт"}
+          </p>
         </div>
-      </div>
-      <div className="w-full md:w-6/12 px-4">
-        <div className="flex flex-wrap">
-          <div className="w-full md:w-6/12 px-4">
-            <div className="relative flex flex-col mt-4">
-              <div className="px-4 py-5 flex-auto">
-                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                  <i className="fas fa-sitemap" />
-                </div>
-                <h6 className="text-xl mb-1 font-semibold">CSS Components</h6>
-                <p className="mb-4 text-blueGray-500">
-                  Notus NextJS comes with a huge number of Fully Coded CSS
-                  components.
-                </p>
+
+        {/* Feature Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, idx) => (
+            <div
+              key={idx}
+              className="group bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-xl p-6 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {feature.icon}
               </div>
+              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-blue-400 transition-colors">
+                {lang === "en" ? feature.titleEn : feature.titleRu}
+              </h3>
+              <p className="text-[var(--text-muted)] text-sm leading-relaxed">
+                {lang === "en" ? feature.descEn : feature.descRu}
+              </p>
             </div>
-            <div className="relative flex flex-col min-w-0">
-              <div className="px-4 py-5 flex-auto">
-                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                  <i className="fas fa-drafting-compass" />
-                </div>
-                <h6 className="text-xl mb-1 font-semibold">
-                  JavaScript Components
-                </h6>
-                <p className="mb-4 text-blueGray-500">
-                  We also feature many dynamic components for React, NextJS, Vue
-                  and Angular.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-6/12 px-4">
-            <div className="relative flex flex-col min-w-0 mt-4">
-              <div className="px-4 py-5 flex-auto">
-                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                  <i className="fas fa-newspaper" />
-                </div>
-                <h6 className="text-xl mb-1 font-semibold">Pages</h6>
-                <p className="mb-4 text-blueGray-500">
-                  This extension also comes with 3 sample pages. They are fully
-                  coded so you can start working instantly.
-                </p>
-              </div>
-            </div>
-            <div className="relative flex flex-col min-w-0">
-              <div className="px-4 py-5 flex-auto">
-                <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-white">
-                  <i className="fas fa-file-alt" />
-                </div>
-                <h6 className="text-xl mb-1 font-semibold">Documentation</h6>
-                <p className="mb-4 text-blueGray-500">
-                  Built by developers for developers. You will love how easy is
-                  to to work with Notus NextJS.
-                </p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

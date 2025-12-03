@@ -17,21 +17,21 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-b from-background/50 to-background border-t border-gray-700/30 py-12 mt-20">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+    <footer className="bg-[var(--bg-secondary)] border-t border-[var(--border-color)] py-12 mt-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-10">
           {/* Brand */}
-          <div className="flex flex-col items-start md:items-center">
+          <div className="flex flex-col items-center md:items-start">
             <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg flex items-center justify-center font-bold text-white mb-4">
               VB
             </div>
-            <p className="text-gray-400 text-sm">{t("footer.developer")}</p>
+            <p className="text-[var(--text-muted)] text-sm">{t("footer.developer")}</p>
           </div>
 
           {/* Quick Links */}
-          <div className="flex flex-col items-start md:items-center">
-            <h3 className="text-white font-semibold mb-4">{t("footer.quickLinks")}</h3>
-            <div className="flex flex-col gap-2 text-gray-400 text-sm">
+          <div className="flex flex-col items-center">
+            <h3 className="text-[var(--text-primary)] font-semibold mb-4">{t("footer.quickLinks")}</h3>
+            <div className="flex flex-col gap-3 text-[var(--text-muted)] text-sm items-center">
               <Link href="/projects" className="hover:text-blue-400 transition-colors">
                 {t("footer.projects")}
               </Link>
@@ -45,9 +45,9 @@ function Footer() {
           </div>
 
           {/* Social Links */}
-          <div className="flex flex-col items-start md:items-end">
-            <h3 className="text-white font-semibold mb-4">{t("footer.follow")}</h3>
-            <ul className="flex justify-start md:justify-end gap-2">
+          <div className="flex flex-col items-center md:items-end">
+            <h3 className="text-[var(--text-primary)] font-semibold mb-4">{t("footer.follow")}</h3>
+            <ul className="flex justify-center md:justify-end gap-3">
               <li>
                 <LinkOpenNewTabComp url="https://t.me/vladimir75vov">
                   <SiTelegram />
@@ -78,8 +78,8 @@ function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-700/30 pt-8">
-          <p className="text-center text-gray-400 text-sm">
+        <div className="border-t border-[var(--border-color)] pt-8">
+          <p className="text-center text-[var(--text-muted)] text-sm">
             &copy; {currentYear} Vladimir Budaev. {t("footer.copyright")}
           </p>
         </div>

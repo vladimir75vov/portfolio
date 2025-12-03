@@ -1,145 +1,76 @@
-import React from "react";
+import React, { useContext } from "react";
+import { LanguageContext } from "../../../context/LanguageContext.jsx";
 
 function Section3Elem() {
+  const { lang } = useContext(LanguageContext);
+  
+  const companies = [
+    {
+      name: "CODD Moscow",
+      nameRu: "ЦОДД Москва",
+      logo: "🏛️",
+      period: "2024 - Present",
+      periodRu: "2024 - Настоящее время",
+      role: "Chief Specialist",
+      roleRu: "Главный специалист"
+    },
+    {
+      name: "Leroy Merlin",
+      nameRu: "Леруа Мерлен",
+      logo: "🏪",
+      period: "2021 - 2023",
+      periodRu: "2021 - 2023",
+      role: "Supply Chain Specialist",
+      roleRu: "Специалист цепи поставок"
+    },
+    {
+      name: "Russian National Guard",
+      nameRu: "Росгвардия",
+      logo: "🛡️",
+      period: "2023 - 2024",
+      periodRu: "2023 - 2024",
+      role: "System Administrator",
+      roleRu: "Системный администратор"
+    }
+  ];
+
   return (
-    <section className="flex flex-wrap items-center pt-32">
-      <div className="w-full md:w-6/12 px-4 mr-auto ml-auto mt-32">
-        <div className="justify-center flex flex-wrap relative">
-          <div className="my-4 w-full lg:w-6/12 px-4">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/svelte/alerts/notus?ref=vtw-index"
-              target="_blank"
-            >
-              <div className="bg-red-600 shadow-lg rounded-lg text-center p-8">
-                <img
-                  alt="..."
-                  className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/svelte.jpg"
-                />
-                <p className="text-lg text-white mt-4 font-semibold">Svelte</p>
-              </div>
-            </a>
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/react/alerts/notus?ref=vtw-index"
-              target="_blank"
-            >
-              <div className="bg-lightBlue-500 shadow-lg rounded-lg text-center p-8 mt-8">
-                <img
-                  alt="..."
-                  className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/react.jpg"
-                />
-                <p className="text-lg text-white mt-4 font-semibold">ReactJS</p>
-              </div>
-            </a>
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/alerts/notus?ref=vtw-index"
-              target="_blank"
-            >
-              <div className="bg-blueGray-700 shadow-lg rounded-lg text-center p-8 mt-8">
-                <img
-                  alt="..."
-                  className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/nextjs.jpg"
-                />
-                <p className="text-lg text-white mt-4 font-semibold">NextJS</p>
-              </div>
-            </a>
-          </div>
-          <div className="my-4 w-full lg:w-6/12 px-4 lg:mt-16">
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/js/alerts/notus?ref=vtw-index"
-              target="_blank"
-            >
-              <div className="bg-yellow-500 shadow-lg rounded-lg text-center p-8">
-                <img
-                  alt="..."
-                  className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/js.png"
-                />
-                <p className="text-lg text-white mt-4 font-semibold">
-                  JavaScript
-                </p>
-              </div>
-            </a>
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/angular/alerts/notus?ref=vtw-index"
-              target="_blank"
-            >
-              <div className="bg-red-700 shadow-lg rounded-lg text-center p-8 mt-8">
-                <img
-                  alt="..."
-                  className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/angular.jpg"
-                />
-                <p className="text-lg text-white mt-4 font-semibold">Angular</p>
-              </div>
-            </a>
-            <a
-              href="https://www.creative-tim.com/learning-lab/tailwind/vue/alerts/notus?ref=vtw-index"
-              target="_blank"
-            >
-              <div className="bg-emerald-500 shadow-lg rounded-lg text-center p-8 mt-8">
-                <img
-                  alt="..."
-                  className="shadow-md rounded-full max-w-full w-16 mx-auto p-2 bg-white"
-                  src="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/logos/vue.jpg"
-                />
-                <p className="text-lg text-white mt-4 font-semibold">Vue.js</p>
-              </div>
-            </a>
-          </div>
+    <section className="py-20">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            {lang === "en" ? "Trusted by Organizations" : "Доверие организаций"}
+          </h2>
+          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
+            {lang === "en"
+              ? "Working with leading companies and government organizations to deliver exceptional results"
+              : "Работа с ведущими компаниями и государственными организациями для достижения исключительных результатов"}
+          </p>
         </div>
-      </div>
-      <div className="w-full md:w-4/12 px-12 md:px-4 ml-auto mr-auto mt-48">
-        <div className="text-blueGray-500 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white">
-          <i className="fas fa-drafting-compass text-xl" />
+
+        {/* Companies Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {companies.map((company, idx) => (
+            <div
+              key={idx}
+              className="group bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-xl p-8 text-center hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 hover:-translate-y-2"
+            >
+              <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {company.logo}
+              </div>
+              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 group-hover:text-blue-400 transition-colors">
+                {lang === "en" ? company.name : company.nameRu}
+              </h3>
+              <p className="text-blue-400 font-medium mb-2">
+                {lang === "en" ? company.role : company.roleRu}
+              </p>
+              <p className="text-[var(--text-muted)] text-sm">
+                {lang === "en" ? company.period : company.periodRu}
+              </p>
+            </div>
+          ))}
         </div>
-        <h3 className="text-3xl mb-2 font-semibold leading-normal">
-          Javascript Components
-        </h3>
-        <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-          In order to create a great User Experience some components require
-          JavaScript. In this way you can manipulate the elements on the page
-          and give more options to your users.
-        </p>
-        <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-blueGray-600">
-          We created a set of Components that are dynamic and come to help you.
-        </p>
-        <div className="block pb-6">
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-            Alerts
-          </span>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-            Dropdowns
-          </span>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-            Menus
-          </span>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-            Modals
-          </span>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-            Navbars
-          </span>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-            Popovers
-          </span>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-            Tabs
-          </span>
-          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-blueGray-500 bg-white uppercase last:mr-0 mr-2 mt-2">
-            Tooltips
-          </span>
-        </div>
-        <a
-          href="https://www.creative-tim.com/learning-lab/tailwind/nextjs/alerts/notus?ref=nnjs-index"
-          target="_blank"
-          className="font-bold text-blueGray-700 hover:text-blueGray-500 ease-linear transition-all duration-150"
-        >
-          View all{" "}
-          <i className="fa fa-angle-double-right ml-1 leading-relaxed" />
-        </a>
       </div>
     </section>
   );

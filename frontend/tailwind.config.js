@@ -4,11 +4,19 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
+        // Dark theme colors
         background: "#13151a",
         "light-gray": "#222224",
+        // Light theme colors  
+        "bg-light": "#f8f9fa",
+        "bg-light-secondary": "#ffffff",
+        "text-light": "#1a1a1a",
+        "text-light-secondary": "#4a5568",
+        "border-light": "#e2e8f0",
       },
       animation: {
         fadeInDown: "fadeInDown 2s ease-in-out",

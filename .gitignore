@@ -1,1 +1,4 @@
 ﻿.idea
+
+# CV files
+backend/resources/files/cv/*.pdf

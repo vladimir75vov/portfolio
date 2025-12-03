@@ -31,13 +31,13 @@ function TypeWriterComp({ appendClass, hats, prefix }) {
 
   return (
     <div className={`flex flex-col gap-4 h-auto  ${appendClass}`}>
-      <div className="flex gap-2 text-2xl md:text-4xl mx-auto">
-        <div className=" whitespace-nowrap ml-auto">
+      <div className="flex gap-2 text-2xl md:text-4xl mx-auto text-white">
+        <div className="whitespace-nowrap ml-auto text-white">
           {prefix}
           {hats[currentHat].prep ? ` ${hats[currentHat].prep} ` : ""}
         </div>
         <div
-          className={`font-bold border-b-2 border-b-blue-400 border-r-2 pr-1 animate-cursor overflow-hidden whitespace-nowrap transition-width ease-in-out duration-1000 mr-auto ${collapseClass}`}
+          className={`font-bold border-b-2 border-b-blue-400 border-r-2 pr-1 animate-cursor overflow-hidden whitespace-nowrap transition-width ease-in-out duration-1000 mr-auto text-white ${collapseClass}`}
         >
           {hats[currentHat].suffix}
         </div>

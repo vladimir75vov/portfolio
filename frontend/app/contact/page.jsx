@@ -2,7 +2,13 @@
 
 import { useContext, useState } from 'react';
 import { LanguageContext } from '../../context/LanguageContext';
-import { FaGithub, FaTelegram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import {
+  SiDiscord,
+  SiGithub,
+  SiTelegram,
+  SiVk,
+  SiWhatsapp,
+} from "react-icons/si";
 
 export default function ContactPage() {
   const { lang } = useContext(LanguageContext);
@@ -14,38 +20,73 @@ export default function ContactPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submitted:', formData);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-    setTimeout(() => setSubmitted(false), 3000);
+    
+    // Получение токена и chat_id из переменных окружения
+    const telegramBotToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+    const telegramChatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+    
+    const message = `
+📧 Новое сообщение с портфолио!
+
+👤 Имя: ${formData.name}
+📨 Email: ${formData.email}
+
+💬 Сообщение:
+${formData.message}
+    `.trim();
+
+    try {
+      const response = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          chat_id: telegramChatId,
+          text: message,
+          parse_mode: 'HTML'
+        })
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        alert(lang === 'en' ? 'Failed to send message. Please try again.' : 'Не удалось отправить сообщение. Попробуйте снова.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert(lang === 'en' ? 'Failed to send message. Please try again.' : 'Не удалось отправить сообщение. Попробуйте снова.');
+    }
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-background via-background to-background/80 pt-32 pb-20">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+    <main className="min-h-screen bg-[var(--bg-primary)] pt-32 pb-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-20">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               {lang === 'en' ? 'Get In Touch' : 'Свяжитесь со мной'}
             </h1>
-            <p className="text-lg text-gray-300">
+            <p className="text-lg text-[var(--text-secondary)]">
               {lang === 'en' ? 'Have a project? Let\'s talk about it.' : 'Есть проект? Давайте об этом поговорим.'}
             </p>
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {/* Contact Form */}
-            <div className="bg-white/5 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8">
-              <h2 className="text-2xl font-bold text-white mb-6">
+            <div className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-8">
+              <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
                 {lang === 'en' ? 'Send me a message' : 'Отправьте сообщение'}
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
                     {lang === 'en' ? 'Name' : 'Имя'}
                   </label>
                   <input
@@ -54,13 +95,13 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 bg-white/10 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-blue-500/50"
+                    className="w-full px-4 py-2 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-blue-500/50"
                     placeholder={lang === 'en' ? 'Your name' : 'Ваше имя'}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
                     {lang === 'en' ? 'Email' : 'Email'}
                   </label>
                   <input
@@ -69,13 +110,13 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 bg-white/10 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-blue-500/50"
+                    className="w-full px-4 py-2 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-blue-500/50"
                     placeholder={lang === 'en' ? 'your@email.com' : 'ваш@email.com'}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
                     {lang === 'en' ? 'Message' : 'Сообщение'}
                   </label>
                   <textarea
@@ -84,14 +125,14 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full px-4 py-2 bg-white/10 border border-gray-600/50 rounded-lg text-white focus:outline-none focus:border-blue-500/50 resize-none"
+                    className="w-full px-4 py-2 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-blue-500/50 resize-none"
                     placeholder={lang === 'en' ? 'Your message...' : 'Ваше сообщение...'}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:scale-105 transition-all duration-200"
+                  className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:scale-[1.02] transition-all duration-200 mt-2"
                 >
                   {lang === 'en' ? 'Send' : 'Отправить'}
                 </button>
@@ -107,47 +148,80 @@ export default function ContactPage() {
             {/* Contact Info */}
             <div className="space-y-6">
               {/* Direct Contacts */}
-              <div className="bg-white/5 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">
+              <div className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-8">
+                <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
                   {lang === 'en' ? 'Contact Info' : 'Контактная информация'}
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-sm text-gray-400 mb-1">{lang === 'en' ? 'Email' : 'Email'}</p>
-                    <a href="mailto:your@email.com" className="text-blue-400 hover:text-blue-300 font-medium">
-                      your@email.com
+                    <p className="text-sm text-[var(--text-muted)] mb-1">{lang === 'en' ? 'Email' : 'Email'}</p>
+                    <a href="mailto:vladimir75vov@gmail.com" className="text-blue-400 hover:text-blue-300 font-medium">
+                      vladimir75vov@gmail.com
                     </a>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400 mb-1">{lang === 'en' ? 'Phone' : 'Телефон'}</p>
-                    <a href="tel:+1234567890" className="text-blue-400 hover:text-blue-300 font-medium">
-                      +1 (234) 567-890
+                    <p className="text-sm text-[var(--text-muted)] mb-1">{lang === 'en' ? 'Phone' : 'Телефон'}</p>
+                    <a href="tel:+79037095173" className="text-blue-400 hover:text-blue-300 font-medium">
+                      +7 (903) 709-5173
                     </a>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-400 mb-1">{lang === 'en' ? 'Location' : 'Местоположение'}</p>
-                    <p className="text-gray-300 font-medium">{lang === 'en' ? 'City, Country' : 'Город, Страна'}</p>
+                    <p className="text-sm text-[var(--text-muted)] mb-1">{lang === 'en' ? 'Location' : 'Местоположение'}</p>
+                    <p className="text-[var(--text-secondary)] font-medium">{lang === 'en' ? 'Moscow, Russia' : 'Москва, Россия'}</p>
                   </div>
                 </div>
               </div>
 
               {/* Social Links */}
-              <div className="bg-white/5 backdrop-blur-sm border border-gray-700/50 rounded-lg p-8">
-                <h2 className="text-2xl font-bold text-white mb-6">
+              <div className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-8">
+                <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
                   {lang === 'en' ? 'Follow Me' : 'Следите за мной'}
                 </h2>
-                <div className="flex gap-4">
-                  <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 border border-gray-600/50 rounded-lg hover:scale-110 transition-all">
-                    <FaGithub size={24} className="text-blue-400" />
+                <div className="flex flex-wrap gap-4">
+                  <a 
+                    href="https://t.me/vladimir75vov" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
+                    aria-label="Telegram"
+                  >
+                    <SiTelegram size={24} className="text-blue-400" />
                   </a>
-                  <a href="https://t.me" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 border border-gray-600/50 rounded-lg hover:scale-110 transition-all">
-                    <FaTelegram size={24} className="text-blue-400" />
+                  <a 
+                    href="https://vk.com/vladimir75vov" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
+                    aria-label="VK"
+                  >
+                    <SiVk size={24} className="text-blue-400" />
                   </a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 border border-gray-600/50 rounded-lg hover:scale-110 transition-all">
-                    <FaLinkedin size={24} className="text-blue-400" />
+                  <a 
+                    href="https://wa.me/89037095173" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
+                    aria-label="WhatsApp"
+                  >
+                    <SiWhatsapp size={24} className="text-blue-400" />
                   </a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 border border-gray-600/50 rounded-lg hover:scale-110 transition-all">
-                    <FaTwitter size={24} className="text-blue-400" />
+                  <a 
+                    href="https://discordapp.com/users/289114042763575296" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
+                    aria-label="Discord"
+                  >
+                    <SiDiscord size={24} className="text-blue-400" />
+                  </a>
+                  <a 
+                    href="https://github.com/vladimir75vov" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
+                    aria-label="GitHub"
+                  >
+                    <SiGithub size={24} className="text-blue-400" />
                   </a>
                 </div>
               </div>

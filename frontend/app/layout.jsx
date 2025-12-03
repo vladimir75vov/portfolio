@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import Navbar from "../components/layout/navbar.jsx";
 import Footer from "../components/layout/footer.jsx";
 import { LanguageProvider } from "../context/LanguageContext.jsx";
+import { ThemeProvider } from "../context/ThemeContext.jsx";
+import LoadingScreen from "../components/LoadingScreen.jsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,12 +28,15 @@ export default function RootLayout({ children }) {
         <meta name="theme-color" content="#13151a" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className={`${inter.className} bg-background text-white overflow-x-hidden`}>
-        <LanguageProvider>
-          <Navbar />
-          <main className="pt-16">{children}</main>
-          <Footer />
-        </LanguageProvider>
+      <body className={`${inter.className} bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-x-hidden`}>
+        <LoadingScreen />
+        <ThemeProvider>
+          <LanguageProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
