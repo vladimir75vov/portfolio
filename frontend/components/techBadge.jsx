@@ -1,3 +1,4 @@
+// Компонент бейджа технологии (используется в карточках проектов)
 export default function TechBadge({ tech }) {
   return (
     <div className="bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg px-3 py-2 hover:border-blue-500/40 hover:bg-blue-500/5 transition-all duration-200">

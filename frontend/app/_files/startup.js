@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config({ path: "../.env" });
 
+// Скрипт запуска frontend сервера с автоматическим освобождением порта
 const getCommand = () => {
   const port = process.env.FRONTEND_PORT || 3000;
   const ip = process.env.FRONTEND_IP || "127.0.0.1";

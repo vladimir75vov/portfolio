@@ -2,8 +2,10 @@
 
 import React, { createContext, useEffect, useState } from "react";
 
+// Контекст для управления языком приложения (EN/RU)
 export const LanguageContext = createContext({ lang: "en", setLang: () => {}, t: (k) => k });
 
+// Все переводы интерфейса
 const translations = {
   en: {
     nav: {
@@ -147,6 +149,7 @@ export function LanguageProvider({ children }) {
   const [lang, setLang] = useState("en");
   const [isHydrated, setIsHydrated] = useState(false);
 
+  // Загрузка сохранённого языка из localStorage
   useEffect(() => {
     try {
       const saved = localStorage.getItem("lang");
@@ -155,6 +158,7 @@ export function LanguageProvider({ children }) {
     setIsHydrated(true);
   }, []);
 
+  // Сохранение выбранного языка в localStorage
   useEffect(() => {
     if (!isHydrated) return;
     try {
@@ -162,6 +166,7 @@ export function LanguageProvider({ children }) {
     } catch (e) {}
   }, [lang, isHydrated]);
 
+  // Функция перевода: принимает путь (например "nav.about"), возвращает перевод
   function t(path) {
     const parts = path.split(".");
     let cur = translations[lang] || translations.en;

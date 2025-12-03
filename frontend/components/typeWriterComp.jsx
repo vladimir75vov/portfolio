@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 
+// Компонент для анимированного эффекта печатной машинки
 function TypeWriterComp({ appendClass, hats, prefix }) {
-  const [currentHat, setCurrentHat] = useState(0);
-  const [collapseClass, setCollapseClass] = useState("w-full");
+  const [currentHat, setCurrentHat] = useState(0); // Индекс текущей фразы
+  const [collapseClass, setCollapseClass] = useState("w-full"); // Класс для анимации ширины
 
   useEffect(() => {
+    // Интервал для смены фраз каждые 8 секунд
     const incrementHat = async () => {
-      setCollapseClass("w-0");
+      setCollapseClass("w-0"); // Сворачиваем текст
       setTimeout(() => {
         setCurrentHat((oldVal) => {
           let hatIndex;

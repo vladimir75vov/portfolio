@@ -5,8 +5,9 @@ import Link from "next/link";
 import { LanguageContext } from "../../context/LanguageContext.jsx";
 import { ThemeContext } from "../../context/ThemeContext.jsx";
 
+// Компонент навигации с мобильным меню, переключателями темы и языка
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // Состояние мобильного меню
   const { theme, setTheme } = useContext(ThemeContext);
 
   return (
@@ -80,6 +81,7 @@ function Navbar() {
   );
 }
 
+// Компонент переключения темы (светлая/тёмная)
 function ThemeSwitcher({ theme, setTheme }) {
   const { t } = useContext(LanguageContext);
   return (
@@ -103,6 +105,7 @@ function ThemeSwitcher({ theme, setTheme }) {
   );
 }
 
+// Компонент переключения языка (EN/RU)
 function LanguageSwitcher() {
   const { lang, setLang } = useContext(LanguageContext);
   return (

@@ -1,5 +1,6 @@
 import React from "react";
 
+// Компонент-кнопка для открытия ссылок в новой вкладке (используется для соц. сетей)
 function LinkOpenNewTabComp({ url, children }) {
   function openInNewTab(_url) {
     window.open(_url, "_blank").focus();

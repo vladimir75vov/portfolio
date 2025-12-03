@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext.jsx";
 import ProjectCard from "../../components/projectCard.jsx";
 
+// Страница проектов с карточками реальных работ
 function ProjectsPage() {
   const { t, lang } = useContext(LanguageContext);
 

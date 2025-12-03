@@ -29,7 +29,7 @@ export function ThemeProvider({ children }) {
     try {
       localStorage.setItem("theme", theme);
       
-      // Update document class for CSS variables
+      // Обновление класса документа для CSS переменных
       if (theme === "light") {
         document.documentElement.classList.add("light-theme");
         document.documentElement.classList.remove("dark-theme");

@@ -35,7 +35,7 @@ function Home() {
       if (document.visibilityState === "hidden") saveScroll();
     };
 
-    // Only scroll to the hero on the very first visit. Subsequent visits restore position.
+    // Прокрутка к hero только при самом первом посещении. При последующих посещениях восстанавливается позиция.
     try {
       const visited = localStorage.getItem("home_visited");
       const saved = sessionStorage.getItem("home_scroll");
@@ -44,7 +44,7 @@ function Home() {
         if (videoElement) setTimeout(() => videoElement.scrollIntoView({ block: "start", behavior: "auto" }), 50);
         localStorage.setItem("home_visited", "1");
       } else if (saved) {
-        // restore previous scroll position
+        // восстановление предыдущей позиции прокрутки
         window.scrollTo(0, Number(saved));
       }
     } catch (e) {}

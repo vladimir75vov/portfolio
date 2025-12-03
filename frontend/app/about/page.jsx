@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 
+// Страница "Обо мне" с опытом работы, образованием и навыками
 export default function About() {
   const { lang } = useContext(LanguageContext);
 

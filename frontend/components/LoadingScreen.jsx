@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+// Экран загрузки с анимацией, отображается при первой загрузке страницы
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 

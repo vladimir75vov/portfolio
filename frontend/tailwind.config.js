@@ -8,10 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Dark theme colors
+        // Цвета тёмной темы
         background: "#13151a",
         "light-gray": "#222224",
-        // Light theme colors  
+        // Цвета светлой темы  
         "bg-light": "#f8f9fa",
         "bg-light-secondary": "#ffffff",
         "text-light": "#1a1a1a",

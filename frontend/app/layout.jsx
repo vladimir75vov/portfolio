@@ -9,18 +9,92 @@ import LoadingScreen from "../components/LoadingScreen.jsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Метаданные для SEO
 export const metadata = {
   title: "Vladimir Budaev - Full Stack Developer",
   description: "Full Stack Developer | React | Next.js | Node.js | Digital Creator",
-  keywords: "developer, portfolio, react, nextjs, fullstack",
+  keywords: "developer, portfolio, react, nextjs, fullstack, javascript, typescript, frontend, backend, web development, moscow developer",
   authors: [{ name: "Vladimir Budaev" }],
+  creator: "Vladimir Budaev",
+  publisher: "Vladimir Budaev",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     title: "Vladimir Budaev - Full Stack Developer",
     description: "Full Stack Developer | React | Next.js | Node.js | Digital Creator",
     type: "website",
+    locale: "en_US",
+    alternateLocale: ["ru_RU"],
+    siteName: "Vladimir Budaev Portfolio",
+    url: "https://vladimir75vov.github.io",
+    images: [
+      {
+        url: "/api/v1/resources/images/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Vladimir Budaev - Full Stack Developer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vladimir Budaev - Full Stack Developer",
+    description: "Full Stack Developer | React | Next.js | Node.js | Digital Creator",
+    creator: "@vladimir75vov",
+    images: ["/api/v1/resources/images/og-image.jpg"],
+  },
+  verification: {
+    google: "your-google-verification-code",
+    yandex: "your-yandex-verification-code",
+  },
+  category: "technology",
+  applicationName: "Vladimir Budaev Portfolio",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://vladimir75vov.github.io"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en",
+      "ru-RU": "/ru",
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Vladimir Budaev",
+  },
+  other: {
+    "google-site-verification": "your-google-verification-code",
+    "yandex-verification": "your-yandex-verification-code",
+    "mobile-web-app-capable": "yes",
   },
 };
 
+// Главный layout с providers для темы, языка и навигации
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">

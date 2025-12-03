@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 
+// Страница навыков с категориями технологий и индикаторами прогресса
 export default function Skills() {
   const { lang } = useContext(LanguageContext);
 

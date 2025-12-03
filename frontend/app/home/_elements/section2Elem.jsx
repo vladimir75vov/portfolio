@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { SiCodersrank } from "react-icons/si";
 import { LanguageContext } from "../../../context/LanguageContext.jsx";
 
+// Секция "О разработчике" с технологическим стеком и изображением
 function Section2Elem() {
   const { t, lang } = useContext(LanguageContext);
   const _stack = [

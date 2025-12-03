@@ -10,6 +10,7 @@ import {
   SiWhatsapp,
 } from "react-icons/si";
 
+// Страница контактов с формой отправки в Telegram и соц. сетями
 export default function ContactPage() {
   const { lang } = useContext(LanguageContext);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });

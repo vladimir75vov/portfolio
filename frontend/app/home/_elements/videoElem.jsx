@@ -7,7 +7,7 @@ function VideoElem() {
   const { t } = useContext(LanguageContext);
   const videoRef = useRef(null);
   
-  // Initialize state - always start muted for autoplay
+  // Инициализация состояния - всегда начинаем с выключенным звуком для автовоспроизведения
   const [muted, setMuted] = useState(true);
   
   const [volume, setVolume] = useState(() => {
@@ -31,24 +31,24 @@ function VideoElem() {
   const [autoplaySucceeded, setAutoplaySucceeded] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
 
-  // Cinematic preset: darker, higher contrast, slight warm tone
+  // Кинематографический пресет: темнее, выше контраст, легкий теплый тон
   const legacyFilter = "contrast(1.18) brightness(0.58) saturate(1.06) sepia(0.06)";
 
-  // Try to autoplay with sound on mount (best-effort). If blocked, fall back to muted and show controls.
+  // Попытка автовоспроизведения со звуком при монтировании. Если заблокировано, откатываемся к muted и показываем контролы.
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
 
     v.volume = volume;
     
-    // Handler for when video can play
+    // Обработчик когда видео готово к воспроизведению
     const handleCanPlay = () => {
       setIsVideoReady(true);
       
-      // Force muted for reliable autoplay
+      // Принудительно выключаем звук для надежного автовоспроизведения
       v.muted = true;
       
-      // Multiple attempts to ensure playback
+      // Множественные попытки для обеспечения воспроизведения
       const attemptPlay = () => {
         const playPromise = v.play();
         if (playPromise && playPromise.then) {
@@ -57,11 +57,11 @@ function VideoElem() {
               setAutoplaySucceeded(true);
             })
             .catch((error) => {
-              console.warn('Autoplay attempt failed:', error);
-              // Retry after a short delay
+              console.warn('Попытка автовоспроизведения не удалась:', error);
+              // Повторная попытка после короткой задержки
               setTimeout(() => {
                 v.play().catch(() => {
-                  console.warn('Retry also failed');
+                  console.warn('Повторная попытка также не удалась');
                 });
               }, 500);
             });
@@ -72,18 +72,18 @@ function VideoElem() {
     };
 
     const handleLoadedData = () => {
-      // Video data is loaded, try to play
+      // Данные видео загружены, пытаемся воспроизвести
       handleCanPlay();
     };
 
-    // Add multiple event listeners for reliability
+    // Добавляем множественные обработчики событий для надежности
     v.addEventListener('canplay', handleCanPlay);
     v.addEventListener('loadeddata', handleLoadedData);
     
-    // Force load
+    // Принудительная загрузка
     v.load();
     
-    // If video is already loaded, trigger immediately
+    // Если видео уже загружено, запускаем немедленно
     if (v.readyState >= 2) {
       setTimeout(handleCanPlay, 100);
     }
@@ -95,7 +95,7 @@ function VideoElem() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // keep video muted/volume in sync when user changes controls
+  // Синхронизация muted/volume при изменении пользователем
   useEffect(() => {
     const v = videoRef.current;
     if (!v || !isVideoReady) return;
@@ -113,9 +113,9 @@ function VideoElem() {
     v.muted = willMute;
     setMuted(willMute);
     if (!willMute && v.paused) {
-      // user unmuted and video is paused — try to play with sound
+      // пользователь включил звук и видео на паузе — пытаемся воспроизвести со звуком
       v.play().catch(() => {
-        // If play fails, mute it again
+        // Если воспроизведение не удалось, выключаем звук снова
         v.muted = true;
         setMuted(true);
       });
@@ -152,7 +152,7 @@ function VideoElem() {
         Your browser does not support the video tag.
       </video>
 
-      {/* Controls panel */}
+      {/* Панель управления */}
       <div className="absolute bottom-6 left-6 flex items-center space-x-3 z-50">
         <button
           type="button"
@@ -161,13 +161,13 @@ function VideoElem() {
           aria-label={muted ? t("video.unmute") : t("video.mute")}
         >
           {muted ? (
-            // muted icon
+            // иконка без звука
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5v14l-5-5H2V10h2l5-5z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 9l4 4m0 0l-4 4m4-4H9" />
             </svg>
           ) : (
-            // sound icon
+            // иконка со звуком
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5L6 9H2v6h4l5 4V5z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 9a3 3 0 010 6" />
@@ -196,12 +196,12 @@ function VideoElem() {
           title={t("video.toggleFilter")}
         >
           {useLegacyFilter ? (
-            // Filter ON icon - more contrast/brightness
+            // Иконка фильтр ВКЛ - больше контраста/яркости
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
             </svg>
           ) : (
-            // Filter OFF icon - simple circle
+            // Иконка фильтр ВЫКЛ - простой круг
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>

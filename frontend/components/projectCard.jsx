@@ -2,10 +2,11 @@ import Link from "next/link";
 import TechBadge from "./techBadge.jsx";
 import { SiGithub } from "react-icons/si";
 
+// Компонент карточки проекта с анимацией, ссылками на GitHub и демо
 export default function ProjectCard({ title, description, technologies, github, live, image }) {
   return (
     <div className="group bg-[var(--card-bg)] backdrop-blur border border-[var(--card-border)] rounded-lg p-6 hover:border-blue-500/50 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 transform hover:-translate-y-1">
-      {/* Image/Icon */}
+      {/* Иконка проекта */}
       <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{image}</div>
 
       {/* Title */}

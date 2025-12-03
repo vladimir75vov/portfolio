@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import express from "express";
 import morgan from "morgan";
 
+// Backend сервер для раздачи статических файлов (видео, резюме, изображения)
 const app = express();
 const productRouter = express.Router();
 

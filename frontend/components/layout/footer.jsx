@@ -12,6 +12,7 @@ import {
 import LinkOpenNewTabComp from "../linkOpenNewTabComp.jsx";
 import { LanguageContext } from "../../context/LanguageContext.jsx";
 
+// Компонент футера с быстрыми ссылками и социальными сетями
 function Footer() {
   const { t } = useContext(LanguageContext);
   const currentYear = new Date().getFullYear();

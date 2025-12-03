@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { LanguageContext } from "../../../context/LanguageContext.jsx";
 
+// Секция "Почему выбирают меня" с 6 преимуществами работы
 function Section4Elem() {
   const { lang } = useContext(LanguageContext);
   

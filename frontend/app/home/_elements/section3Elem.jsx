@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { LanguageContext } from "../../../context/LanguageContext.jsx";
 
+// Секция "Доверие организаций" с карточками работодателей
 function Section3Elem() {
   const { lang } = useContext(LanguageContext);
   
