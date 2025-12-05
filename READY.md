@@ -39,7 +39,7 @@ Your project is fully configured and ready for publication on GitHub Pages!
 ### CI/CD
 - ✅ GitHub Actions: 4 workflow files
   - **ci.yml** - Code quality checks (ESLint, Prettier, type checking, build test)
-  - **deploy.yml** - Deploy to GitHub Pages (on push to main)
+  - **deploy.yml** - Deploy to GitHub Pages (on push to master)
   - **codeql.yml** - Security scanning (weekly + on push)
   - **dependency-update.yml** - Automated dependency updates (weekly)
 - ✅ Requires 2 GitHub Secrets:

@@ -62,8 +62,8 @@ git remote add origin https://github.com/vladimir75vov/vladimir75vov.github.io.g
 # Or for option B:
 # git remote add origin https://github.com/vladimir75vov/portfolio.git
 
-git branch -M main
-git push -u origin main
+git branch -M master
+git push -u origin master
 ```
 
 ### 5. Configure GitHub Secrets
@@ -138,7 +138,7 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions and troubleshooting
 
 ## ⚡ Automatic Updates
 
-On every push to `main` GitHub Actions automatically:
+On every push to `master` GitHub Actions automatically:
 - Checks code (ESLint)
 - Runs tests
 - Builds static site
@@ -216,8 +216,8 @@ git remote add origin https://github.com/vladimir75vov/vladimir75vov.github.io.g
 # Или для варианта B:
 # git remote add origin https://github.com/vladimir75vov/portfolio.git
 
-git branch -M main
-git push -u origin main
+git branch -M master
+git push -u origin master
 ```
 
 ### 5. Настроить GitHub Secrets
@@ -273,7 +273,7 @@ cd c:\Users\vladimir75vov\Desktop\portfolio
 
 ## ⚡ Автоматические обновления
 
-При каждом push в `main` GitHub Actions автоматически:
+При каждом push в `master` GitHub Actions автоматически:
 - Проверяет код (ESLint)
 - Запускает тесты
 - Собирает статический сайт

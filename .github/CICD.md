@@ -11,7 +11,7 @@ This project uses GitHub Actions for CI/CD automation.
 ## Workflows
 
 ### 1. CI (`ci.yml`)
-**Triggers:** Push and Pull Request to `main` and `develop` branches
+**Triggers:** Push and Pull Request to `master` and `develop` branches
 
 **Tasks:**
 - Lint check (ESLint)
@@ -21,7 +21,7 @@ This project uses GitHub Actions for CI/CD automation.
 - Testing on Node.js 18.x and 20.x
 
 ### 2. Deploy (`deploy.yml`)
-**Triggers:** Push to `main` branch or manual trigger
+**Triggers:** Push to `master` branch or manual trigger
 
 **Tasks:**
 - Build Next.js application
@@ -34,8 +34,8 @@ This project uses GitHub Actions for CI/CD automation.
 
 ### 3. CodeQL (`codeql.yml`)
 **Triggers:** 
-- Push to `main`, `develop`
-- Pull Request to `main`
+- Push to `master`, `develop`
+- Pull Request to `master`
 - Weekly (on Mondays)
 
 **Tasks:**
@@ -97,7 +97,7 @@ npx prettier --write "**/*.{js,jsx,json,css,scss,md}"
 ## Workflows
 
 ### 1. CI (`ci.yml`)
-**Триггеры:** Push и Pull Request в ветки `main` и `develop`
+**Триггеры:** Push и Pull Request в ветки `master` и `develop`
 
 **Задачи:**
 - Lint проверка (ESLint)
@@ -107,7 +107,7 @@ npx prettier --write "**/*.{js,jsx,json,css,scss,md}"
 - Тестирование на Node.js 18.x и 20.x
 
 ### 2. Deploy (`deploy.yml`)
-**Триггеры:** Push в ветку `main` или ручной запуск
+**Триггеры:** Push в ветку `master` или ручной запуск
 
 **Задачи:**
 - Сборка Next.js приложения
@@ -120,8 +120,8 @@ npx prettier --write "**/*.{js,jsx,json,css,scss,md}"
 
 ### 3. CodeQL (`codeql.yml`)
 **Триггеры:** 
-- Push в `main`, `develop`
-- Pull Request в `main`
+- Push в `master`, `develop`
+- Pull Request в `master`
 - Еженедельно (по понедельникам)
 
 **Задачи:**

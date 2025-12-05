@@ -190,10 +190,10 @@ git commit -m "Initial commit"
 
 # 2. Create repository on GitHub named 'vladimir75vov.github.io'
 
-# 3. Push to GitHub
+# Push to GitHub
 git remote add origin https://github.com/vladimir75vov/vladimir75vov.github.io.git
-git branch -M main
-git push -u origin main
+git branch -M master
+git push -u origin master
 
 # 4. Configure GitHub Secrets (Settings → Secrets):
 #    - NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
@@ -241,7 +241,7 @@ This creates a `frontend/out/` directory with:
 
 #### Automated Deployment
 
-GitHub Actions automatically deploys on every push to `main`:
+GitHub Actions automatically deploys on every push to `master`:
 - ✅ Lints code
 - ✅ Runs tests
 - ✅ Builds static site
@@ -565,10 +565,10 @@ git commit -m "Initial commit: Portfolio website"
 
 # 2. Создать репозиторий на GitHub с именем 'vladimir75vov.github.io'
 
-# 3. Отправить код на GitHub
+# Отправьте код на GitHub
 git remote add origin https://github.com/vladimir75vov/vladimir75vov.github.io.git
-git branch -M main
-git push -u origin main
+git branch -M master
+git push -u origin master
 
 # 4. Настроить GitHub Secrets (Settings → Secrets and variables → Actions):
 #    - NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
@@ -628,7 +628,7 @@ npm run build
 
 #### Автоматический деплой
 
-GitHub Actions автоматически выполняет деплой при каждом push в `main`:
+GitHub Actions автоматически выполняет деплой при каждом push в `master`:
 - ✅ Проверяет код (ESLint + Prettier)
 - ✅ Выполняет сборку статического сайта
 - ✅ Деплоит на GitHub Pages

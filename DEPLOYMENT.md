@@ -58,8 +58,8 @@ git remote add origin https://github.com/vladimir75vov/vladimir75vov.github.io.g
 # git remote add origin https://github.com/vladimir75vov/portfolio.git
 
 # Push code to GitHub
-git branch -M main
-git push -u origin main
+git branch -M master
+git push -u origin master
 ```
 
 **Note:** If you get an authentication error:
@@ -103,13 +103,13 @@ Add these 2 secrets:
 
 ### 6. Deploy
 
-After push to `main` branch, GitHub Actions workflow will start automatically:
+After push to `master` branch, GitHub Actions workflow will start automatically:
 
 ```bash
 # Make any change
 git add .
 git commit -m "Deploy to GitHub Pages"
-git push origin main
+git push origin master
 ```
 
 **What happens:**
@@ -386,19 +386,19 @@ F12 → Lighthouse: Run audit for Performance, Accessibility, SEO
 
 ## Automatic Updates
 
-Workflow configured for automatic deploy on every push to `main`:
+Workflow configured for automatic deploy on every push to `master`:
 
 ```yaml
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:  # Manual trigger via GitHub UI
 ```
 
 For manual run:
 1. Go to Actions → Deploy to GitHub Pages
 2. Click "Run workflow"
-3. Select `main` branch
+3. Select `master` branch
 4. Click "Run workflow"
 
 ## Troubleshooting
@@ -543,8 +543,8 @@ git remote add origin https://github.com/vladimir75vov/vladimir75vov.github.io.g
 # git remote add origin https://github.com/vladimir75vov/portfolio.git
 
 # Отправьте код на GitHub
-git branch -M main
-git push -u origin main
+git branch -M master
+git push -u origin master
 ```
 
 **Примечание:** Если возникает ошибка аутентификации:
@@ -588,12 +588,12 @@ git push -u origin main
 
 ### 6. Деплой
 
-После push в ветку `main` автоматически запустится GitHub Actions workflow:
+После push в ветку `master` автоматически запустится GitHub Actions workflow:
 
 ```bash
 git add .
 git commit -m "Deploy to GitHub Pages"
-git push origin main
+git push origin master
 ```
 
 Через 2-3 минуты сайт будет доступен по адресу:
@@ -695,19 +695,19 @@ frontend/
 
 ## Автоматические обновления
 
-Workflow настроен на автоматический деплой при каждом push в `main`:
+Workflow настроен на автоматический деплой при каждом push в `master`:
 
 ```yaml
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:  # Ручной запуск через GitHub UI
 ```
 
 Для ручного запуска:
 1. Перейдите в Actions → Deploy to GitHub Pages
 2. Нажмите "Run workflow"
-3. Выберите ветку `main`
+3. Выберите ветку `master`
 4. Нажмите "Run workflow"
 
 ## Troubleshooting
