@@ -237,6 +237,7 @@ body {
   transition:
     background-color 300ms ease,
     color 300ms ease;
+  overflow-x: hidden;
 }
 
 /* Container max-width for better content layout */
@@ -247,6 +248,7 @@ body {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Loading Screen Styles */
