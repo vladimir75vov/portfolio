@@ -11,6 +11,9 @@ const nextConfig = {
         ignoreDuringBuilds: true,
     },
     trailingSlash: true,  // Добавляет слэш в конце URL для совместимости с GitHub Pages
+    env: {
+        NEXT_PUBLIC_BASE_PATH: '/portfolio',  // Переменная окружения для basePath
+    },
     // rewrites и redirects не поддерживаются в статическом экспорте
 };
 

@@ -149,7 +149,7 @@ function VideoElem() {
         id="video"
         style={{ filter: useLegacyFilter ? legacyFilter : "none", transition: "filter 300ms ease, opacity 300ms ease" }}
       >
-        <source src="/video/kek.mp4" type="video/mp4" />
+        <source src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/video/kek.mp4`} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
