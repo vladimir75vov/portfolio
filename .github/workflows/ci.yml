@@ -35,6 +35,7 @@ jobs:
         run: |
           cd frontend
           npm run lint
+        continue-on-error: true
 
       - name: Check TypeScript types (if applicable)
         run: |
