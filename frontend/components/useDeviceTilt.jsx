@@ -13,15 +13,15 @@ export function useDeviceTilt() {
     }
 
     const handleOrientation = (event) => {
-      // beta: наклон вперед-назад (-180 до 180)
-      // gamma: наклон влево-вправо (-90 до 90)
+      // beta: наклон вперед-назад (-180 до 180) - вертикальный наклон
+      // gamma: наклон влево-вправо (-90 до 90) - горизонтальный наклон
       const beta = event.beta || 0;
       const gamma = event.gamma || 0;
 
-      // Нормализуем значения для использования в CSS transform
-      // Ограничиваем диапазон для плавного эффекта
-      const normalizedX = Math.max(-30, Math.min(30, gamma)); // влево-вправо
-      const normalizedY = Math.max(-30, Math.min(30, beta - 90)); // вверх-вниз (вычитаем 90 для вертикального положения)
+      // Нормализуем значения для плавного движения по обеим осям
+      // Используем gamma для X (влево-вправо) и beta для Y (вверх-вниз)
+      const normalizedX = Math.max(-20, Math.min(20, gamma)); // горизонталь
+      const normalizedY = Math.max(-20, Math.min(20, beta - 90)); // вертикаль (компенсируем начальное положение)
 
       setTilt({ x: normalizedX, y: normalizedY });
     };
