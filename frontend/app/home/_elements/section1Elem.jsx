@@ -4,36 +4,36 @@ import { LanguageContext } from "../../../context/LanguageContext.jsx";
 // Секция "Что я предлагаю" с 4 основными направлениями работы
 function Section1Elem() {
   const { lang } = useContext(LanguageContext);
-  
+
   const features = [
     {
       icon: "💻",
       titleEn: "Frontend Development",
       titleRu: "Frontend разработка",
       descEn: "Creating modern, responsive interfaces with React, TypeScript, and cutting-edge technologies",
-      descRu: "Создание современных, адаптивных интерфейсов на React, TypeScript и передовых технологиях"
+      descRu: "Создание современных, адаптивных интерфейсов на React, TypeScript и передовых технологиях",
     },
     {
       icon: "⚙️",
       titleEn: "Backend Systems",
       titleRu: "Backend системы",
       descEn: "Building robust server-side applications with Node.js, C#, Python, and efficient databases",
-      descRu: "Построение надёжных серверных приложений на Node.js, C#, Python и эффективных базах данных"
+      descRu: "Построение надёжных серверных приложений на Node.js, C#, Python и эффективных базах данных",
     },
     {
       icon: "🧪",
       titleEn: "Testing & QA",
       titleRu: "Тестирование и QA",
       descEn: "Ensuring quality through comprehensive testing, bug tracking, and continuous improvement",
-      descRu: "Обеспечение качества через комплексное тестирование, отслеживание багов и постоянное улучшение"
+      descRu: "Обеспечение качества через комплексное тестирование, отслеживание багов и постоянное улучшение",
     },
     {
       icon: "🚀",
       titleEn: "Automation",
       titleRu: "Автоматизация",
       descEn: "Implementing AI-powered automation, desktop tools, and process optimization solutions",
-      descRu: "Внедрение AI-автоматизации, десктопных инструментов и решений для оптимизации процессов"
-    }
+      descRu: "Внедрение AI-автоматизации, десктопных инструментов и решений для оптимизации процессов",
+    },
   ];
 
   return (
@@ -45,7 +45,7 @@ function Section1Elem() {
             {lang === "en" ? "What I Offer" : "Что я предлагаю"}
           </h2>
           <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
-            {lang === "en" 
+            {lang === "en"
               ? "Professional full-stack development services with focus on quality, performance, and user experience"
               : "Профессиональные услуги full-stack разработки с фокусом на качество, производительность и пользовательский опыт"}
           </p>

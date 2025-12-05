@@ -37,10 +37,9 @@ function Section2Elem() {
           {t("home.section2.title")}
         </h3>
         <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-[var(--text-secondary)]">
-          {lang === "en" 
+          {lang === "en"
             ? "Full-stack developer with 4+ years of experience. Specialized in frontend development, backend systems, testing, and technical support. Focused on creating efficient, scalable, and user-friendly applications."
-            : "Full-stack разработчик с опытом 4+ года. Специализируюсь на frontend-разработке, backend-системах, тестировании и технической поддержке. Ориентирован на создание эффективных, масштабируемых и удобных приложений."
-          }
+            : "Full-stack разработчик с опытом 4+ года. Специализируюсь на frontend-разработке, backend-системах, тестировании и технической поддержке. Ориентирован на создание эффективных, масштабируемых и удобных приложений."}
         </p>
         <div className="block pb-6 animate-textHue bg-gradient-to-l from-red-400 to-green-400 bg-clip-text text-transparent text-xs">
           {_stack.map((item, index) => (
@@ -69,7 +68,8 @@ function Section2Elem() {
           <div className="w-full xl p-12 overflow-hidden">
             <img
               className="mx-auto w-full transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
-              src="/api/v1/resources/images/macbook.svg"
+              src="/images/macbook.svg"
+              alt="Developer workspace"
             />
           </div>
         </div>

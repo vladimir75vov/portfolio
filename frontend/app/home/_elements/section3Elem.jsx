@@ -4,7 +4,7 @@ import { LanguageContext } from "../../../context/LanguageContext.jsx";
 // Секция "Доверие организаций" с карточками работодателей
 function Section3Elem() {
   const { lang } = useContext(LanguageContext);
-  
+
   const companies = [
     {
       name: "CODD Moscow",
@@ -13,7 +13,7 @@ function Section3Elem() {
       period: "2024 - Present",
       periodRu: "2024 - Настоящее время",
       role: "Chief Specialist",
-      roleRu: "Главный специалист"
+      roleRu: "Главный специалист",
     },
     {
       name: "Leroy Merlin",
@@ -22,7 +22,7 @@ function Section3Elem() {
       period: "2021 - 2023",
       periodRu: "2021 - 2023",
       role: "Supply Chain Specialist",
-      roleRu: "Специалист цепи поставок"
+      roleRu: "Специалист цепи поставок",
     },
     {
       name: "Russian National Guard",
@@ -31,8 +31,8 @@ function Section3Elem() {
       period: "2023 - 2024",
       periodRu: "2023 - 2024",
       role: "System Administrator",
-      roleRu: "Системный администратор"
-    }
+      roleRu: "Системный администратор",
+    },
   ];
 
   return (
@@ -63,12 +63,8 @@ function Section3Elem() {
               <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 group-hover:text-blue-400 transition-colors">
                 {lang === "en" ? company.name : company.nameRu}
               </h3>
-              <p className="text-blue-400 font-medium mb-2">
-                {lang === "en" ? company.role : company.roleRu}
-              </p>
-              <p className="text-[var(--text-muted)] text-sm">
-                {lang === "en" ? company.period : company.periodRu}
-              </p>
+              <p className="text-blue-400 font-medium mb-2">{lang === "en" ? company.role : company.roleRu}</p>
+              <p className="text-[var(--text-muted)] text-sm">{lang === "en" ? company.period : company.periodRu}</p>
             </div>
           ))}
         </div>

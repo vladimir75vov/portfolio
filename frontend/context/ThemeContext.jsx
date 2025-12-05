@@ -2,9 +2,9 @@
 
 import React, { createContext, useEffect, useState } from "react";
 
-export const ThemeContext = createContext({ 
-  theme: "dark", 
-  setTheme: () => {} 
+export const ThemeContext = createContext({
+  theme: "dark",
+  setTheme: () => {},
 });
 
 export function ThemeProvider({ children }) {
@@ -25,10 +25,10 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     if (!isHydrated) return;
-    
+
     try {
       localStorage.setItem("theme", theme);
-      
+
       // Обновление класса документа для CSS переменных
       if (theme === "light") {
         document.documentElement.classList.add("light-theme");
@@ -42,9 +42,5 @@ export function ThemeProvider({ children }) {
     }
   }, [theme, isHydrated]);
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }

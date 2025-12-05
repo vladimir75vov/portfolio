@@ -1,13 +1,9 @@
 import { spawn } from "node:child_process";
-import dotenv from "dotenv";
-
-dotenv.config({ path: "../.env" });
 
 // Скрипт запуска frontend сервера с автоматическим освобождением порта
 const getCommand = () => {
-  const port = process.env.FRONTEND_PORT || 3000;
-  const ip = process.env.FRONTEND_IP || "127.0.0.1";
-  return `npx kill-port --port ${port} && next dev --hostname ${ip} --port ${port}`;
+  const port = 3000;
+  return `npx kill-port --port ${port} && next dev --port ${port}`;
 };
 
 const ls = spawn("cmd", ["/C", getCommand()]);

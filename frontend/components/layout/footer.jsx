@@ -2,13 +2,7 @@
 
 import React, { useContext } from "react";
 import Link from "next/link";
-import {
-  SiDiscord,
-  SiGithub,
-  SiTelegram,
-  SiVk,
-  SiWhatsapp,
-} from "react-icons/si";
+import { SiDiscord, SiGithub, SiTelegram, SiVk, SiWhatsapp } from "react-icons/si";
 import LinkOpenNewTabComp from "../linkOpenNewTabComp.jsx";
 import { LanguageContext } from "../../context/LanguageContext.jsx";
 

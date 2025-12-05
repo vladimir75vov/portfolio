@@ -3,25 +3,25 @@ import { LanguageContext } from "../../../context/LanguageContext.jsx";
 
 // Секция "Профессиональные достижения" со статистикой
 function Section5Elem() {
-  const { t, lang } = useContext(LanguageContext);
-  
+  const { lang } = useContext(LanguageContext);
+
   const stats = [
-    { 
-      value: "4+", 
-      label: lang === "en" ? "Years Experience" : "Года опыта" 
+    {
+      value: "4+",
+      label: lang === "en" ? "Years Experience" : "Года опыта",
     },
-    { 
-      value: "50+", 
-      label: lang === "en" ? "Projects Completed" : "Завершённых проектов" 
+    {
+      value: "50+",
+      label: lang === "en" ? "Projects Completed" : "Завершённых проектов",
     },
-    { 
-      value: "3", 
-      label: lang === "en" ? "Major Companies" : "Крупных компаний" 
+    {
+      value: "3",
+      label: lang === "en" ? "Major Companies" : "Крупных компаний",
     },
-    { 
-      value: "100%", 
-      label: lang === "en" ? "Client Satisfaction" : "Удовлетворённость клиентов" 
-    }
+    {
+      value: "100%",
+      label: lang === "en" ? "Client Satisfaction" : "Удовлетворённость клиентов",
+    },
   ];
 
   return (
@@ -35,10 +35,10 @@ function Section5Elem() {
             ? "Delivering high-quality solutions for businesses and government organizations. Specialized in creating automated systems, user interfaces, and technical solutions."
             : "Создаю качественные решения для бизнеса и государственных организаций. Специализируюсь на автоматизированных системах, пользовательских интерфейсах и технических решениях."}
         </p>
-        
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
           {stats.map((stat, idx) => (
-            <div 
+            <div
               key={idx}
               className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-6 hover:border-blue-500/50 transition-all duration-300"
             >

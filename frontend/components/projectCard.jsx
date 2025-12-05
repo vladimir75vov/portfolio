@@ -1,4 +1,3 @@
-import Link from "next/link";
 import TechBadge from "./techBadge.jsx";
 import { SiGithub } from "react-icons/si";
 
@@ -10,7 +9,9 @@ export default function ProjectCard({ title, description, technologies, github, 
       <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{image}</div>
 
       {/* Title */}
-      <h2 className="text-xl font-bold mb-3 text-[var(--text-primary)] group-hover:text-blue-400 transition-colors duration-300">{title}</h2>
+      <h2 className="text-xl font-bold mb-3 text-[var(--text-primary)] group-hover:text-blue-400 transition-colors duration-300">
+        {title}
+      </h2>
 
       {/* Description */}
       <p className="text-[var(--text-secondary)] text-sm mb-4 leading-relaxed line-clamp-3">{description}</p>
@@ -21,7 +22,9 @@ export default function ProjectCard({ title, description, technologies, github, 
           <TechBadge key={tech} tech={tech} />
         ))}
         {technologies.length > 3 && (
-          <span className="text-xs px-2 py-1 rounded bg-[var(--bg-tertiary)] text-[var(--text-secondary)]">+{technologies.length - 3}</span>
+          <span className="text-xs px-2 py-1 rounded bg-[var(--bg-tertiary)] text-[var(--text-secondary)]">
+            +{technologies.length - 3}
+          </span>
         )}
       </div>
 
@@ -42,7 +45,14 @@ export default function ProjectCard({ title, description, technologies, github, 
           className={`flex items-center gap-2 text-[var(--text-secondary)] hover:text-purple-400 transition-colors duration-200 ${live === "#" ? "opacity-50 cursor-not-allowed" : ""}`}
           title="View live demo"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-4 h-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
             <polyline points="15 3 21 3 21 9" />
             <line x1="10" y1="14" x2="21" y2="3" />

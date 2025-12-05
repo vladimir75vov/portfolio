@@ -3,10 +3,10 @@
 <div align="center">
 
 ![Portfolio Banner](https://img.shields.io/badge/Portfolio-Vladimir%20Budaev-blue?style=for-the-badge)
-![Next.js](https://img.shields.io/badge/Next.js-14.2.5-black?style=for-the-badge&logo=next.js)
-![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react)
-![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=for-the-badge&logo=typescript)
+![Next.js](https://img.shields.io/badge/Next.js-15.5.7-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react)
+![Static Export](https://img.shields.io/badge/Deployment-GitHub%20Pages-222222?style=for-the-badge&logo=github)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions)
 
 **[English](#english) | [Русский](#russian)**
 
@@ -37,70 +37,99 @@ Modern, responsive portfolio website showcasing projects and skills of a Full St
 ### 🛠️ Tech Stack
 
 #### Frontend
-- **Framework:** Next.js 14.2.5 (App Router)
-- **Library:** React 18
-- **Styling:** Tailwind CSS, SCSS, CSS Variables
-- **Icons:** React Icons (Simple Icons)
+- **Framework:** Next.js 15.5.7 (App Router, Static Export)
+- **Library:** React 18.3.1
+- **Styling:** Tailwind CSS 3.4.15, SCSS, CSS Variables
+- **Icons:** React Icons 5.3.0 (Simple Icons)
 - **Language:** JavaScript (ES6+)
 - **State Management:** React Context API
 - **Animations:** CSS Transitions, Transform
+- **Deployment:** GitHub Pages (Static Export)
 
-#### Backend
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Middleware:** CORS, Morgan
-- **File Serving:** Static files (videos, images, CVs)
-- **Environment:** dotenv
+#### DevOps
+- **CI/CD:** GitHub Actions
+- **Linting:** ESLint 8.57.1, Prettier 3.4.1
+- **Build:** Next.js Static Export
+- **Hosting:** GitHub Pages
+- **PWA:** Manifest, Service Worker Ready
 
 #### Integration
-- **Telegram Bot API** - For contact form submissions
+- **Telegram Bot API** - For contact form submissions (via GitHub Actions secrets)
 - **Local Storage** - For preferences persistence
 
 ### 📁 Project Structure
 
 ```
 portfolio/
-├── frontend/                    # Next.js frontend application
-│   ├── app/                    # App directory (Next.js 13+ App Router)
-│   │   ├── about/             # About page - Work experience & education
-│   │   ├── contact/           # Contact page with Telegram form
-│   │   ├── home/              # Home page with hero video
-│   │   │   └── _elements/     # Home page sections (1-5)
-│   │   ├── projects/          # Projects showcase page
-│   │   ├── skills/            # Skills & tech stack page
-│   │   └── layout.jsx         # Root layout with providers
-│   ├── components/            # Reusable React components
-│   │   ├── layout/           # Navbar, Footer
-│   │   ├── projectCard.jsx   # Project card component
-│   │   ├── techBadge.jsx     # Technology badge
-│   │   └── typeWriterComp.jsx # Animated typewriter effect
-│   ├── context/              # React Context providers
-│   │   ├── LanguageContext.jsx # Multi-language support
+├── .github/
+│   ├── workflows/            # GitHub Actions CI/CD
+│   │   ├── ci.yml           # Code quality checks
+│   │   ├── deploy.yml       # Deployment to GitHub Pages
+│   │   ├── codeql.yml       # Security scanning
+│   │   └── dependency-update.yml # Weekly updates
+│   ├── CICD.md              # CI/CD documentation
+│   ├── CODE_OF_CONDUCT.md   # Code of conduct
+│   └── CONTRIBUTING.md      # Contribution guide
+├── frontend/                 # Next.js application
+│   ├── app/                 # App Router (Next.js 15+)
+│   │   ├── _files/         # Startup scripts
+│   │   ├── about/          # About page - experience & education
+│   │   ├── contact/        # Contact page with Telegram form
+│   │   ├── home/           # Home page with hero video
+│   │   │   └── _elements/  # Home page sections (1-5)
+│   │   ├── projects/       # Projects showcase
+│   │   ├── skills/         # Skills & tech stack
+│   │   └── layout.jsx      # Root layout with metadata
+│   ├── components/         # Reusable React components
+│   │   ├── layout/        # Navbar, Footer
+│   │   ├── LoadingScreen.jsx
+│   │   ├── projectCard.jsx
+│   │   ├── techBadge.jsx
+│   │   └── typeWriterComp.jsx
+│   ├── context/           # React Context providers
+│   │   ├── LanguageContext.jsx # EN/RU support
 │   │   └── ThemeContext.jsx    # Dark/Light theme
-│   ├── resources/            # Static assets
-│   │   └── styles/           
-│   │       └── globals.scss  # Global styles & CSS variables
-│   ├── .env.local            # Environment variables (gitignored)
-│   └── .env.example          # Example environment file
-├── backend/                   # Express.js backend server
-│   ├── app/                  # Application logic
-│   │   └── app.js           # Express server setup
-│   └── resources/           # Server resources
-│       ├── files/           
-│       │   ├── cv/          # Resume files (cvEn.pdf, cvRu.pdf)
-│       │   └── video/       # Hero video file
-│       └── images/          # Static images
-└── database/                # Database files (future use)
+│   ├── public/            # Static files (served as-is)
+│   │   ├── cv/           # Resume PDFs (EN/RU) - 208.8 KB each
+│   │   ├── images/       # SVG images (macbook.svg, og-image.svg)
+│   │   ├── video/        # Hero video (kek.mp4 - 9.3 MB)
+│   │   ├── .nojekyll     # GitHub Pages configuration
+│   │   ├── apple-icon.png # iOS icon - 1.4 KB
+│   │   ├── favicon.ico   # Browser icon - 15 KB
+│   │   ├── icon-192.png  # PWA icon - 4 KB
+│   │   ├── icon-512.png  # PWA icon - 15 KB
+│   │   ├── icon.png      # Default icon - 479 B
+│   │   ├── icon.svg      # Vector icon - 537 B
+│   │   ├── manifest.json # PWA manifest - 758 B
+│   │   ├── robots.txt    # SEO directives - 136 B
+│   │   └── sitemap.xml   # Site map - 2 KB
+│   ├── resources/
+│   │   └── styles/
+│   │       └── globals.scss # Global styles
+│   ├── .env.example      # Environment variables template
+│   ├── .env.local        # Environment variables (gitignored)
+│   ├── next.config.mjs   # Next.js configuration
+│   └── package.json      # Dependencies
+├── build.bat / build.sh   # Production build scripts
+├── check-deployment.ps1   # Pre-deploy validation
+├── DEPLOYMENT.md          # Deployment instructions
+├── QUICKSTART-DEPLOY.md   # Quick start guide
+├── READY.md               # Deployment checklist
+├── SCRIPTS.md             # Scripts documentation
+├── start-dev.bat / .sh    # Development server scripts
+├── QUICKSTART-DEPLOY.md   # Quick start guide
+└── READY.md              # Deployment checklist
 ```
 
 ### 🚀 Quick Start
 
 #### Prerequisites
-- Node.js (v16 or higher)
+- Node.js (v18 or higher)
 - npm or yarn
-- Telegram Bot Token (for contact form)
+- Git
+- Telegram Bot Token (for contact form, optional)
 
-#### Installation
+#### Local Development
 
 1. **Clone the repository**
 ```bash
@@ -110,70 +139,115 @@ cd portfolio
 
 2. **Install dependencies**
 ```bash
-# Install frontend dependencies
 cd frontend
-npm install
-
-# Install backend dependencies
-cd ../backend
 npm install
 ```
 
 3. **Setup environment variables**
 
-**Frontend** - Create `frontend/.env.local`:
+Create `frontend/.env.local`:
 ```env
 NEXT_PUBLIC_TELEGRAM_BOT_TOKEN=your_bot_token_here
 NEXT_PUBLIC_TELEGRAM_CHAT_ID=your_chat_id_here
 ```
 
-**Backend** - Create `backend/.env`:
-```env
-PORT=4000
-NODE_ENV=development
+4. **Add your files**
+Place your files in `frontend/public/`:
+- `public/cv/cvEn.pdf` - English resume
+- `public/cv/cvRu.pdf` - Russian resume
+- `public/video/kek.mp4` - Hero background video
+
+5. **Run development server**
+
+**Quick Start:**
+```bash
+# Windows - двойной клик или:
+start-dev.bat
+
+# Linux/Mac
+chmod +x start-dev.sh
+./start-dev.sh
 ```
 
-4. **Add CV files**
-Place your resume files in `backend/resources/files/cv/`:
-- `cvEn.pdf` - English version
-- `cvRu.pdf` - Russian version
-
-5. **Run the application**
-
-**Option 1: Using batch file (Windows)**
+**Or manually:**
 ```bash
-# From root directory
-startBackAndFront.bat
-```
-
-**Option 2: Manual start**
-```bash
-# Terminal 1 - Start backend
-cd backend
-npm run dev
-
-# Terminal 2 - Start frontend
 cd frontend
 npm run dev
 ```
 
-4. **Open in browser**
+Visit `http://localhost:3000`
+
+#### 🌐 Deploy to GitHub Pages
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for complete deployment instructions.
+
+**Quick Deploy:**
+```bash
+# 1. Initialize git (if not already)
+git init
+git add .
+git commit -m "Initial commit"
+
+# 2. Create repository on GitHub named 'vladimir75vov.github.io'
+
+# 3. Push to GitHub
+git remote add origin https://github.com/vladimir75vov/vladimir75vov.github.io.git
+git branch -M main
+git push -u origin main
+
+# 4. Configure GitHub Secrets (Settings → Secrets):
+#    - NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
+#    - NEXT_PUBLIC_TELEGRAM_CHAT_ID
+
+# 5. Enable GitHub Pages (Settings → Pages → Source: GitHub Actions)
 ```
-Frontend: http://localhost:3000
-Backend: http://localhost:8080
-```
+
+Your site will be live at `https://vladimir75vov.github.io` in 2-3 minutes!
 
 ### 🎮 Available Scripts
 
-#### Frontend
+#### Quick Start Scripts
+See [SCRIPTS.md](SCRIPTS.md) for detailed documentation.
+
+**Development:**
+- `start-dev.bat` / `start-dev.sh` - Auto-setup and start dev server
+- `build.bat` / `build.sh` - Production build with checks
+- `check-deployment.ps1` - Pre-deployment validation (PowerShell)
+
+**Features:**
+- ✅ Auto-install dependencies
+- ✅ Port conflict resolution
+- ✅ Build statistics
+- ✅ Error handling
+
+#### NPM Scripts
 - `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
+- `npm run build` - Build for production (static export to `out/`)
 - `npm run lint` - Run ESLint
 
-#### Backend
-- `npm run dev` - Start development server
-- `npm run lint` - Run ESLint
+### 📦 Build & Deploy
+
+#### Local Build
+```bash
+cd frontend
+npm run build
+```
+
+This creates a `frontend/out/` directory with:
+- All static HTML files
+- Optimized JavaScript bundles
+- All media files (video, PDFs, images)
+- PWA files (manifest, sitemap, robots.txt)
+
+#### Automated Deployment
+
+GitHub Actions automatically deploys on every push to `main`:
+- ✅ Lints code
+- ✅ Runs tests
+- ✅ Builds static site
+- ✅ Deploys to GitHub Pages
+- ✅ Security scanning (CodeQL)
+- ✅ Weekly dependency updates
 
 ### 🌍 Language Support
 
@@ -242,38 +316,45 @@ NEXT_PUBLIC_TELEGRAM_CHAT_ID=your_chat_id_here
 ```
 
 **How to get Telegram credentials:**
-1. Create a bot via [@BotFather](https://t.me/BotFather)
-2. Get your bot token
+1. Create a bot via [@BotFather](https://t.me/BotFather) - Send `/newbot` command
+2. Copy your bot token from BotFather
 3. Get your chat ID by messaging [@userinfobot](https://t.me/userinfobot)
 
-#### Backend (`backend/.env`)
-```env
-PORT=4000
-NODE_ENV=development
-```
-
-#### Root (`.env`)
-```env
-FRONTEND_IP=localhost
-FRONTEND_PORT=3000
-BACKEND_IP=localhost
-BACKEND_PORT=4000
-BACKEND_API_PATH=/api/v1/
-```
+**Template file:** See `frontend/.env.example` for complete template.
 
 **Security Notes:**
-- ✅ `.env.local` is gitignored
-- ✅ CV files (*.pdf) are gitignored
+- ✅ `.env.local` is gitignored - won't be committed
 - ✅ Use `.env.example` as template
+- ✅ For GitHub Actions: Add secrets in Settings → Secrets and variables → Actions
+  - `NEXT_PUBLIC_TELEGRAM_BOT_TOKEN`
+  - `NEXT_PUBLIC_TELEGRAM_CHAT_ID`
 - ⚠️ Never commit real credentials to Git
 
 ### 🧪 Testing
 
-Run API tests:
-```bash
-cd backend/tests/api
-python testApi.py
+This project is ready for deployment. Use the validation script to check readiness:
+
+```powershell
+# Windows PowerShell
+.\check-deployment.ps1
 ```
+
+This script checks:
+- ✅ All required files present (video, PDFs, icons, config files)
+- ✅ Dependencies installed (Node.js, npm, Git)
+- ✅ Build successfully completes
+- ✅ Environment variables configured
+- ✅ PWA files present
+
+### 🎯 Post-Deployment
+
+After deploying to GitHub Pages, verify:
+1. ✅ Site loads at https://vladimir75vov.github.io
+2. ✅ Video plays correctly
+3. ✅ CV downloads work (EN/RU)
+4. ✅ Contact form sends to Telegram
+5. ✅ Language switching works (EN ↔ RU)
+6. ✅ All pages accessible (home, about, contact, projects, skills)
 
 ### 📄 License
 
@@ -343,93 +424,218 @@ This is a personal portfolio project. If you have suggestions, feel free to open
 - **Фреймворк:** Express.js
 - **Middleware:** CORS, Morgan
 - **Раздача файлов:** Статические файлы (видео, изображения, резюме)
-- **Окружение:** dotenv
-
 #### Интеграция
-- **Telegram Bot API** - Для отправки сообщений из контактной формы
-- **Local Storage** - Для сохранения настроек пользователя
+- **Telegram Bot API** - Для отправки сообщений из контактной формы (через GitHub Actions secrets)
+- **Local Storage** - Для сохранения настроек пользователя (язык, тема)
 
 ### 📁 Структура проекта
 
 ```
 portfolio/
-├── frontend/              # Frontend приложение на Next.js
-│   ├── app/              # Директория приложения (структура Next.js 13+)
-│   │   ├── about/       # Страница "Обо мне"
-│   │   ├── contact/     # Страница контактов
-│   │   ├── home/        # Главная страница с секциями
-│   │   ├── projects/    # Витрина проектов
-│   │   └── skills/      # Страница навыков
-│   ├── components/      # Переиспользуемые React компоненты
-│   ├── context/         # React Context (управление языком)
-│   └── resources/       # Статические ресурсы и стили
-├── backend/             # Backend сервер на Express.js
-│   ├── app/            # Логика приложения
-│   └── resources/      # Ресурсы сервера (видео, изображения)
-└── database/           # Файлы базы данных
+├── .github/
+│   ├── workflows/            # GitHub Actions CI/CD
+│   │   ├── ci.yml           # Проверка качества кода
+│   │   ├── deploy.yml       # Деплой на GitHub Pages
+│   │   ├── codeql.yml       # Сканирование безопасности
+│   │   └── dependency-update.yml # Еженедельные обновления
+│   ├── CICD.md              # Документация CI/CD
+│   ├── CODE_OF_CONDUCT.md   # Кодекс поведения
+│   └── CONTRIBUTING.md      # Руководство по участию
+├── frontend/                 # Next.js приложение
+│   ├── app/                 # App Router (Next.js 15+)
+│   │   ├── _files/         # Скрипты запуска
+│   │   ├── about/          # Страница "Обо мне"
+│   │   ├── contact/        # Страница контактов с формой Telegram
+│   │   ├── home/           # Главная страница с видео-фоном
+│   │   │   └── _elements/  # Секции главной страницы (1-5)
+│   │   ├── projects/       # Витрина проектов
+│   │   ├── skills/         # Навыки и технологический стек
+│   │   └── layout.jsx      # Корневой layout с метаданными
+│   ├── components/         # Переиспользуемые React компоненты
+│   │   ├── layout/        # Navbar, Footer
+│   │   ├── LoadingScreen.jsx
+│   │   ├── projectCard.jsx
+│   │   ├── techBadge.jsx
+│   │   └── typeWriterComp.jsx
+│   ├── context/           # React Context провайдеры
+│   │   ├── LanguageContext.jsx # Поддержка EN/RU
+│   │   └── ThemeContext.jsx    # Темная/Светлая тема
+│   ├── public/            # Статические файлы (отдаются как есть)
+│   │   ├── cv/           # Резюме в PDF (EN/RU) - по 208.8 КБ
+│   │   ├── images/       # SVG изображения (macbook.svg, og-image.svg)
+│   │   ├── video/        # Видео для фона (kek.mp4 - 9.3 МБ)
+│   │   ├── .nojekyll     # Конфигурация GitHub Pages
+│   │   ├── apple-icon.png # iOS иконка - 1.4 КБ
+│   │   ├── favicon.ico   # Иконка браузера - 15 КБ
+│   │   ├── icon-192.png  # PWA иконка - 4 КБ
+│   │   ├── icon-512.png  # PWA иконка - 15 КБ
+│   │   ├── icon.png      # Основная иконка - 479 Б
+│   │   ├── icon.svg      # Векторная иконка - 537 Б
+│   │   ├── manifest.json # PWA манифест - 758 Б
+│   │   ├── robots.txt    # SEO директивы - 136 Б
+│   │   └── sitemap.xml   # Карта сайта - 2 КБ
+│   ├── resources/
+│   │   └── styles/
+│   │       └── globals.scss # Глобальные стили
+│   ├── .env.example      # Шаблон переменных окружения
+│   ├── .env.local        # Переменные окружения (в .gitignore)
+│   ├── next.config.mjs   # Конфигурация Next.js
+│   └── package.json      # Зависимости
+├── build.bat / build.sh   # Скрипты production сборки
+├── check-deployment.ps1   # Валидация перед деплоем
+├── DEPLOYMENT.md          # Инструкции по деплою
+├── QUICKSTART-DEPLOY.md   # Краткое руководство
+├── READY.md               # Чеклист готовности к деплою
+├── SCRIPTS.md             # Документация скриптов
+└── start-dev.bat / .sh    # Скрипты запуска dev сервера
 ```
 
 ### 🚀 Быстрый старт
 
 #### Требования
-- Node.js (v16 или выше)
-- npm или yarn
+- Node.js (v18 или выше)
+- npm 9+ или yarn
+- Git (для деплоя)
+- Telegram Bot Token (для контактной формы, необязательно для локального запуска)
 
-#### Установка
+#### Локальная разработка
 
 1. **Клонировать репозиторий**
 ```bash
-git clone <repository-url>
+git clone https://github.com/vladimir75vov/portfolio.git
 cd portfolio
 ```
 
-2. **Установить зависимости**
+2. **Создать файл с переменными окружения**
 ```bash
-# Установка зависимостей frontend
-cd frontend
-npm install
-
-# Установка зависимостей backend
-cd ../backend
-npm install
+cp frontend/.env.example frontend/.env.local
 ```
+
+Отредактируйте `frontend/.env.local` и добавьте ваши Telegram учётные данные:
+```env
+NEXT_PUBLIC_TELEGRAM_BOT_TOKEN=ваш_токен_бота
+NEXT_PUBLIC_TELEGRAM_CHAT_ID=ваш_chat_id
+```
+
+**Как получить учётные данные Telegram:**
+- Токен бота: [@BotFather](https://t.me/BotFather) → команда `/newbot`
+- Chat ID: [@userinfobot](https://t.me/userinfobot) → отправьте сообщение боту
 
 3. **Запустить приложение**
 
-**Вариант 1: Использование batch файла (Windows)**
+**Быстрый старт (рекомендуется):**
 ```bash
-# Из корневой директории
-startBackAndFront.bat
+# Windows - двойной клик или:
+start-dev.bat
+
+# Linux/Mac
+chmod +x start-dev.sh
+./start-dev.sh
 ```
 
-**Вариант 2: Ручной запуск**
-```bash
-# Терминал 1 - Запуск backend
-cd backend
-npm run dev
+Скрипт автоматически:
+- ✅ Проверит установку Node.js
+- ✅ Установит зависимости (если нужно)
+- ✅ Освободит порт 3000
+- ✅ Запустит dev сервер
 
-# Терминал 2 - Запуск frontend
+**Или вручную:**
+```bash
 cd frontend
+npm install
 npm run dev
 ```
 
 4. **Открыть в браузере**
 ```
-Frontend: http://localhost:3000
-Backend: http://localhost:8080
+http://localhost:3000
 ```
+
+#### 🌐 Деплой на GitHub Pages
+
+См. [QUICKSTART-DEPLOY.md](QUICKSTART-DEPLOY.md) для краткого руководства  
+См. [DEPLOYMENT.md](DEPLOYMENT.md) для полной документации
+
+**Быстрый деплой:**
+```bash
+# 1. Инициализировать git (если ещё не сделано)
+git init
+git add .
+git commit -m "Initial commit: Portfolio website"
+
+# 2. Создать репозиторий на GitHub с именем 'vladimir75vov.github.io'
+
+# 3. Отправить код на GitHub
+git remote add origin https://github.com/vladimir75vov/vladimir75vov.github.io.git
+git branch -M main
+git push -u origin main
+
+# 4. Настроить GitHub Secrets (Settings → Secrets and variables → Actions):
+#    - NEXT_PUBLIC_TELEGRAM_BOT_TOKEN
+#    - NEXT_PUBLIC_TELEGRAM_CHAT_ID
+
+# 5. Включить GitHub Pages (Settings → Pages → Source: GitHub Actions)
+```
+
+Ваш сайт будет доступен по адресу `https://vladimir75vov.github.io` через 2-3 минуты!
 
 ### 🎮 Доступные команды
 
-#### Frontend
-- `npm run dev` - Запуск сервера разработки
-- `npm run build` - Сборка для продакшена
-- `npm run start` - Запуск продакшен сервера
-- `npm run lint` - Запуск ESLint
+#### Скрипты быстрого запуска
+См. [SCRIPTS.md](SCRIPTS.md) для подробной документации.
 
-#### Backend
-- `npm run dev` - Запуск сервера разработки
-- `npm run lint` - Запуск ESLint
+**Разработка:**
+```bash
+start-dev.bat / start-dev.sh   # Авто-настройка и запуск dev сервера
+build.bat / build.sh           # Production сборка с проверками
+check-deployment.ps1           # Валидация перед деплоем (PowerShell)
+```
+
+**Возможности скриптов:**
+- ✅ Автоматическая установка зависимостей
+- ✅ Решение конфликтов портов
+- ✅ Статистика сборки
+- ✅ Обработка ошибок
+
+#### NPM команды (требуется cd frontend)
+```bash
+npm run dev      # Запуск dev сервера на порту 3000
+npm run build    # Сборка для production (статический экспорт в out/)
+npm run start    # Запуск production сервера (не работает со static export)
+npm run lint     # Запуск ESLint
+```
+
+### 📦 Сборка и деплой
+
+#### Локальная сборка
+```bash
+# Автоматическая (рекомендуется):
+build.bat  # Windows
+./build.sh # Linux/Mac
+
+# Или вручную:
+cd frontend
+npm install
+npm run lint
+npm run build
+```
+
+Это создаст директорию `frontend/out/` с:
+- Всеми статическими HTML файлами (6 страниц)
+- Оптимизированными JavaScript бандлами (102-115 KB First Load JS)
+- Всеми медиа-файлами (видео 9.3 МБ, PDF 208.8 КБ каждый, изображения)
+- PWA файлами (manifest, sitemap, robots.txt, иконки)
+
+#### Автоматический деплой
+
+GitHub Actions автоматически выполняет деплой при каждом push в `main`:
+- ✅ Проверяет код (ESLint + Prettier)
+- ✅ Выполняет сборку статического сайта
+- ✅ Деплоит на GitHub Pages
+- ✅ Сканирование безопасности (CodeQL)
+- ✅ Еженедельное обновление зависимостей
+
+См. [.github/CICD.md](.github/CICD.md) для подробностей о CI/CD.
 
 ### 🌍 Поддержка языков
 
@@ -462,26 +668,53 @@ Backend: http://localhost:8080
 
 ### 📝 Переменные окружения
 
-Создайте `.env` файлы в директориях frontend и backend:
-
-**Frontend (.env.local)**
+#### Frontend (`frontend/.env.local`)
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:8080
+# Конфигурация Telegram бота (для контактной формы)
+NEXT_PUBLIC_TELEGRAM_BOT_TOKEN=ваш_токен_бота
+NEXT_PUBLIC_TELEGRAM_CHAT_ID=ваш_chat_id
 ```
 
-**Backend (.env)**
-```env
-PORT=8080
-NODE_ENV=development
-```
+**Как получить учётные данные Telegram:**
+1. Создайте бота через [@BotFather](https://t.me/BotFather) - отправьте команду `/newbot`
+2. Скопируйте токен бота от BotFather
+3. Получите ваш chat ID, отправив сообщение [@userinfobot](https://t.me/userinfobot)
+
+**Файл-шаблон:** См. `frontend/.env.example` для полного шаблона.
+
+**Примечания по безопасности:**
+- ✅ `.env.local` в .gitignore - не будет закоммичен
+- ✅ Используйте `.env.example` как шаблон
+- ✅ Для GitHub Actions: Добавьте секреты в Settings → Secrets and variables → Actions
+  - `NEXT_PUBLIC_TELEGRAM_BOT_TOKEN`
+  - `NEXT_PUBLIC_TELEGRAM_CHAT_ID`
+- ⚠️ Никогда не коммитьте реальные учётные данные в Git
 
 ### 🧪 Тестирование
 
-Запуск API тестов:
-```bash
-cd backend/tests/api
-python testApi.py
+Проект готов к деплою. Используйте скрипт валидации для проверки готовности:
+
+```powershell
+# Windows PowerShell
+.\check-deployment.ps1
 ```
+
+Скрипт проверяет:
+- ✅ Наличие всех необходимых файлов (видео, PDF, иконки, конфиг файлы)
+- ✅ Установленные зависимости (Node.js, npm, Git)
+- ✅ Успешное завершение сборки
+- ✅ Настроенные переменные окружения
+- ✅ Наличие PWA файлов
+
+### 🎯 После деплоя
+
+После деплоя на GitHub Pages, проверьте:
+1. ✅ Сайт загружается по адресу https://vladimir75vov.github.io
+2. ✅ Видео воспроизводится корректно
+3. ✅ Скачивание резюме работает (EN/RU)
+4. ✅ Контактная форма отправляет в Telegram
+5. ✅ Переключение языка работает (EN ↔ RU)
+6. ✅ Все страницы доступны (home, about, contact, projects, skills)
 
 ### 📄 Лицензия
 

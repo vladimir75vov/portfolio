@@ -13,7 +13,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "Vladimir Budaev - Full Stack Developer",
   description: "Full Stack Developer | React | Next.js | Node.js | Digital Creator",
-  keywords: "developer, portfolio, react, nextjs, fullstack, javascript, typescript, frontend, backend, web development, moscow developer",
+  keywords:
+    "developer, portfolio, react, nextjs, fullstack, javascript, typescript, frontend, backend, web development, moscow developer",
   authors: [{ name: "Vladimir Budaev" }],
   creator: "Vladimir Budaev",
   publisher: "Vladimir Budaev",
@@ -23,9 +24,9 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
@@ -38,7 +39,7 @@ export const metadata = {
     url: "https://vladimir75vov.github.io",
     images: [
       {
-        url: "/api/v1/resources/images/og-image.jpg",
+        url: "/images/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Vladimir Budaev - Full Stack Developer",
@@ -50,7 +51,7 @@ export const metadata = {
     title: "Vladimir Budaev - Full Stack Developer",
     description: "Full Stack Developer | React | Next.js | Node.js | Digital Creator",
     creator: "@vladimir75vov",
-    images: ["/api/v1/resources/images/og-image.jpg"],
+    images: ["/images/og-image.svg"],
   },
   verification: {
     google: "your-google-verification-code",
@@ -73,13 +74,8 @@ export const metadata = {
     },
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon.png", type: "image/png", sizes: "32x32" },
-    ],
-    apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    icon: [{ url: "/favicon.ico" }, { url: "/icon.png", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.json",
   appleWebApp: {

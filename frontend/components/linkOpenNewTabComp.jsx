@@ -5,7 +5,7 @@ function LinkOpenNewTabComp({ url, children }) {
   function openInNewTab(_url) {
     window.open(_url, "_blank").focus();
   }
-  
+
   return (
     <button
       type="button"

@@ -40,7 +40,7 @@ function TypeWriterComp({ appendClass, hats, prefix }) {
           {hats[currentHat].prep ? ` ${hats[currentHat].prep}` : ""}
         </div>
       ) : null}
-      
+
       {/* Вторая строка - анимированный typewriter */}
       <div className="flex justify-center">
         <div

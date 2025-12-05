@@ -6,10 +6,10 @@ import { LanguageContext } from "../../../context/LanguageContext.jsx";
 function VideoElem() {
   const { t } = useContext(LanguageContext);
   const videoRef = useRef(null);
-  
+
   // Инициализация состояния - всегда начинаем с выключенным звуком для автовоспроизведения
   const [muted, setMuted] = useState(true);
-  
+
   const [volume, setVolume] = useState(() => {
     try {
       const saved = localStorage.getItem("video-volume");
@@ -18,7 +18,7 @@ function VideoElem() {
       return 0.5;
     }
   });
-  
+
   const [useLegacyFilter, setUseLegacyFilter] = useState(() => {
     try {
       const saved = localStorage.getItem("video-legacy-filter");
@@ -27,8 +27,7 @@ function VideoElem() {
       return true;
     }
   });
-  
-  const [autoplaySucceeded, setAutoplaySucceeded] = useState(false);
+
   const [isVideoReady, setIsVideoReady] = useState(false);
 
   // Кинематографический пресет: темнее, выше контраст, легкий теплый тон
@@ -40,34 +39,34 @@ function VideoElem() {
     if (!v) return;
 
     v.volume = volume;
-    
+
     // Обработчик когда видео готово к воспроизведению
     const handleCanPlay = () => {
       setIsVideoReady(true);
-      
+
       // Принудительно выключаем звук для надежного автовоспроизведения
       v.muted = true;
-      
+
       // Множественные попытки для обеспечения воспроизведения
       const attemptPlay = () => {
         const playPromise = v.play();
         if (playPromise && playPromise.then) {
           playPromise
             .then(() => {
-              setAutoplaySucceeded(true);
+              // Autoplay succeeded
             })
             .catch((error) => {
-              console.warn('Попытка автовоспроизведения не удалась:', error);
+              console.warn("Попытка автовоспроизведения не удалась:", error);
               // Повторная попытка после короткой задержки
               setTimeout(() => {
                 v.play().catch(() => {
-                  console.warn('Повторная попытка также не удалась');
+                  console.warn("Повторная попытка также не удалась");
                 });
               }, 500);
             });
         }
       };
-      
+
       attemptPlay();
     };
 
@@ -77,22 +76,22 @@ function VideoElem() {
     };
 
     // Добавляем множественные обработчики событий для надежности
-    v.addEventListener('canplay', handleCanPlay);
-    v.addEventListener('loadeddata', handleLoadedData);
-    
+    v.addEventListener("canplay", handleCanPlay);
+    v.addEventListener("loadeddata", handleLoadedData);
+
     // Принудительная загрузка
     v.load();
-    
+
     // Если видео уже загружено, запускаем немедленно
     if (v.readyState >= 2) {
       setTimeout(handleCanPlay, 100);
     }
 
     return () => {
-      v.removeEventListener('canplay', handleCanPlay);
-      v.removeEventListener('loadeddata', handleLoadedData);
+      v.removeEventListener("canplay", handleCanPlay);
+      v.removeEventListener("loadeddata", handleLoadedData);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Синхронизация muted/volume при изменении пользователем
@@ -103,7 +102,9 @@ function VideoElem() {
     v.volume = volume;
     try {
       localStorage.setItem("video-volume", String(volume));
-    } catch (e) {}
+    } catch (e) {
+      // Ignore localStorage errors
+    }
   }, [muted, volume, isVideoReady]);
 
   function handleToggleMute() {
@@ -146,9 +147,9 @@ function VideoElem() {
         playsInline
         preload="auto"
         id="video"
-        style={{ filter: useLegacyFilter ? legacyFilter : "none", transition: 'filter 300ms ease, opacity 300ms ease' }}
+        style={{ filter: useLegacyFilter ? legacyFilter : "none", transition: "filter 300ms ease, opacity 300ms ease" }}
       >
-        <source src="/api/v1/resources/files/video/kek.mp4" type="video/mp4" />
+        <source src="/video/kek.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -162,13 +163,25 @@ function VideoElem() {
         >
           {muted ? (
             // иконка без звука
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5v14l-5-5H2V10h2l5-5z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 9l4 4m0 0l-4 4m4-4H9" />
             </svg>
           ) : (
             // иконка со звуком
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5L6 9H2v6h4l5 4V5z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 9a3 3 0 010 6" />
             </svg>
@@ -197,13 +210,35 @@ function VideoElem() {
         >
           {useLegacyFilter ? (
             // Иконка фильтр ВКЛ - больше контраста/яркости
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+              />
             </svg>
           ) : (
             // Иконка фильтр ВЫКЛ - простой круг
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-6 h-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
             </svg>
           )}
         </button>

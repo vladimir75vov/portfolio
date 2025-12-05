@@ -7,33 +7,106 @@ import { LanguageContext } from "../../context/LanguageContext";
 export default function Skills() {
   const { lang } = useContext(LanguageContext);
 
-  const skillCategories = lang === "en" ? [
-    {
-      category: "Frontend",
-      skills: ["HTML5", "CSS3", "JavaScript", "React", "TypeScript", "Figma", "XML", "XAML", "JSON", "Tailwind CSS", "Cross-browser Layout", "Responsive Design"]
-    },
-    {
-      category: "Backend",
-      skills: ["Node.js", "C#", "Java", "Python", ".NET Core", ".NET Framework", "MySQL", "MS SQL", "Firebase", "REST API"]
-    },
-    {
-      category: "Tools & Architecture",
-      skills: ["Git", "Profiler", "OOP", "SOLID", "MVVM", "MVC", "Microservices", "Windows", "Linux (Kali/Manjaro)", "Astra Linux"]
-    }
-  ] : [
-    {
-      category: "Frontend",
-      skills: ["HTML5", "CSS3", "JavaScript", "React", "TypeScript", "Figma", "XML", "XAML", "JSON", "Tailwind CSS", "Кроссбраузерная вёрстка", "Адаптивная вёрстка"]
-    },
-    {
-      category: "Backend",
-      skills: ["Node.js", "C#", "Java", "Python", ".NET Core", ".NET Framework", "MySQL", "MS SQL", "Firebase", "REST API"]
-    },
-    {
-      category: "Инструменты и архитектура",
-      skills: ["Git", "Profiler", "ООП", "SOLID", "MVVM", "MVC", "Микросервисы", "Windows", "Linux (Kali/Manjaro)", "Astra Linux"]
-    }
-  ];
+  const skillCategories =
+    lang === "en"
+      ? [
+          {
+            category: "Frontend",
+            skills: [
+              "HTML5",
+              "CSS3",
+              "JavaScript",
+              "React",
+              "TypeScript",
+              "Figma",
+              "XML",
+              "XAML",
+              "JSON",
+              "Tailwind CSS",
+              "Cross-browser Layout",
+              "Responsive Design",
+            ],
+          },
+          {
+            category: "Backend",
+            skills: [
+              "Node.js",
+              "C#",
+              "Java",
+              "Python",
+              ".NET Core",
+              ".NET Framework",
+              "MySQL",
+              "MS SQL",
+              "Firebase",
+              "REST API",
+            ],
+          },
+          {
+            category: "Tools & Architecture",
+            skills: [
+              "Git",
+              "Profiler",
+              "OOP",
+              "SOLID",
+              "MVVM",
+              "MVC",
+              "Microservices",
+              "Windows",
+              "Linux (Kali/Manjaro)",
+              "Astra Linux",
+            ],
+          },
+        ]
+      : [
+          {
+            category: "Frontend",
+            skills: [
+              "HTML5",
+              "CSS3",
+              "JavaScript",
+              "React",
+              "TypeScript",
+              "Figma",
+              "XML",
+              "XAML",
+              "JSON",
+              "Tailwind CSS",
+              "Кроссбраузерная вёрстка",
+              "Адаптивная вёрстка",
+            ],
+          },
+          {
+            category: "Backend",
+            skills: [
+              "Node.js",
+              "C#",
+              "Java",
+              "Python",
+              ".NET Core",
+              ".NET Framework",
+              "MySQL",
+              "MS SQL",
+              "Firebase",
+              "REST API",
+            ],
+          },
+          {
+            category: "Инструменты и архитектура",
+            skills: [
+              "Git",
+              "Profiler",
+              "ООП",
+              "SOLID",
+              "MVVM",
+              "MVC",
+              "Микросервисы",
+              "Windows",
+              "Linux (Kali/Manjaro)",
+              "Astra Linux",
+            ],
+          },
+        ];
 
   return (
     <main className="min-h-screen bg-[var(--bg-primary)] pt-32 pb-20">
@@ -54,7 +127,10 @@ export default function Skills() {
         <div className="max-w-4xl mx-auto mb-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {skillCategories.map((cat, idx) => (
-              <div key={idx} className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-6 hover:border-blue-500/50 transition-all duration-300">
+              <div
+                key={idx}
+                className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-6 hover:border-blue-500/50 transition-all duration-300"
+              >
                 <h2 className="text-2xl font-bold text-blue-400 mb-6">{cat.category}</h2>
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill, sidx) => (
@@ -82,7 +158,7 @@ export default function Skills() {
               { name: lang === "en" ? "Backend Development" : "Backend разработка", level: 85 },
               { name: lang === "en" ? "Database Design" : "Проектирование БД", level: 80 },
               { name: lang === "en" ? "Testing & QA" : "Тестирование и QA", level: 85 },
-              { name: lang === "en" ? "Technical Support" : "Техническая поддержка", level: 90 }
+              { name: lang === "en" ? "Technical Support" : "Техническая поддержка", level: 90 },
             ].map((prof, idx) => (
               <div key={idx}>
                 <div className="flex justify-between mb-2">

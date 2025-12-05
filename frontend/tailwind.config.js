@@ -1,17 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  darkMode: 'class',
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}"],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
         // Цвета тёмной темы
         background: "#13151a",
         "light-gray": "#222224",
-        // Цвета светлой темы  
+        // Цвета светлой темы
         "bg-light": "#f8f9fa",
         "bg-light-secondary": "#ffffff",
         "text-light": "#1a1a1a",

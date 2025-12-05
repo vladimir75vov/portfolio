@@ -12,91 +12,104 @@ export default function About() {
       ? "Versatile specialist with experience in frontend development, technical support, and web application testing. I strive to create effective and user-friendly interfaces, ensure seamless system operation, and improve software quality. Ready to contribute to the team and solve problems of varying complexity."
       : "Многопрофильный специалист с опытом frontend-разработки, технической поддержки и тестирования веб-приложений. Стремлюсь к созданию эффективных и удобных пользовательских интерфейсов, обеспечению бесперебойной работы систем и повышению качества программных продуктов. Готов внести свой вклад в команду и решать задачи различной сложности.";
 
-  const experiences = lang === "en" ? [
-    { 
-      title: "Frontend Development", 
-      desc: "HTML5, CSS3, JavaScript, React, TypeScript, Figma. Cross-browser and responsive layout.",
-      icon: "💻"
-    },
-    { 
-      title: "Backend Development", 
-      desc: "Node.js, C#, Java, Python, .NET Core, MySQL, MS SQL, Firebase",
-      icon: "⚙️"
-    },
-    { 
-      title: "Testing & Support", 
-      desc: "Manual testing, UI testing, bug tracking, technical support, problem solving",
-      icon: "🔧"
-    },
-  ] : [
-    { 
-      title: "Frontend разработка", 
-      desc: "HTML5, CSS3, JavaScript, React, TypeScript, Figma. Кроссбраузерная и адаптивная вёрстка.",
-      icon: "💻"
-    },
-    { 
-      title: "Backend разработка", 
-      desc: "Node.js, C#, Java, Python, .NET Core, MySQL, MS SQL, Firebase",
-      icon: "⚙️"
-    },
-    { 
-      title: "Тестирование и поддержка", 
-      desc: "Ручное тестирование, UI-тестирование, отслеживание багов, техническая поддержка",
-      icon: "🔧"
-    },
-  ];
+  const experiences =
+    lang === "en"
+      ? [
+          {
+            title: "Frontend Development",
+            desc: "HTML5, CSS3, JavaScript, React, TypeScript, Figma. Cross-browser and responsive layout.",
+            icon: "💻",
+          },
+          {
+            title: "Backend Development",
+            desc: "Node.js, C#, Java, Python, .NET Core, MySQL, MS SQL, Firebase",
+            icon: "⚙️",
+          },
+          {
+            title: "Testing & Support",
+            desc: "Manual testing, UI testing, bug tracking, technical support, problem solving",
+            icon: "🔧",
+          },
+        ]
+      : [
+          {
+            title: "Frontend разработка",
+            desc: "HTML5, CSS3, JavaScript, React, TypeScript, Figma. Кроссбраузерная и адаптивная вёрстка.",
+            icon: "💻",
+          },
+          {
+            title: "Backend разработка",
+            desc: "Node.js, C#, Java, Python, .NET Core, MySQL, MS SQL, Firebase",
+            icon: "⚙️",
+          },
+          {
+            title: "Тестирование и поддержка",
+            desc: "Ручное тестирование, UI-тестирование, отслеживание багов, техническая поддержка",
+            icon: "🔧",
+          },
+        ];
 
-  const workExperience = lang === "en" ? [
-    {
-      period: "Aug 2024 - Present",
-      company: "GKU CODD Moscow Government",
-      position: "Chief Specialist MDTO",
-      description: "Development of automated systems, desktop interfaces (JavaScript), road safety monitoring, violation detection and reporting."
-    },
-    {
-      period: "Jun 2021 - Jun 2023",
-      company: "Leroy Merlin (Lemana PRO)",
-      position: "Supply Chain Specialist",
-      description: "Development of desktop and mobile website for employees (React, TypeScript), AI implementation for automation (Java, Python, Node.JS, OpenCV)."
-    }
-  ] : [
-    {
-      period: "Август 2024 - Настоящее время",
-      company: "ГКУ ЦОДД Правительства Москвы",
-      position: "Главный специалист МДТО",
-      description: "Разработка автоматизированных систем, десктопных интерфейсов (JavaScript), мониторинг дорожной обстановки, выявление нарушений и формирование отчётов."
-    },
-    {
-      period: "Июнь 2021 - Июнь 2023",
-      company: "Леруа Мерлен (Лемана ПРО)",
-      position: "Специалист цепи поставок",
-      description: "Разработка десктопной и мобильной версии сайта для сотрудников (React, TypeScript), внедрение AI в проект по автоматизации (Java, Python, Node.JS, OpenCV)."
-    }
-  ];
+  const workExperience =
+    lang === "en"
+      ? [
+          {
+            period: "Aug 2024 - Present",
+            company: "GKU CODD Moscow Government",
+            position: "Chief Specialist MDTO",
+            description:
+              "Development of automated systems, desktop interfaces (JavaScript), road safety monitoring, violation detection and reporting.",
+          },
+          {
+            period: "Jun 2021 - Jun 2023",
+            company: "Leroy Merlin (Lemana PRO)",
+            position: "Supply Chain Specialist",
+            description:
+              "Development of desktop and mobile website for employees (React, TypeScript), AI implementation for automation (Java, Python, Node.JS, OpenCV).",
+          },
+        ]
+      : [
+          {
+            period: "Август 2024 - Настоящее время",
+            company: "ГКУ ЦОДД Правительства Москвы",
+            position: "Главный специалист МДТО",
+            description:
+              "Разработка автоматизированных систем, десктопных интерфейсов (JavaScript), мониторинг дорожной обстановки, выявление нарушений и формирование отчётов.",
+          },
+          {
+            period: "Июнь 2021 - Июнь 2023",
+            company: "Леруа Мерлен (Лемана ПРО)",
+            position: "Специалист цепи поставок",
+            description:
+              "Разработка десктопной и мобильной версии сайта для сотрудников (React, TypeScript), внедрение AI в проект по автоматизации (Java, Python, Node.JS, OpenCV).",
+          },
+        ];
 
-  const education = lang === "en" ? [
-    {
-      year: "2028",
-      institution: "Institute of Business Career",
-      degree: "Enterprise Architecture (In Progress)"
-    },
-    {
-      year: "2023",
-      institution: "Lyubertsy Technical College named after Y.A. Gagarin",
-      degree: "Programmer"
-    }
-  ] : [
-    {
-      year: "2028",
-      institution: "Институт деловой карьеры",
-      degree: "Архитектура предприятия (В процессе)"
-    },
-    {
-      year: "2023",
-      institution: "Люберецкий техникум имени Ю.А. Гагарина",
-      degree: "Программист"
-    }
-  ];
+  const education =
+    lang === "en"
+      ? [
+          {
+            year: "2028",
+            institution: "Institute of Business Career",
+            degree: "Enterprise Architecture (In Progress)",
+          },
+          {
+            year: "2023",
+            institution: "Lyubertsy Technical College named after Y.A. Gagarin",
+            degree: "Programmer",
+          },
+        ]
+      : [
+          {
+            year: "2028",
+            institution: "Институт деловой карьеры",
+            degree: "Архитектура предприятия (В процессе)",
+          },
+          {
+            year: "2023",
+            institution: "Люберецкий техникум имени Ю.А. Гагарина",
+            degree: "Программист",
+          },
+        ];
 
   return (
     <main className="min-h-screen bg-[var(--bg-primary)] pt-32 pb-20">
@@ -190,13 +203,18 @@ export default function About() {
             </div>
             <div>
               <p className="mb-2">
-                <span className="font-semibold text-blue-400">{lang === "en" ? "Location" : "Местоположение"}:</span> {lang === "en" ? "Moscow, Russia" : "Москва, Россия"}
+                <span className="font-semibold text-blue-400">{lang === "en" ? "Location" : "Местоположение"}:</span>{" "}
+                {lang === "en" ? "Moscow, Russia" : "Москва, Россия"}
               </p>
               <p className="mb-2">
-                <span className="font-semibold text-blue-400">{lang === "en" ? "Age" : "Возраст"}:</span> 22 {lang === "en" ? "years" : "года"}
+                <span className="font-semibold text-blue-400">{lang === "en" ? "Age" : "Возраст"}:</span> 22{" "}
+                {lang === "en" ? "years" : "года"}
               </p>
               <p>
-                <span className="font-semibold text-blue-400">{lang === "en" ? "Driver's License" : "Водительские права"}:</span> {lang === "en" ? "Category B, Own Car" : "Категория B, личный автомобиль"}
+                <span className="font-semibold text-blue-400">
+                  {lang === "en" ? "Driver's License" : "Водительские права"}:
+                </span>{" "}
+                {lang === "en" ? "Category B, Own Car" : "Категория B, личный автомобиль"}
               </p>
             </div>
           </div>

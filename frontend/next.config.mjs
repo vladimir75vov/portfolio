@@ -1,31 +1,18 @@
-import dotenv from "dotenv";
-
-dotenv.config({ path: "../.env" });
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
+    output: 'export',  // Статический экспорт для GitHub Pages
+    // Для репозитория не типа username.github.io раскомментируйте следующую строку:
+    // basePath: '/portfolio',  // Замените 'portfolio' на название вашего репозитория
+    // assetPrefix: '/portfolio',  // Замените 'portfolio' на название вашего репозитория
+    images: {
+        unoptimized: true,  // Отключение оптимизации изображений для статического экспорта
+    },
     eslint: {
         ignoreDuringBuilds: true,
     },
-    async rewrites() {
-        return [
-            {
-                source: `${process.env.BACKEND_API_PATH}:path*`,
-                destination: `http://${process.env.BACKEND_IP}:${process.env.BACKEND_PORT}${process.env.BACKEND_API_PATH}:path*`,
-            }
-        ]
-    },
-    async redirects() {
-        return [
-            // Basic redirect
-            {
-                source: '/',
-                destination: '/home',
-                permanent: true,
-            },
-        ]
-    }
+    trailingSlash: true,  // Добавляет слэш в конце URL для совместимости с GitHub Pages
+    // rewrites и redirects не поддерживаются в статическом экспорте
 };
 
 export default nextConfig;

@@ -4,50 +4,50 @@ import { LanguageContext } from "../../../context/LanguageContext.jsx";
 // Секция "Почему выбирают меня" с 6 преимуществами работы
 function Section4Elem() {
   const { lang } = useContext(LanguageContext);
-  
+
   const benefits = [
     {
       icon: "⚡",
       titleEn: "High Performance",
       titleRu: "Высокая производительность",
       descEn: "Optimized code and efficient architecture for fast, scalable applications",
-      descRu: "Оптимизированный код и эффективная архитектура для быстрых масштабируемых приложений"
+      descRu: "Оптимизированный код и эффективная архитектура для быстрых масштабируемых приложений",
     },
     {
       icon: "🎯",
       titleEn: "Quality Focused",
       titleRu: "Фокус на качестве",
       descEn: "Comprehensive testing, code reviews, and best practices implementation",
-      descRu: "Комплексное тестирование, ревью кода и внедрение лучших практик"
+      descRu: "Комплексное тестирование, ревью кода и внедрение лучших практик",
     },
     {
       icon: "🔒",
       titleEn: "Security First",
       titleRu: "Безопасность прежде всего",
       descEn: "Secure coding practices and data protection in every project",
-      descRu: "Безопасная разработка и защита данных в каждом проекте"
+      descRu: "Безопасная разработка и защита данных в каждом проекте",
     },
     {
       icon: "📱",
       titleEn: "Responsive Design",
       titleRu: "Адаптивный дизайн",
       descEn: "Beautiful interfaces that work seamlessly across all devices",
-      descRu: "Красивые интерфейсы, идеально работающие на всех устройствах"
+      descRu: "Красивые интерфейсы, идеально работающие на всех устройствах",
     },
     {
       icon: "🔄",
       titleEn: "Continuous Support",
       titleRu: "Постоянная поддержка",
       descEn: "Ongoing maintenance, updates, and technical assistance",
-      descRu: "Постоянное обслуживание, обновления и техническая помощь"
+      descRu: "Постоянное обслуживание, обновления и техническая помощь",
     },
     {
       icon: "💡",
       titleEn: "Innovation Driven",
       titleRu: "Инновационный подход",
       descEn: "Implementing cutting-edge technologies and modern solutions",
-      descRu: "Внедрение передовых технологий и современных решений"
-    }
+      descRu: "Внедрение передовых технологий и современных решений",
+    },
   ];
 
   return (
@@ -74,7 +74,7 @@ function Section4Elem() {
             >
               {/* Gradient overlay on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
+
               <div className="relative z-10">
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {benefit.icon}

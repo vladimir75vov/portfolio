@@ -1,33 +1,27 @@
-'use client';
+"use client";
 
-import { useContext, useState } from 'react';
-import { LanguageContext } from '../../context/LanguageContext';
-import {
-  SiDiscord,
-  SiGithub,
-  SiTelegram,
-  SiVk,
-  SiWhatsapp,
-} from "react-icons/si";
+import { useContext, useState } from "react";
+import { LanguageContext } from "../../context/LanguageContext";
+import { SiDiscord, SiGithub, SiTelegram, SiVk, SiWhatsapp } from "react-icons/si";
 
 // Страница контактов с формой отправки в Telegram и соц. сетями
 export default function ContactPage() {
   const { lang } = useContext(LanguageContext);
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Получение токена и chat_id из переменных окружения
     const telegramBotToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
     const telegramChatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
-    
+
     const message = `
 📧 Новое сообщение с портфолио!
 
@@ -40,27 +34,35 @@ ${formData.message}
 
     try {
       const response = await fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           chat_id: telegramChatId,
           text: message,
-          parse_mode: 'HTML'
-        })
+          parse_mode: "HTML",
+        }),
       });
 
       if (response.ok) {
         setSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setSubmitted(false), 5000);
       } else {
-        alert(lang === 'en' ? 'Failed to send message. Please try again.' : 'Не удалось отправить сообщение. Попробуйте снова.');
+        alert(
+          lang === "en"
+            ? "Failed to send message. Please try again."
+            : "Не удалось отправить сообщение. Попробуйте снова."
+        );
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert(lang === 'en' ? 'Failed to send message. Please try again.' : 'Не удалось отправить сообщение. Попробуйте снова.');
+      console.error("Error:", error);
+      alert(
+        lang === "en"
+          ? "Failed to send message. Please try again."
+          : "Не удалось отправить сообщение. Попробуйте снова."
+      );
     }
   };
 
@@ -71,10 +73,10 @@ ${formData.message}
           {/* Header */}
           <div className="text-center mb-20">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-              {lang === 'en' ? 'Get In Touch' : 'Свяжитесь со мной'}
+              {lang === "en" ? "Get In Touch" : "Свяжитесь со мной"}
             </h1>
             <p className="text-lg text-[var(--text-secondary)]">
-              {lang === 'en' ? 'Have a project? Let\'s talk about it.' : 'Есть проект? Давайте об этом поговорим.'}
+              {lang === "en" ? "Have a project? Let's talk about it." : "Есть проект? Давайте об этом поговорим."}
             </p>
           </div>
 
@@ -83,12 +85,12 @@ ${formData.message}
             {/* Contact Form */}
             <div className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-8">
               <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
-                {lang === 'en' ? 'Send me a message' : 'Отправьте сообщение'}
+                {lang === "en" ? "Send me a message" : "Отправьте сообщение"}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
-                    {lang === 'en' ? 'Name' : 'Имя'}
+                    {lang === "en" ? "Name" : "Имя"}
                   </label>
                   <input
                     type="text"
@@ -97,13 +99,13 @@ ${formData.message}
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-blue-500/50"
-                    placeholder={lang === 'en' ? 'Your name' : 'Ваше имя'}
+                    placeholder={lang === "en" ? "Your name" : "Ваше имя"}
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
-                    {lang === 'en' ? 'Email' : 'Email'}
+                    {lang === "en" ? "Email" : "Email"}
                   </label>
                   <input
                     type="email"
@@ -112,13 +114,13 @@ ${formData.message}
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-2 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-blue-500/50"
-                    placeholder={lang === 'en' ? 'your@email.com' : 'ваш@email.com'}
+                    placeholder={lang === "en" ? "your@email.com" : "ваш@email.com"}
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">
-                    {lang === 'en' ? 'Message' : 'Сообщение'}
+                    {lang === "en" ? "Message" : "Сообщение"}
                   </label>
                   <textarea
                     name="message"
@@ -127,7 +129,7 @@ ${formData.message}
                     required
                     rows="4"
                     className="w-full px-4 py-2 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] focus:outline-none focus:border-blue-500/50 resize-none"
-                    placeholder={lang === 'en' ? 'Your message...' : 'Ваше сообщение...'}
+                    placeholder={lang === "en" ? "Your message..." : "Ваше сообщение..."}
                   />
                 </div>
 
@@ -135,12 +137,12 @@ ${formData.message}
                   type="submit"
                   className="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:scale-[1.02] transition-all duration-200 mt-2"
                 >
-                  {lang === 'en' ? 'Send' : 'Отправить'}
+                  {lang === "en" ? "Send" : "Отправить"}
                 </button>
 
                 {submitted && (
                   <div className="text-center text-green-400 font-medium">
-                    {lang === 'en' ? 'Message sent!' : 'Сообщение отправлено!'}
+                    {lang === "en" ? "Message sent!" : "Сообщение отправлено!"}
                   </div>
                 )}
               </form>
@@ -151,24 +153,28 @@ ${formData.message}
               {/* Direct Contacts */}
               <div className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-8">
                 <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
-                  {lang === 'en' ? 'Contact Info' : 'Контактная информация'}
+                  {lang === "en" ? "Contact Info" : "Контактная информация"}
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <p className="text-sm text-[var(--text-muted)] mb-1">{lang === 'en' ? 'Email' : 'Email'}</p>
+                    <p className="text-sm text-[var(--text-muted)] mb-1">{lang === "en" ? "Email" : "Email"}</p>
                     <a href="mailto:vladimir75vov@gmail.com" className="text-blue-400 hover:text-blue-300 font-medium">
                       vladimir75vov@gmail.com
                     </a>
                   </div>
                   <div>
-                    <p className="text-sm text-[var(--text-muted)] mb-1">{lang === 'en' ? 'Phone' : 'Телефон'}</p>
+                    <p className="text-sm text-[var(--text-muted)] mb-1">{lang === "en" ? "Phone" : "Телефон"}</p>
                     <a href="tel:+79037095173" className="text-blue-400 hover:text-blue-300 font-medium">
                       +7 (903) 709-5173
                     </a>
                   </div>
                   <div>
-                    <p className="text-sm text-[var(--text-muted)] mb-1">{lang === 'en' ? 'Location' : 'Местоположение'}</p>
-                    <p className="text-[var(--text-secondary)] font-medium">{lang === 'en' ? 'Moscow, Russia' : 'Москва, Россия'}</p>
+                    <p className="text-sm text-[var(--text-muted)] mb-1">
+                      {lang === "en" ? "Location" : "Местоположение"}
+                    </p>
+                    <p className="text-[var(--text-secondary)] font-medium">
+                      {lang === "en" ? "Moscow, Russia" : "Москва, Россия"}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -176,49 +182,49 @@ ${formData.message}
               {/* Social Links */}
               <div className="bg-[var(--card-bg)] backdrop-blur-sm border border-[var(--card-border)] rounded-lg p-8">
                 <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-6">
-                  {lang === 'en' ? 'Follow Me' : 'Следите за мной'}
+                  {lang === "en" ? "Follow Me" : "Следите за мной"}
                 </h2>
                 <div className="flex flex-wrap gap-4">
-                  <a 
-                    href="https://t.me/vladimir75vov" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://t.me/vladimir75vov"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
                     aria-label="Telegram"
                   >
                     <SiTelegram size={24} className="text-blue-400" />
                   </a>
-                  <a 
-                    href="https://vk.com/vladimir75vov" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://vk.com/vladimir75vov"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
                     aria-label="VK"
                   >
                     <SiVk size={24} className="text-blue-400" />
                   </a>
-                  <a 
-                    href="https://wa.me/89037095173" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://wa.me/89037095173"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
                     aria-label="WhatsApp"
                   >
                     <SiWhatsapp size={24} className="text-blue-400" />
                   </a>
-                  <a 
-                    href="https://discordapp.com/users/289114042763575296" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://discordapp.com/users/289114042763575296"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
                     aria-label="Discord"
                   >
                     <SiDiscord size={24} className="text-blue-400" />
                   </a>
-                  <a 
-                    href="https://github.com/vladimir75vov" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
+                  <a
+                    href="https://github.com/vladimir75vov"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="p-3 bg-[var(--bg-tertiary)] border border-[var(--border-color)] rounded-lg hover:scale-105 hover:border-blue-500/50 transition-all"
                     aria-label="GitHub"
                   >

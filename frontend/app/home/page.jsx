@@ -17,7 +17,7 @@ function Home() {
   const handleDownloadCV = () => {
     const cvFile = lang === "en" ? "cvEn.pdf" : "cvRu.pdf";
     const link = document.createElement("a");
-    link.href = `/api/v1/resources/files/cv/${cvFile}`;
+    link.href = `/cv/${cvFile}`;
     link.download = cvFile;
     document.body.appendChild(link);
     link.click();
@@ -62,7 +62,10 @@ function Home() {
     <div>
       <section ref={heroRef} className="relative overflow-hidden w-full h-screen">
         <VideoElem />
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/30 via-black/20 to-black/40" style={{ transition: 'background-color 260ms ease' }}>
+        <div
+          className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black/30 via-black/20 to-black/40"
+          style={{ transition: "background-color 260ms ease" }}
+        >
           <div className="flex justify-center items-center text-center min-h-screen">
             <div className="px-4 max-w-5xl w-full">
               <div className="animate-fadeInDown flex flex-col items-center gap-4">
@@ -82,8 +85,17 @@ function Home() {
                   onClick={handleDownloadCV}
                   className="group px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 inline-flex items-center gap-3"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:animate-bounce" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 group-hover:animate-bounce"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                   {lang === "en" ? "Download CV" : "Скачать резюме"}
                 </button>
@@ -93,7 +105,11 @@ function Home() {
                 >
                   {lang === "en" ? "View Projects" : "Мои проекты"}
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
                   </svg>
                 </a>
               </div>
