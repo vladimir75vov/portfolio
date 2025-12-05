@@ -6,6 +6,7 @@ import Footer from "../components/layout/footer.jsx";
 import { LanguageProvider } from "../context/LanguageContext.jsx";
 import { ThemeProvider } from "../context/ThemeContext.jsx";
 import LoadingScreen from "../components/LoadingScreen.jsx";
+import ThemeColor from "../components/ThemeColor.jsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -101,6 +102,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} bg-[var(--bg-primary)] text-[var(--text-primary)] overflow-x-hidden`}>
         <LoadingScreen />
         <ThemeProvider>
+          <ThemeColor />
           <LanguageProvider>
             <Navbar />
             <main>{children}</main>
