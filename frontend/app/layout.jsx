@@ -36,10 +36,10 @@ export const metadata = {
     locale: "en_US",
     alternateLocale: ["ru_RU"],
     siteName: "Vladimir Budaev Portfolio",
-    url: "https://vladimir75vov.github.io",
+    url: "https://vladimir75vov.github.io/portfolio",
     images: [
       {
-        url: "/images/og-image.svg",
+        url: "/portfolio/images/og-image.svg",
         width: 1200,
         height: 630,
         alt: "Vladimir Budaev - Full Stack Developer",
@@ -51,7 +51,7 @@ export const metadata = {
     title: "Vladimir Budaev - Full Stack Developer",
     description: "Full Stack Developer | React | Next.js | Node.js | Digital Creator",
     creator: "@vladimir75vov",
-    images: ["/images/og-image.svg"],
+    images: ["/portfolio/images/og-image.svg"],
   },
   verification: {
     google: "your-google-verification-code",
@@ -65,7 +65,7 @@ export const metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://vladimir75vov.github.io"),
+  metadataBase: new URL("https://vladimir75vov.github.io/portfolio"),
   alternates: {
     canonical: "/",
     languages: {
@@ -74,10 +74,10 @@ export const metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/favicon.ico" }, { url: "/icon.png", type: "image/png", sizes: "32x32" }],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    icon: [{ url: "/portfolio/favicon.ico" }, { url: "/portfolio/icon.png", type: "image/png", sizes: "32x32" }],
+    apple: [{ url: "/portfolio/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
-  manifest: "/manifest.json",
+  manifest: "/portfolio/manifest.json",
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",

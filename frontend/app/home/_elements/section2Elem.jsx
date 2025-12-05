@@ -68,7 +68,7 @@ function Section2Elem() {
           <div className="w-full xl p-12 overflow-hidden">
             <img
               className="mx-auto w-full transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6"
-              src="/images/macbook.svg"
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/images/macbook.svg`}
               alt="Developer workspace"
             />
           </div>

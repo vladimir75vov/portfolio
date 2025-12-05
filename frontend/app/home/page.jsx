@@ -17,7 +17,7 @@ function Home() {
   const handleDownloadCV = () => {
     const cvFile = lang === "en" ? "cvEn.pdf" : "cvRu.pdf";
     const link = document.createElement("a");
-    link.href = `/cv/${cvFile}`;
+    link.href = `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/cv/${cvFile}`;
     link.download = cvFile;
     document.body.appendChild(link);
     link.click();
