@@ -15,13 +15,10 @@ function Home() {
   const { lang } = useContext(LanguageContext);
 
   const handleDownloadCV = () => {
-    const cvFile = lang === "en" ? "cvEn.pdf" : "cvRu.pdf";
-    const link = document.createElement("a");
-    link.href = `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/cv/${cvFile}`;
-    link.download = cvFile;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    const cvFile = lang === "en" ? "cvEn.html" : "cvRu.html";
+    const cvUrl = `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/cv/${cvFile}`;
+    // Открываем CV в новой вкладке вместо скачивания
+    window.open(cvUrl, '_blank');
   };
 
   useEffect(() => {
@@ -97,7 +94,7 @@ function Home() {
                       clipRule="evenodd"
                     />
                   </svg>
-                  {lang === "en" ? "Download CV" : "Скачать резюме"}
+                  {lang === "en" ? "View CV" : "Посмотреть резюме"}
                 </button>
                 <a
                   href="/projects"

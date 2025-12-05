@@ -1,0 +1,16 @@
+{
+  "name": "cv-generator",
+  "version": "1.0.0",
+  "description": "CV Generator for Vladimir Budaev Portfolio",
+  "main": "convert.js",
+  "scripts": {
+    "generate": "node convert.js",
+    "copy": "Copy-Item cvEn.pdf ..\\frontend\\public\\cv\\ && Copy-Item cvRu.pdf ..\\frontend\\public\\cv\\"
+  },
+  "keywords": ["cv", "resume", "pdf", "generator"],
+  "author": "Vladimir Budaev",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^21.6.0"
+  }
+}

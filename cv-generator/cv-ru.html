@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Владимир Будаев - Резюме</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #0f1015 0%, #1a1d2e 50%, #0f1015 100%);
+            padding: 40px;
+            max-width: 210mm;
+            margin: 0 auto;
+        }
+        
+        .cv-container {
+            background: #ffffff;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 12px 12px 0 0;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header .title {
+            font-size: 22px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-info a:after {
+            content: " (" attr(href) ")";
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            display: none;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 22px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #a78bfa;
+            font-weight: 600;
+        }
+        
+        .summary {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #374151;
+            text-align: justify;
+        }
+        
+        .experience-item, .education-item, .project-item {
+            margin-bottom: 18px;
+            padding-left: 15px;
+            border-left: 3px solid #a78bfa;
+            transition: all 0.3s ease;
+        }
+        
+        .experience-item:hover, .education-item:hover {
+            border-left-color: #764ba2;
+            transform: translateX(5px);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+        
+        .job-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .period {
+            font-size: 13px;
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        .company {
+            font-size: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .description {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.2);
+        }
+        
+        .skill-category h3 {
+            font-size: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            font-size: 13px;
+            color: #374151;
+            padding: 3px 0;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .skill-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #764ba2;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .project-card {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(118, 75, 162, 0.15);
+            border-color: #a78bfa;
+        }
+        
+        .project-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .project-desc {
+            font-size: 13px;
+            color: #4b5563;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            color: #764ba2;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                background: white !important;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 30px;
+            }
+            
+            .header {
+                margin: -30px -30px 25px -30px;
+                padding: 25px;
+                border-radius: 0;
+                background: white !important;
+                color: #1a1a1a !important;
+                border-bottom: 3px solid #764ba2;
+            }
+            
+            .header h1 {
+                color: #1a1a1a !important;
+                text-shadow: none;
+            }
+            
+            .header .title {
+                color: #4b5563 !important;
+            }
+            
+            .contact-info {
+                color: #4b5563 !important;
+            }
+            
+            .contact-info a {
+                color: #764ba2 !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+            
+            .contact-info a:after {
+                display: inline !important;
+            }
+            
+            a[href^="http"]:after {
+                content: " (" attr(href) ")";
+                font-size: 9px;
+                color: #666;
+                font-weight: normal;
+            }
+            
+            .section-title {
+                color: #764ba2 !important;
+                -webkit-text-fill-color: #764ba2 !important;
+            }
+            
+            .company {
+                color: #764ba2 !important;
+                -webkit-text-fill-color: #764ba2 !important;
+            }
+            
+            .skill-category h3 {
+                color: #764ba2 !important;
+                -webkit-text-fill-color: #764ba2 !important;
+            }
+            
+            .skill-category {
+                background: #f8f9fa !important;
+            }
+            
+            .project-card {
+                background: #f9fafb !important;
+            }
+            
+            .tech-tag {
+                background: #e0e7ff !important;
+                color: #764ba2 !important;
+            }
+            
+            /* Убрать эффекты hover при печати */
+            .experience-item:hover,
+            .education-item:hover,
+            .skill-category:hover,
+            .project-card:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+        }
+        
+        @media screen {
+            .contact-info a:hover {
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+    <!-- Заголовок -->
+    <div class="header">
+        <h1>Владимир Будаев</h1>
+        <div class="title">Full Stack разработчик</div>
+        <div class="contact-info">
+            <span>📧 vladimir75vov@gmail.com</span>
+            <span>📱 +7 903 709 5173</span>
+            <span>📍 Москва, Россия</span>
+            <a href="https://github.com/vladimir75vov" target="_blank">🔗 GitHub</a>
+            <a href="https://t.me/vladimir75vov" target="_blank">💬 Telegram</a>
+        </div>
+    </div>
+
+    <!-- Описание -->
+    <div class="section">
+        <h2 class="section-title">О себе</h2>
+        <p class="summary">
+            Многопрофильный специалист с опытом frontend-разработки, технической поддержки и тестирования веб-приложений. 
+            Стремлюсь к созданию эффективных и удобных пользовательских интерфейсов, обеспечению бесперебойной работы систем 
+            и повышению качества программных продуктов. Готов внести свой вклад в команду и решать задачи различной сложности. 
+            Владею современными веб-технологиями, включая React, TypeScript, Node.js и системы управления базами данных.
+        </p>
+        <div style="margin-top: 15px; padding: 12px; background: #f3f4f6; border-radius: 6px; font-size: 13px;">
+            <strong style="color: #764ba2;">Специализации:</strong> Программист/Разработчик • Специалист техподдержки • Тестировщик<br>
+            <strong style="color: #764ba2;">Занятость:</strong> Полная, Частичная • Гибкий график, Удалённая работа
+        </div>
+    </div>
+
+    <!-- Опыт работы -->
+    <div class="section">
+        <h2 class="section-title">Опыт работы</h2>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="job-title">Главный специалист МДТО</div>
+                <div class="period">Август 2024 - Настоящее время</div>
+            </div>
+            <div class="company">ГКУ ЦОДД Правительства Москвы</div>
+            <p class="description">
+                Разработка автоматизированных систем и десктопных интерфейсов для мониторинга безопасности дорожного движения. 
+                Создание инструментов на JavaScript для выявления нарушений, анализа видеопотоков и автоматизированного 
+                формирования отчётов для Департамента транспорта Москвы.
+            </p>
+        </div>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="job-title">Специалист цепи поставок</div>
+                <div class="period">Июнь 2021 - Июнь 2023</div>
+            </div>
+            <div class="company">Леруа Мерлен (Лемана ПРО)</div>
+            <p class="description">
+                Full-stack разработка десктопной и мобильной версии сайта для сотрудников с использованием React и TypeScript. 
+                Внедрение AI-систем автоматизации на базе Java, Python, Node.js и OpenCV для оптимизации процессов и 
+                интеллектуального принятия решений.
+            </p>
+        </div>
+        
+        <div class="experience-item">
+            <div class="experience-header">
+                <div class="job-title">Срочная служба</div>
+                <div class="period">Июнь 2023 - Июнь 2024</div>
+            </div>
+            <div class="company">Федеральная служба войск национальной гвардии Российской Федерации</div>
+            <p class="description">
+                Администрирование и поддержка систем. Администрирование Linux (Astra Linux). Обеспечение работоспособности и безопасности систем.
+            </p>
+        </div>
+    </div>
+
+    <!-- Образование -->
+    <div class="section">
+        <h2 class="section-title">Образование</h2>
+        
+        <div class="education-item">
+            <div class="experience-header">
+                <div class="job-title">Архитектура предприятия (в процессе)</div>
+                <div class="period">2028</div>
+            </div>
+            <div class="company">Институт Бизнес Карьеры</div>
+        </div>
+        
+        <div class="education-item">
+            <div class="experience-header">
+                <div class="job-title">Программист</div>
+                <div class="period">2023</div>
+            </div>
+            <div class="company">Люберецкий технический колледж имени Ю.А. Гагарина</div>
+        </div>
+        
+        <div class="education-item">
+            <div class="experience-header">
+                <div class="job-title">Менеджер IT-проектов</div>
+                <div class="period">2024</div>
+            </div>
+            <div class="company">Курсы повышения квалификации</div>
+            <p class="description" style="font-size: 13px; margin-top: 5px;">1T, Менеджер проектов в области информационных технологий</p>
+        </div>
+    </div>
+
+    <!-- Навыки -->
+    <div class="section">
+        <h2 class="section-title">Технические навыки</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Frontend</h3>
+                <ul class="skill-list">
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript / TypeScript</li>
+                    <li>React / Next.js</li>
+                    <li>Tailwind CSS / SCSS</li>
+                    <li>XML / XAML / JSON</li>
+                    <li>Адаптивная вёрстка</li>
+                    <li>Кроссбраузерная вёрстка</li>
+                    <li>Figma / UI дизайн</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Backend</h3>
+                <ul class="skill-list">
+                    <li>Node.js</li>
+                    <li>C# / .NET Core</li>
+                    <li>Java / Python</li>
+                    <li>MySQL / MS SQL</li>
+                    <li>REST API</li>
+                    <li>Firebase</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Инструменты и методы</h3>
+                <ul class="skill-list">
+                    <li>Git / GitHub</li>
+                    <li>ООП / SOLID / OSI</li>
+                    <li>MVVM / MVC</li>
+                    <li>Микросервисы</li>
+                    <li>Windows / Linux</li>
+                    <li>Astra Linux Admin</li>
+                    <li>AI/ML (OpenCV)</li>
+                    <li>Ручное тестирование / UI</li>
+                    <li>Техподдержка</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ключевые проекты -->
+    <div class="section">
+        <h2 class="section-title">Ключевые проекты</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-title">🚦 Автоматизированная система ЦОДД</div>
+                <p class="project-desc">
+                    Десктопный интерфейс для мониторинга безопасности дорожного движения с выявлением нарушений и анализом видео.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Desktop UI</span>
+                    <span class="tech-tag">Video Processing</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">🏪 Портал для сотрудников</div>
+                <p class="project-desc">
+                    Full-stack портал для Леруа Мерлен с управлением товарами и автоматизацией цепи поставок.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Mobile</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">🤖 AI-система автоматизации</div>
+                <p class="project-desc">
+                    Внедрение компьютерного зрения и AI для интеллектуальной оптимизации процессов.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">OpenCV</span>
+                    <span class="tech-tag">AI/ML</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-title">🎨 Веб-сайт портфолио</div>
+                <p class="project-desc">
+                    Современное адаптивное портфолио с поддержкой нескольких языков и плавными анимациями.
+                </p>
+                <div class="tech-tags">
+                    <span class="tech-tag">Next.js</span>
+                    <span class="tech-tag">Tailwind</span>
+                    <span class="tech-tag">SCSS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
