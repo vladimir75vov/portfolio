@@ -8,8 +8,26 @@ import { ThemeContext } from "../../context/ThemeContext.jsx";
 // Компонент навигации с мобильным меню, переключателями темы и языка
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // Состояние мобильного меню
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { theme, setTheme, christmasMode, setChristmasMode, autumnMode, setAutumnMode } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
+
+  const handleChristmasToggle = () => {
+    if (!christmasMode) {
+      setAutumnMode(false);
+      setChristmasMode(true);
+    } else {
+      setChristmasMode(false);
+    }
+  };
+
+  const handleAutumnToggle = () => {
+    if (!autumnMode) {
+      setChristmasMode(false);
+      setAutumnMode(true);
+    } else {
+      setAutumnMode(false);
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-background/10 to-background/6 backdrop-blur-sm border-b border-gray-700/10">
@@ -50,6 +68,8 @@ function Navbar() {
             {t("nav.contact")}
           </Link>
           <ThemeSwitcher theme={theme} setTheme={setTheme} />
+          <ChristmasSwitcher christmasMode={christmasMode} onToggle={handleChristmasToggle} />
+          <AutumnSwitcher autumnMode={autumnMode} onToggle={handleAutumnToggle} />
           <div className="ml-1">
             <LanguageSwitcher />
           </div>
@@ -103,6 +123,8 @@ function Navbar() {
             </Link>
             <div className="pt-4 border-t border-[var(--border-color)] flex items-center gap-4">
               <ThemeSwitcher theme={theme} setTheme={setTheme} />
+              <ChristmasSwitcher christmasMode={christmasMode} onToggle={handleChristmasToggle} />
+              <AutumnSwitcher autumnMode={autumnMode} onToggle={handleAutumnToggle} />
               <LanguageSwitcher />
             </div>
           </div>
@@ -119,7 +141,11 @@ function ThemeSwitcher({ theme, setTheme }) {
     <button
       type="button"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="w-9 h-9 flex items-center justify-center rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] hover:border-blue-400/50 transition-all duration-200"
+      className={`w-9 h-9 flex items-center justify-center rounded-lg border transition-all duration-200 ${
+        theme === "light"
+          ? 'bg-sky-500/30 border-sky-400/50 hover:border-sky-300'
+          : 'bg-indigo-600/30 border-indigo-500/50 hover:border-indigo-400'
+      }`}
       aria-label={theme === "dark" ? t("theme.light") : t("theme.dark")}
       title={theme === "dark" ? t("theme.light") : t("theme.dark")}
     >
@@ -153,6 +179,52 @@ function ThemeSwitcher({ theme, setTheme }) {
             d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
           />
         </svg>
+      )}
+    </button>
+  );
+}
+
+// Компонент переключения новогодней темы
+function ChristmasSwitcher({ christmasMode, onToggle }) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      className={`w-9 h-9 flex items-center justify-center rounded-lg border transition-all duration-200 ${
+        christmasMode
+          ? 'bg-green-600/30 border-green-500/50 hover:border-green-400'
+          : 'bg-[var(--card-bg)] border-[var(--border-color)] hover:border-blue-400/50'
+      }`}
+      aria-label={christmasMode ? "Выключить новогоднюю тему" : "Включить новогоднюю тему"}
+      title={christmasMode ? "Выключить новогоднюю тему" : "Включить новогоднюю тему"}
+    >
+      {christmasMode ? (
+        <span className="text-xl">🎄</span>
+      ) : (
+        <span className="text-xl opacity-50">🎄</span>
+      )}
+    </button>
+  );
+}
+
+// Компонент переключения осенней темы
+function AutumnSwitcher({ autumnMode, onToggle }) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      className={`w-9 h-9 flex items-center justify-center rounded-lg border transition-all duration-200 ${
+        autumnMode
+          ? 'bg-orange-600/30 border-orange-500/50 hover:border-orange-400'
+          : 'bg-[var(--card-bg)] border-[var(--border-color)] hover:border-blue-400/50'
+      }`}
+      aria-label={autumnMode ? "Выключить осеннюю тему" : "Включить осеннюю тему"}
+      title={autumnMode ? "Выключить осеннюю тему" : "Включить осеннюю тему"}
+    >
+      {autumnMode ? (
+        <span className="text-xl">🍂</span>
+      ) : (
+        <span className="text-xl opacity-50">🍂</span>
       )}
     </button>
   );

@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
+import Image from "next/image";
 import { LanguageContext } from "../../../context/LanguageContext.jsx";
+import { ThemeContext } from "../../../context/ThemeContext.jsx";
 
 // Секция "Что я предлагаю" с 4 основными направлениями работы
 function Section1Elem() {
   const { lang } = useContext(LanguageContext);
+  const { christmasMode, autumnMode } = useContext(ThemeContext);
 
   const features = [
     {
@@ -40,7 +43,20 @@ function Section1Elem() {
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 relative">
+          {/* Сезонные декорации */}
+          {christmasMode && (
+            <>
+              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={100} height={100} className="absolute -top-10 left-[5%] opacity-25 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
+              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={80} height={80} className="absolute -top-5 right-[10%] opacity-20 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
+            </>
+          )}
+          {autumnMode && (
+            <>
+              <span className="absolute -top-10 left-[5%] text-7xl opacity-25 pointer-events-none select-none">🍂</span>
+              <span className="absolute -top-5 right-[10%] text-6xl opacity-20 pointer-events-none select-none">🍁</span>
+            </>
+          )}
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {lang === "en" ? "What I Offer" : "Что я предлагаю"}
           </h2>

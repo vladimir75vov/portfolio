@@ -1,11 +1,28 @@
 "use client";
 
 import { useContext } from "react";
+import Image from "next/image";
 import { LanguageContext } from "../../context/LanguageContext";
+import { ThemeContext } from "../../context/ThemeContext";
 
 // Страница "Обо мне" с опытом работы, образованием и навыками
 export default function About() {
   const { lang } = useContext(LanguageContext);
+  const { christmasMode, autumnMode } = useContext(ThemeContext);
+
+  // Автоматический расчет возраста
+  const calculateAge = () => {
+    const birthDate = new Date(2003, 4, 9); // 09.05.2003 (месяцы с 0)
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
+  };
+
+  const age = calculateAge();
 
   const aboutText =
     lang === "en"
@@ -139,7 +156,20 @@ export default function About() {
     <main className="min-h-screen bg-[var(--bg-primary)] pt-32 pb-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="max-w-4xl mx-auto mb-20">
+        <div className="max-w-4xl mx-auto mb-20 relative">
+          {/* Сезонные декорации */}
+          {christmasMode && (
+            <>
+              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={100} height={100} className="absolute -top-10 left-0 opacity-25 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
+              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={80} height={80} className="absolute -top-5 right-10 opacity-20 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
+            </>
+          )}
+          {autumnMode && (
+            <>
+              <span className="absolute -top-10 left-0 text-7xl opacity-25 pointer-events-none select-none">🍂</span>
+              <span className="absolute -top-5 right-10 text-6xl opacity-20 pointer-events-none select-none">🍁</span>
+            </>
+          )}
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {lang === "en" ? "About Me" : "Обо мне"}
           </h1>
@@ -231,8 +261,8 @@ export default function About() {
                 {lang === "en" ? "Moscow, Russia" : "Москва, Россия"}
               </p>
               <p className="mb-2">
-                <span className="font-semibold text-blue-400">{lang === "en" ? "Age" : "Возраст"}:</span> 22{" "}
-                {lang === "en" ? "years" : "года"}
+                <span className="font-semibold text-blue-400">{lang === "en" ? "Age" : "Возраст"}:</span> {age}{" "}
+                {lang === "en" ? "years" : age === 21 ? "год" : age >= 22 && age <= 24 ? "года" : "лет"}
               </p>
               <p>
                 <span className="font-semibold text-blue-400">

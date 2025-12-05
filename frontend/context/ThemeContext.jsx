@@ -5,10 +5,40 @@ import React, { createContext, useEffect, useState } from "react";
 export const ThemeContext = createContext({
   theme: "dark",
   setTheme: () => {},
+  christmasMode: false,
+  setChristmasMode: () => {},
+  autumnMode: false,
+  setAutumnMode: () => {},
 });
+
+// Функция определения текущего сезона для России
+function getCurrentSeason() {
+  const now = new Date();
+  const month = now.getMonth(); // 0-11
+
+  // Зима: декабрь (11), январь (0), февраль (1)
+  if (month === 11 || month === 0 || month === 1) {
+    return 'winter';
+  }
+  // Весна: март (2), апрель (3), май (4)
+  if (month >= 2 && month <= 4) {
+    return 'spring';
+  }
+  // Лето: июнь (5), июль (6), август (7)
+  if (month >= 5 && month <= 7) {
+    return 'summer';
+  }
+  // Осень: сентябрь (8), октябрь (9), ноябрь (10)
+  if (month >= 8 && month <= 10) {
+    return 'autumn';
+  }
+  return null;
+}
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("dark");
+  const [christmasMode, setChristmasMode] = useState(false);
+  const [autumnMode, setAutumnMode] = useState(false);
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
@@ -16,6 +46,33 @@ export function ThemeProvider({ children }) {
       const saved = localStorage.getItem("theme");
       if (saved && (saved === "light" || saved === "dark")) {
         setTheme(saved);
+      }
+
+      // Проверяем, есть ли сохраненные настройки сезонных тем
+      const savedChristmas = localStorage.getItem("christmasMode");
+      const savedAutumn = localStorage.getItem("autumnMode");
+
+      // Если пользователь ранее не выбирал тему, устанавливаем автоматически по сезону
+      if (savedChristmas === null && savedAutumn === null) {
+        const currentSeason = getCurrentSeason();
+        if (currentSeason === 'winter') {
+          setChristmasMode(true);
+          setAutumnMode(false);
+        } else if (currentSeason === 'autumn') {
+          setChristmasMode(false);
+          setAutumnMode(true);
+        } else {
+          setChristmasMode(false);
+          setAutumnMode(false);
+        }
+      } else {
+        // Если есть сохраненные настройки, используем их
+        if (savedChristmas !== null) {
+          setChristmasMode(savedChristmas === "true");
+        }
+        if (savedAutumn !== null) {
+          setAutumnMode(savedAutumn === "true");
+        }
       }
     } catch (e) {
       console.error("Failed to load theme:", e);
@@ -31,16 +88,52 @@ export function ThemeProvider({ children }) {
 
       // Обновление класса документа для CSS переменных
       if (theme === "light") {
-        document.documentElement.classList.add("light-theme");
-        document.documentElement.classList.remove("dark-theme");
+        document.documentElement.classList.add("light");
+        document.documentElement.classList.remove("dark");
       } else {
-        document.documentElement.classList.add("dark-theme");
-        document.documentElement.classList.remove("light-theme");
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
       }
     } catch (e) {
       console.error("Failed to save theme:", e);
     }
   }, [theme, isHydrated]);
 
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+  useEffect(() => {
+    if (!isHydrated) return;
+
+    try {
+      localStorage.setItem("christmasMode", christmasMode.toString());
+
+      // Добавление/удаление класса новогодней темы
+      if (christmasMode) {
+        document.documentElement.classList.add("christmas-theme");
+        document.documentElement.classList.remove("autumn-theme");
+      } else {
+        document.documentElement.classList.remove("christmas-theme");
+      }
+    } catch (e) {
+      console.error("Failed to save christmas mode:", e);
+    }
+  }, [christmasMode, isHydrated]);
+
+  useEffect(() => {
+    if (!isHydrated) return;
+
+    try {
+      localStorage.setItem("autumnMode", autumnMode.toString());
+
+      // Добавление/удаление класса осенней темы
+      if (autumnMode) {
+        document.documentElement.classList.add("autumn-theme");
+        document.documentElement.classList.remove("christmas-theme");
+      } else {
+        document.documentElement.classList.remove("autumn-theme");
+      }
+    } catch (e) {
+      console.error("Failed to save autumn mode:", e);
+    }
+  }, [autumnMode, isHydrated]);
+
+  return <ThemeContext.Provider value={{ theme, setTheme, christmasMode, setChristmasMode, autumnMode, setAutumnMode }}>{children}</ThemeContext.Provider>;
 }

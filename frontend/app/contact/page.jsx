@@ -1,12 +1,15 @@
 "use client";
 
 import { useContext, useState } from "react";
+import Image from "next/image";
 import { LanguageContext } from "../../context/LanguageContext";
+import { ThemeContext } from "../../context/ThemeContext";
 import { SiDiscord, SiGithub, SiTelegram, SiVk, SiWhatsapp } from "react-icons/si";
 
 // Страница контактов с формой отправки в Telegram и соц. сетями
 export default function ContactPage() {
   const { lang } = useContext(LanguageContext);
+  const { christmasMode, autumnMode } = useContext(ThemeContext);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
@@ -86,7 +89,20 @@ ${formData.message}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-20">
+          <div className="text-center mb-20 relative">
+            {/* Сезонные декорации */}
+            {christmasMode && (
+              <>
+                <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={100} height={100} className="absolute -top-10 left-[10%] opacity-25 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
+                <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={80} height={80} className="absolute -top-5 right-[15%] opacity-20 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
+              </>
+            )}
+            {autumnMode && (
+              <>
+                <span className="absolute -top-10 left-[10%] text-7xl opacity-25 pointer-events-none select-none">🍂</span>
+                <span className="absolute -top-5 right-[15%] text-6xl opacity-20 pointer-events-none select-none">🍁</span>
+              </>
+            )}
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
               {lang === "en" ? "Get In Touch" : "Свяжитесь со мной"}
             </h1>

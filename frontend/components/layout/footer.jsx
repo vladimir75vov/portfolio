@@ -5,14 +5,33 @@ import Link from "next/link";
 import { SiDiscord, SiGithub, SiTelegram, SiVk, SiWhatsapp } from "react-icons/si";
 import LinkOpenNewTabComp from "../linkOpenNewTabComp.jsx";
 import { LanguageContext } from "../../context/LanguageContext.jsx";
+import { ThemeContext } from "../../context/ThemeContext.jsx";
 
 // Компонент футера с быстрыми ссылками и социальными сетями
 function Footer() {
   const { t } = useContext(LanguageContext);
+  const { christmasMode, autumnMode } = useContext(ThemeContext);
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[var(--bg-secondary)] border-t border-[var(--border-color)] py-12 mt-20">
+    <footer className="bg-[var(--bg-secondary)] border-t border-[var(--border-color)] py-12 mt-20 relative overflow-hidden">
+      {/* Сезонные декорации */}
+      {christmasMode && (
+        <>
+          <span className="absolute top-4 left-[5%] text-5xl opacity-20 pointer-events-none select-none">🎁</span>
+          <span className="absolute top-8 right-[8%] text-6xl opacity-15 pointer-events-none select-none">🎁</span>
+          <span className="absolute bottom-10 left-[15%] text-4xl opacity-10 pointer-events-none select-none">🎁</span>
+          <span className="absolute bottom-4 right-[20%] text-5xl opacity-20 pointer-events-none select-none">🎁</span>
+        </>
+      )}
+      {autumnMode && (
+        <>
+          <span className="absolute top-4 left-[5%] text-5xl opacity-20 pointer-events-none select-none">🍂</span>
+          <span className="absolute top-8 right-[8%] text-6xl opacity-15 pointer-events-none select-none">🍁</span>
+          <span className="absolute bottom-10 left-[15%] text-4xl opacity-10 pointer-events-none select-none">🍂</span>
+          <span className="absolute bottom-4 right-[20%] text-5xl opacity-20 pointer-events-none select-none">🍁</span>
+        </>
+      )}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-10">
           {/* Brand */}
