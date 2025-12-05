@@ -22,6 +22,19 @@ export default function ContactPage() {
     const telegramBotToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
     const telegramChatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
 
+    // Проверка наличия переменных окружения
+    if (!telegramBotToken || !telegramChatId) {
+      console.error('Telegram credentials not configured');
+      console.log('Bot Token:', telegramBotToken ? 'Set' : 'Missing');
+      console.log('Chat ID:', telegramChatId ? 'Set' : 'Missing');
+      alert(
+        lang === "en"
+          ? "Contact form is not configured. Please contact via social media."
+          : "Форма контакта не настроена. Пожалуйста, свяжитесь через социальные сети."
+      );
+      return;
+    }
+
     const message = `
 📧 Новое сообщение с портфолио!
 
@@ -50,6 +63,8 @@ ${formData.message}
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setSubmitted(false), 5000);
       } else {
+        const errorData = await response.json();
+        console.error('Telegram API error:', errorData);
         alert(
           lang === "en"
             ? "Failed to send message. Please try again."

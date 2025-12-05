@@ -13,6 +13,8 @@ const nextConfig = {
     trailingSlash: true,  // Добавляет слэш в конце URL для совместимости с GitHub Pages
     env: {
         NEXT_PUBLIC_BASE_PATH: '/portfolio',  // Переменная окружения для basePath
+        NEXT_PUBLIC_TELEGRAM_BOT_TOKEN: process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN,
+        NEXT_PUBLIC_TELEGRAM_CHAT_ID: process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID,
     },
     // rewrites и redirects не поддерживаются в статическом экспорте
 };
