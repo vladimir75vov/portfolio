@@ -154,18 +154,18 @@ function VideoElem() {
       </video>
 
       {/* Панель управления */}
-      <div className="absolute bottom-6 left-6 flex items-center space-x-3 z-50">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 sm:bottom-6 sm:left-6 sm:translate-x-0 flex items-center space-x-2 sm:space-x-3 z-50">
         <button
           type="button"
           onClick={handleToggleMute}
-          className="w-12 h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-transform duration-200 ease-in-out transform hover:scale-105 btn-press"
+          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-transform duration-200 ease-in-out transform hover:scale-105 btn-press"
           aria-label={muted ? t("video.unmute") : t("video.mute")}
         >
           {muted ? (
             // иконка без звука
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
+              className="w-5 h-5 sm:w-6 sm:h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -177,7 +177,7 @@ function VideoElem() {
             // иконка со звуком
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
+              className="w-5 h-5 sm:w-6 sm:h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -188,7 +188,7 @@ function VideoElem() {
           )}
         </button>
 
-        <div className="flex items-center bg-black bg-opacity-40 px-3 py-2 rounded shadow-md transition-colors duration-200">
+        <div className="flex items-center bg-black bg-opacity-40 px-2 py-1 sm:px-3 sm:py-2 rounded shadow-md transition-colors duration-200">
           <input
             type="range"
             min="0"
@@ -196,7 +196,7 @@ function VideoElem() {
             step="0.01"
             value={volume}
             onChange={handleVolumeChange}
-            className="w-40"
+            className="w-40 sm:w-40"
             aria-label={t("video.volume")}
           />
         </div>
@@ -204,7 +204,7 @@ function VideoElem() {
         <button
           type="button"
           onClick={handleToggleFilter}
-          className="w-12 h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-all duration-200 ease-in-out transform hover:scale-105"
+          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-all duration-200 ease-in-out transform hover:scale-105"
           aria-label={t("video.toggleFilter")}
           title={t("video.toggleFilter")}
         >
@@ -212,7 +212,7 @@ function VideoElem() {
             // Иконка фильтр ВКЛ - больше контраста/яркости
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
+              className="w-5 h-5 sm:w-6 sm:h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -228,7 +228,7 @@ function VideoElem() {
             // Иконка фильтр ВЫКЛ - простой круг
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="w-6 h-6"
+              className="w-5 h-5 sm:w-6 sm:h-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"

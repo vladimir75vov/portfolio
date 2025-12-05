@@ -9,6 +9,7 @@ import { ThemeContext } from "../../context/ThemeContext.jsx";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // Состояние мобильного меню
   const { theme, setTheme } = useContext(ThemeContext);
+  const { t } = useContext(LanguageContext);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-background/10 to-background/6 backdrop-blur-sm border-b border-gray-700/10">
@@ -18,7 +19,7 @@ function Navbar() {
             VB
           </div>
           <span className="font-bold text-lg bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent hidden sm:inline">
-            {useContext(LanguageContext).t("hero.titleName")}
+            {t("hero.titleName")}
           </span>
         </Link>
 
@@ -28,25 +29,25 @@ function Navbar() {
             href="/about"
             className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors duration-200 font-medium"
           >
-            {useContext(LanguageContext).t("nav.about")}
+            {t("nav.about")}
           </Link>
           <Link
             href="/projects"
             className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors duration-200 font-medium"
           >
-            {useContext(LanguageContext).t("nav.projects")}
+            {t("nav.projects")}
           </Link>
           <Link
             href="/skills"
             className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors duration-200 font-medium"
           >
-            {useContext(LanguageContext).t("nav.skills")}
+            {t("nav.skills")}
           </Link>
           <Link
             href="/contact"
             className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors duration-200 font-medium"
           >
-            {useContext(LanguageContext).t("nav.contact")}
+            {t("nav.contact")}
           </Link>
           <ThemeSwitcher theme={theme} setTheme={setTheme} />
           <div className="ml-1">
@@ -74,27 +75,31 @@ function Navbar() {
           <div className="container mx-auto px-4 sm:px-6 py-6 flex flex-col gap-4">
             <Link
               href="/about"
+              onClick={() => setIsOpen(false)}
               className="text-[var(--text-secondary)] hover:text-blue-400 transition-colors py-2 font-medium"
             >
-              {useContext(LanguageContext).t("nav.about")}
+              {t("nav.about")}
             </Link>
             <Link
               href="/projects"
+              onClick={() => setIsOpen(false)}
               className="text-[var(--text-secondary)] hover:text-blue-400 transition-colors py-2 font-medium"
             >
-              {useContext(LanguageContext).t("nav.projects")}
+              {t("nav.projects")}
             </Link>
             <Link
               href="/skills"
+              onClick={() => setIsOpen(false)}
               className="text-[var(--text-secondary)] hover:text-blue-400 transition-colors py-2 font-medium"
             >
-              {useContext(LanguageContext).t("nav.skills")}
+              {t("nav.skills")}
             </Link>
             <Link
               href="/contact"
+              onClick={() => setIsOpen(false)}
               className="text-[var(--text-secondary)] hover:text-blue-400 transition-colors py-2 font-medium"
             >
-              {useContext(LanguageContext).t("nav.contact")}
+              {t("nav.contact")}
             </Link>
             <div className="pt-4 border-t border-[var(--border-color)] flex items-center gap-4">
               <ThemeSwitcher theme={theme} setTheme={setTheme} />

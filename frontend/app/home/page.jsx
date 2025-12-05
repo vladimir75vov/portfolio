@@ -64,17 +64,17 @@ function Home() {
           style={{ transition: "background-color 260ms ease" }}
         >
           <div className="flex justify-center items-center text-center min-h-screen">
-            <div className="px-4 max-w-5xl w-full">
-              <div className="animate-fadeInDown flex flex-col items-center gap-4">
+            <div className="px-4 sm:px-6 lg:px-8 max-w-5xl w-full">
+              <div className="animate-fadeInDown flex flex-col items-center gap-2 sm:gap-4">
                 <TypeWriterElem />
-                <h1 className="uppercase font-light tracking-widest text-4xl sm:text-6xl lg:text-7xl animate-textHue bg-gradient-to-r from-red-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
+                <h1 className="uppercase font-light tracking-wider sm:tracking-widest text-3xl sm:text-5xl lg:text-7xl animate-textHue bg-gradient-to-r from-red-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
                   {useContext(LanguageContext).t("hero.titleName")}
                 </h1>
               </div>
-              <div className="relative my-8 sm:my-10">
+              <div className="relative my-6 sm:my-8 lg:my-10">
                 <hr className="border-none h-0.5 bg-gradient-to-r from-transparent via-white to-transparent max-w-md mx-auto" />
               </div>
-              <h2 className="text-xl sm:text-3xl lg:text-4xl font-light animate-fadeInUp text-white mb-8 leading-relaxed">
+              <h2 className="text-lg sm:text-2xl lg:text-4xl font-light animate-fadeInUp text-white mb-6 sm:mb-8 leading-relaxed px-2">
                 {useContext(LanguageContext).t("hero.subtitle")}
               </h2>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fadeInUp mt-12">

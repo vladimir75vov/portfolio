@@ -163,11 +163,19 @@ export function LanguageProvider({ children }) {
   const [lang, setLang] = useState("en");
   const [isHydrated, setIsHydrated] = useState(false);
 
-  // Загрузка сохранённого языка из localStorage
+  // Загрузка сохранённого языка из localStorage или определение языка браузера
   useEffect(() => {
     try {
       const saved = localStorage.getItem("lang");
-      if (saved) setLang(saved);
+      if (saved) {
+        setLang(saved);
+      } else {
+        // Определяем язык браузера
+        const browserLang = navigator.language || navigator.userLanguage;
+        const detectedLang = browserLang.toLowerCase().startsWith('ru') ? 'ru' : 'en';
+        setLang(detectedLang);
+        localStorage.setItem("lang", detectedLang);
+      }
     } catch (e) {}
     setIsHydrated(true);
   }, []);
