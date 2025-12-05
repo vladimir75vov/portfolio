@@ -6,11 +6,13 @@ import { SiDiscord, SiGithub, SiTelegram, SiVk, SiWhatsapp } from "react-icons/s
 import LinkOpenNewTabComp from "../linkOpenNewTabComp.jsx";
 import { LanguageContext } from "../../context/LanguageContext.jsx";
 import { ThemeContext } from "../../context/ThemeContext.jsx";
+import { useDeviceTilt } from "../useDeviceTilt.jsx";
 
 // Компонент футера с быстрыми ссылками и социальными сетями
 function Footer() {
   const { t } = useContext(LanguageContext);
   const { christmasMode, autumnMode } = useContext(ThemeContext);
+  const tilt = useDeviceTilt();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -18,18 +20,18 @@ function Footer() {
       {/* Сезонные декорации */}
       {christmasMode && (
         <>
-          <span className="absolute top-4 left-[5%] text-5xl opacity-20 pointer-events-none select-none">🎁</span>
-          <span className="absolute top-8 right-[8%] text-6xl opacity-15 pointer-events-none select-none">🎁</span>
-          <span className="absolute bottom-10 left-[15%] text-4xl opacity-10 pointer-events-none select-none">🎁</span>
-          <span className="absolute bottom-4 right-[20%] text-5xl opacity-20 pointer-events-none select-none">🎁</span>
+          <span className="absolute top-4 left-[5%] text-5xl opacity-20 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.4}px, ${tilt.y * 0.4}px)` }}>🎁</span>
+          <span className="absolute top-8 right-[8%] text-6xl opacity-15 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.5}px, ${tilt.y * 0.5}px)` }}>🎁</span>
+          <span className="absolute bottom-10 left-[15%] text-4xl opacity-10 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.3}px, ${tilt.y * 0.3}px)` }}>🎁</span>
+          <span className="absolute bottom-4 right-[20%] text-5xl opacity-20 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.4}px, ${tilt.y * 0.4}px)` }}>🎁</span>
         </>
       )}
       {autumnMode && (
         <>
-          <span className="absolute top-4 left-[5%] text-5xl opacity-20 pointer-events-none select-none">🍂</span>
-          <span className="absolute top-8 right-[8%] text-6xl opacity-15 pointer-events-none select-none">🍁</span>
-          <span className="absolute bottom-10 left-[15%] text-4xl opacity-10 pointer-events-none select-none">🍂</span>
-          <span className="absolute bottom-4 right-[20%] text-5xl opacity-20 pointer-events-none select-none">🍁</span>
+          <span className="absolute top-4 left-[5%] text-5xl opacity-20 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.4}px, ${tilt.y * 0.4}px)` }}>🍂</span>
+          <span className="absolute top-8 right-[8%] text-6xl opacity-15 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.5}px, ${tilt.y * 0.5}px)` }}>🍁</span>
+          <span className="absolute bottom-10 left-[15%] text-4xl opacity-10 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.3}px, ${tilt.y * 0.3}px)` }}>🍂</span>
+          <span className="absolute bottom-4 right-[20%] text-5xl opacity-20 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.4}px, ${tilt.y * 0.4}px)` }}>🍁</span>
         </>
       )}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

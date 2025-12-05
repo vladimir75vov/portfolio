@@ -4,11 +4,13 @@ import { useContext } from "react";
 import Image from "next/image";
 import { LanguageContext } from "../../context/LanguageContext";
 import { ThemeContext } from "../../context/ThemeContext";
+import { useDeviceTilt } from "../../components/useDeviceTilt.jsx";
 
 // Страница навыков с категориями технологий и индикаторами прогресса
 export default function Skills() {
   const { lang } = useContext(LanguageContext);
   const { christmasMode, autumnMode } = useContext(ThemeContext);
+  const tilt = useDeviceTilt();
 
   const skillCategories =
     lang === "en"
@@ -127,16 +129,16 @@ export default function Skills() {
           {/* Сезонные декорации */}
           {christmasMode && (
             <>
-              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={120} height={120} className="absolute -top-10 left-0 opacity-30 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
-              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={100} height={100} className="absolute -top-5 right-10 opacity-25 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
-              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={80} height={80} className="absolute top-20 left-1/4 opacity-20 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]" unoptimized />
+              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={120} height={120} className="absolute -top-10 left-0 opacity-30 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.5}px, ${tilt.y * 0.5}px)` }} unoptimized />
+              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={100} height={100} className="absolute -top-5 right-5 opacity-25 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.7}px, ${tilt.y * 0.7}px)` }} unoptimized />
+              <Image src="/portfolio/images/Christmas tree.png" alt="Christmas tree" width={80} height={80} className="absolute top-20 left-1/4 opacity-20 pointer-events-none select-none brightness-150 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.3}px, ${tilt.y * 0.3}px)` }} unoptimized />
             </>
           )}
           {autumnMode && (
             <>
-              <span className="absolute -top-10 left-0 text-8xl opacity-30 pointer-events-none select-none">🍂</span>
-              <span className="absolute -top-5 right-10 text-7xl opacity-25 pointer-events-none select-none">🍁</span>
-              <span className="absolute top-20 left-1/4 text-6xl opacity-20 pointer-events-none select-none">🍂</span>
+              <span className="absolute -top-10 left-0 text-8xl opacity-30 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.5}px, ${tilt.y * 0.5}px)` }}>🍂</span>
+              <span className="absolute -top-5 right-5 text-7xl opacity-25 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.7}px, ${tilt.y * 0.7}px)` }}>🍁</span>
+              <span className="absolute top-20 left-1/4 text-6xl opacity-20 pointer-events-none select-none transition-transform duration-300" style={{ transform: `translate(${tilt.x * 0.3}px, ${tilt.y * 0.3}px)` }}>🍂</span>
             </>
           )}
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
