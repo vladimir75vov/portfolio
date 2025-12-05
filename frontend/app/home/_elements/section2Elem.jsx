@@ -50,13 +50,13 @@ function Section2Elem() {
         </div>
         <div className="flex gap-4 mt-6">
           <a
-            href="/about"
+            href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/about`}
             className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-lg hover:scale-105 transition-all duration-300"
           >
             {lang === "en" ? "Learn More" : "Узнать больше"}
           </a>
           <a
-            href="/contact"
+            href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/contact`}
             className="px-6 py-3 border-2 border-blue-500 text-blue-400 font-semibold rounded-lg hover:bg-blue-500/10 hover:scale-105 transition-all duration-300"
           >
             {lang === "en" ? "Contact Me" : "Связаться"}

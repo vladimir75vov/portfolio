@@ -60,6 +60,13 @@ export default function About() {
               "Development of automated systems, desktop interfaces (JavaScript), road safety monitoring, violation detection and reporting.",
           },
           {
+            period: "Jun 2023 - Jun 2024",
+            company: "National Guard of the Russian Federation",
+            position: "Military Service",
+            description:
+              "System administration and support. Linux administration (Astra Linux). Ensuring system operability and security.",
+          },
+          {
             period: "Jun 2021 - Jun 2023",
             company: "Leroy Merlin (Lemana PRO)",
             position: "Supply Chain Specialist",
@@ -74,6 +81,13 @@ export default function About() {
             position: "Главный специалист МДТО",
             description:
               "Разработка автоматизированных систем, десктопных интерфейсов (JavaScript), мониторинг дорожной обстановки, выявление нарушений и формирование отчётов.",
+          },
+          {
+            period: "Июнь 2023 - Июнь 2024",
+            company: "Федеральная служба войск национальной гвардии РФ",
+            position: "Срочная служба",
+            description:
+              "Администрирование и поддержка систем. Администрирование Linux (Astra Linux). Обеспечение работоспособности и безопасности систем.",
           },
           {
             period: "Июнь 2021 - Июнь 2023",
@@ -93,6 +107,11 @@ export default function About() {
             degree: "Enterprise Architecture (In Progress)",
           },
           {
+            year: "2024",
+            institution: "Professional Development Course",
+            degree: "IT Project Manager (1T Certification)",
+          },
+          {
             year: "2023",
             institution: "Lyubertsy Technical College named after Y.A. Gagarin",
             degree: "Programmer",
@@ -103,6 +122,11 @@ export default function About() {
             year: "2028",
             institution: "Институт деловой карьеры",
             degree: "Архитектура предприятия (В процессе)",
+          },
+          {
+            year: "2024",
+            institution: "Курсы повышения квалификации",
+            degree: "Менеджер IT-проектов (Сертификация 1T)",
           },
           {
             year: "2023",

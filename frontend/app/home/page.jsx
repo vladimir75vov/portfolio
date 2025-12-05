@@ -97,7 +97,7 @@ function Home() {
                   {lang === "en" ? "View CV" : "Посмотреть резюме"}
                 </button>
                 <a
-                  href="/projects"
+                  href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/projects`}
                   className="px-8 py-4 border-2 border-white/30 backdrop-blur-sm text-white font-semibold rounded-xl hover:bg-white/10 hover:border-white/50 hover:scale-105 transition-all duration-300 inline-flex items-center gap-3"
                 >
                   {lang === "en" ? "View Projects" : "Мои проекты"}
