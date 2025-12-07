@@ -60,11 +60,11 @@ function Section3Elem() {
               <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300">
                 {company.logo}
               </div>
-              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 group-hover:text-blue-400 transition-colors">
+              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-2 group-hover:text-blue-400 transition-colors break-words">
                 {lang === "en" ? company.name : company.nameRu}
               </h3>
-              <p className="text-blue-400 font-medium mb-2">{lang === "en" ? company.role : company.roleRu}</p>
-              <p className="text-[var(--text-muted)] text-sm">{lang === "en" ? company.period : company.periodRu}</p>
+              <p className="text-blue-400 font-medium mb-2 break-words">{lang === "en" ? company.role : company.roleRu}</p>
+              <p className="text-[var(--text-muted)] text-sm break-words">{lang === "en" ? company.period : company.periodRu}</p>
             </div>
           ))}
         </div>

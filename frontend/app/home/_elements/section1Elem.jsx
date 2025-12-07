@@ -79,10 +79,10 @@ function Section1Elem() {
               <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-700 ease-out">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-blue-400 transition-colors">
+              <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-blue-400 transition-colors break-words">
                 {lang === "en" ? feature.titleEn : feature.titleRu}
               </h3>
-              <p className="text-[var(--text-muted)] text-sm leading-relaxed">
+              <p className="text-[var(--text-muted)] text-sm leading-relaxed break-words">
                 {lang === "en" ? feature.descEn : feature.descRu}
               </p>
             </div>

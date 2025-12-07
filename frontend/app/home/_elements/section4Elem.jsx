@@ -79,10 +79,10 @@ function Section4Elem() {
                 <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-blue-400 transition-colors">
+                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-blue-400 transition-colors break-words">
                   {lang === "en" ? benefit.titleEn : benefit.titleRu}
                 </h3>
-                <p className="text-[var(--text-muted)] leading-relaxed">
+                <p className="text-[var(--text-muted)] leading-relaxed break-words">
                   {lang === "en" ? benefit.descEn : benefit.descRu}
                 </p>
               </div>
