@@ -16,20 +16,28 @@ function Navbar() {
   
   // Отслеживание прокрутки страницы
   useEffect(() => {
+    // Только для главной страницы
+    if (pathname !== '/' && pathname !== '/home') {
+      setIsScrolled(false);
+      return;
+    }
+
     const handleScroll = () => {
-      // Считаем что прокрутились, если прошли больше высоты экрана (видео)
-      setIsScrolled(window.scrollY > window.innerHeight * 0.8);
+      // Считаем что прокрутились, если прошли больше 70% высоты экрана
+      const scrollThreshold = window.innerHeight * 0.7;
+      const currentScroll = window.scrollY;
+      setIsScrolled(currentScroll > scrollThreshold);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     // Проверяем начальное положение
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [pathname]);
   
   // На главной странице (с видео) цвет текста зависит от прокрутки
-  const isHomePage = pathname === '/' || pathname === '/home';
+  const isHomePage = pathname === '/home';
   
   // Если главная страница и не прокрутили - белый текст, иначе адаптивный
   const navTextClass = (isHomePage && !isScrolled)
