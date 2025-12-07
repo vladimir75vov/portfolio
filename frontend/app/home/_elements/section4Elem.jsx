@@ -58,7 +58,7 @@ function Section4Elem() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {lang === "en" ? "Why Choose Me" : "Почему выбирают меня"}
           </h2>
-          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto text-justify-content">
+          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
             {lang === "en"
               ? "Commitment to excellence, proven track record, and dedication to delivering exceptional results"
               : "Стремление к совершенству, проверенный опыт и преданность достижению исключительных результатов"}

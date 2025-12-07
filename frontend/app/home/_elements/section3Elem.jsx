@@ -43,7 +43,7 @@ function Section3Elem() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {lang === "en" ? "Trusted by Organizations" : "Доверие организаций"}
           </h2>
-          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto text-justify-content">
+          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
             {lang === "en"
               ? "Working with leading companies and government organizations to deliver exceptional results"
               : "Работа с ведущими компаниями и государственными организациями для достижения исключительных результатов"}

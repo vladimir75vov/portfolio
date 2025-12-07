@@ -14,7 +14,7 @@ export default function ProjectCard({ title, description, technologies, github, 
       </h2>
 
       {/* Description */}
-      <p className="text-[var(--text-secondary)] text-sm mb-4 leading-relaxed line-clamp-3 text-justify-content">{description}</p>
+      <p className="text-[var(--text-secondary)] text-sm mb-4 leading-relaxed line-clamp-3">{description}</p>
 
       {/* Technologies */}
       <div className="flex flex-wrap gap-2 mb-4">
