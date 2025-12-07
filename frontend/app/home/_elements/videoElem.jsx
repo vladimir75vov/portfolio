@@ -266,21 +266,11 @@ function VideoElem() {
           type="button"
           onClick={handleTogglePlayPause}
           className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-all duration-200 ease-in-out transform hover:scale-105 btn-press"
-          aria-label={isPlaying ? t("video.pause") || "Pause" : t("video.play") || "Play"}
-          title={isPlaying ? t("video.pause") || "Pause" : t("video.play") || "Play"}
+          aria-label={!isPlaying ? t("video.play") || "Play" : t("video.pause") || "Pause"}
+          title={!isPlaying ? t("video.play") || "Play" : t("video.pause") || "Pause"}
         >
-          {isPlaying ? (
-            // Иконка паузы
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5 sm:w-6 sm:h-6"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
-            </svg>
-          ) : (
-            // Иконка плея
+          {!isPlaying ? (
+            // Иконка плея (когда видео на паузе)
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 h-5 sm:w-6 sm:h-6"
@@ -288,6 +278,16 @@ function VideoElem() {
               viewBox="0 0 24 24"
             >
               <path d="M8 5v14l11-7z" />
+            </svg>
+          ) : (
+            // Иконка паузы (когда видео играет)
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-5 h-5 sm:w-6 sm:h-6"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
           )}
         </button>

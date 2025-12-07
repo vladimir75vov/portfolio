@@ -45,25 +45,25 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           <Link
             href="/about"
-            className="text-[var(--text-primary)] hover:text-blue-500 transition-colors duration-200 font-medium"
+            className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors duration-200 font-medium"
           >
             {t("nav.about")}
           </Link>
           <Link
             href="/projects"
-            className="text-[var(--text-primary)] hover:text-blue-500 transition-colors duration-200 font-medium"
+            className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors duration-200 font-medium"
           >
             {t("nav.projects")}
           </Link>
           <Link
             href="/skills"
-            className="text-[var(--text-primary)] hover:text-blue-500 transition-colors duration-200 font-medium"
+            className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors duration-200 font-medium"
           >
             {t("nav.skills")}
           </Link>
           <Link
             href="/contact"
-            className="text-[var(--text-primary)] hover:text-blue-500 transition-colors duration-200 font-medium"
+            className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors duration-200 font-medium"
           >
             {t("nav.contact")}
           </Link>
@@ -81,10 +81,10 @@ function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden flex flex-col gap-1 hover:opacity-70 transition-opacity"
         >
-          <span className={`h-1 w-6 bg-[var(--text-primary)] transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`h-1 w-6 bg-[var(--text-primary)] transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+          <span className={`h-1 w-6 bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`h-1 w-6 bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
           <span
-            className={`h-1 w-6 bg-[var(--text-primary)] transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
+            className={`h-1 w-6 bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
           />
         </button>
       </div>
