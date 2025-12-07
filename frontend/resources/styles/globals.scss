@@ -337,3 +337,24 @@ html {
     opacity: 0.6;
   }
 }
+
+/* Text Justification - красивое выравнивание текста по ширине */
+p, .text-content, .description, li {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  word-spacing: 0.05em;
+}
+
+/* Исключения: заголовки, центрированный текст, короткие тексты */
+h1, h2, h3, h4, h5, h6, 
+.text-center, .text-left, .text-right,
+button, a, 
+input, textarea, select,
+.no-justify {
+  text-align: inherit !important;
+  text-justify: auto !important;
+  hyphens: none !important;
+}

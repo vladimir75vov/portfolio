@@ -9,18 +9,7 @@ function VideoElem() {
 
   // Инициализация состояния - всегда начинаем с выключенным звуком для автовоспроизведения
   const [muted, setMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(() => {
-    try {
-      const saved = localStorage.getItem("video-playing");
-      // Валидация: только 'true' или 'false'
-      if (saved === "true") return true;
-      if (saved === "false") return false;
-      // Если значение некорректное, используем по умолчанию
-      return true;
-    } catch (e) {
-      return true;
-    }
-  });
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const [volume, setVolume] = useState(() => {
     try {
@@ -219,7 +208,7 @@ function VideoElem() {
         <button
           type="button"
           onClick={handleToggleMute}
-          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-transform duration-200 ease-in-out transform hover:scale-105 btn-press"
+          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-transform duration-200 ease-in-out transform hover:scale-105"
           aria-label={muted ? t("video.unmute") : t("video.mute")}
         >
           {muted ? (
@@ -265,7 +254,7 @@ function VideoElem() {
         <button
           type="button"
           onClick={handleTogglePlayPause}
-          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-all duration-200 ease-in-out transform hover:scale-105 btn-press"
+          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-all duration-200 ease-in-out transform hover:scale-105"
           aria-label={!isPlaying ? t("video.play") || "Play" : t("video.pause") || "Pause"}
           title={!isPlaying ? t("video.play") || "Play" : t("video.pause") || "Pause"}
         >

@@ -96,28 +96,28 @@ function Navbar() {
             <Link
               href="/about"
               onClick={() => setIsOpen(false)}
-              className="text-[var(--text-secondary)] hover:text-blue-400 transition-colors py-2 font-medium"
+              className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors py-2 font-medium"
             >
               {t("nav.about")}
             </Link>
             <Link
               href="/projects"
               onClick={() => setIsOpen(false)}
-              className="text-[var(--text-secondary)] hover:text-blue-400 transition-colors py-2 font-medium"
+              className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors py-2 font-medium"
             >
               {t("nav.projects")}
             </Link>
             <Link
               href="/skills"
               onClick={() => setIsOpen(false)}
-              className="text-[var(--text-secondary)] hover:text-blue-400 transition-colors py-2 font-medium"
+              className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors py-2 font-medium"
             >
               {t("nav.skills")}
             </Link>
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="text-[var(--text-secondary)] hover:text-blue-400 transition-colors py-2 font-medium"
+              className="text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-400 transition-colors py-2 font-medium"
             >
               {t("nav.contact")}
             </Link>
