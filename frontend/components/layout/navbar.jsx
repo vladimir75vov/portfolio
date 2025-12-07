@@ -1,49 +1,15 @@
 "use client";
 
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { LanguageContext } from "../../context/LanguageContext.jsx";
 import { ThemeContext } from "../../context/ThemeContext.jsx";
 
 // Компонент навигации с мобильным меню, переключателями темы и языка
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // Состояние мобильного меню
-  const [isScrolled, setIsScrolled] = useState(false); // Состояние прокрутки
   const { theme, setTheme, christmasMode, setChristmasMode, autumnMode, setAutumnMode } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
-  const pathname = usePathname();
-  
-  // Отслеживание прокрутки страницы
-  useEffect(() => {
-    // Только для главной страницы
-    if (pathname !== '/' && pathname !== '/home') {
-      setIsScrolled(false);
-      return;
-    }
-
-    const handleScroll = () => {
-      // Считаем что прокрутились, если прошли больше 70% высоты экрана
-      const scrollThreshold = window.innerHeight * 0.7;
-      const currentScroll = window.scrollY;
-      setIsScrolled(currentScroll > scrollThreshold);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    // Проверяем начальное положение
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [pathname]);
-  
-  // На главной странице (с видео) цвет текста зависит от прокрутки
-  const isHomePage = pathname === '/home';
-  
-  // Если главная страница и не прокрутили - белый текст, иначе адаптивный
-  const navTextClass = (isHomePage && !isScrolled)
-    ? "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-300" 
-    : "text-[var(--text-primary)] hover:text-blue-500";
-  const burgerBgClass = (isHomePage && !isScrolled) ? "bg-white" : "bg-[var(--text-primary)]";
 
   const handleChristmasToggle = () => {
     if (!christmasMode) {
@@ -64,7 +30,7 @@ function Navbar() {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-background/10 to-background/6 backdrop-blur-sm border-b border-gray-700/10 transition-colors duration-300`}>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-background/10 to-background/6 backdrop-blur-sm border-b border-gray-700/10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg flex items-center justify-center font-bold text-white group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300">
@@ -79,25 +45,25 @@ function Navbar() {
         <div className="hidden md:flex items-center gap-6 lg:gap-8">
           <Link
             href="/about"
-            className={`${navTextClass} transition-colors duration-200 font-medium`}
+            className="text-[var(--text-primary)] hover:text-blue-500 transition-colors duration-200 font-medium"
           >
             {t("nav.about")}
           </Link>
           <Link
             href="/projects"
-            className={`${navTextClass} transition-colors duration-200 font-medium`}
+            className="text-[var(--text-primary)] hover:text-blue-500 transition-colors duration-200 font-medium"
           >
             {t("nav.projects")}
           </Link>
           <Link
             href="/skills"
-            className={`${navTextClass} transition-colors duration-200 font-medium`}
+            className="text-[var(--text-primary)] hover:text-blue-500 transition-colors duration-200 font-medium"
           >
             {t("nav.skills")}
           </Link>
           <Link
             href="/contact"
-            className={`${navTextClass} transition-colors duration-200 font-medium`}
+            className="text-[var(--text-primary)] hover:text-blue-500 transition-colors duration-200 font-medium"
           >
             {t("nav.contact")}
           </Link>
@@ -115,10 +81,10 @@ function Navbar() {
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden flex flex-col gap-1 hover:opacity-70 transition-opacity"
         >
-          <span className={`h-1 w-6 ${burgerBgClass} transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-          <span className={`h-1 w-6 ${burgerBgClass} transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
+          <span className={`h-1 w-6 bg-[var(--text-primary)] transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`h-1 w-6 bg-[var(--text-primary)] transition-all duration-300 ${isOpen ? "opacity-0" : ""}`} />
           <span
-            className={`h-1 w-6 ${burgerBgClass} transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
+            className={`h-1 w-6 bg-[var(--text-primary)] transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
           />
         </button>
       </div>
