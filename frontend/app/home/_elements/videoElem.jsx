@@ -117,6 +117,13 @@ function VideoElem() {
     v.addEventListener("canplay", handleCanPlay);
     v.addEventListener("loadeddata", handleLoadedData);
 
+    // Слушатели для синхронизации состояния isPlaying с реальным состоянием видео
+    const handlePlay = () => setIsPlaying(true);
+    const handlePause = () => setIsPlaying(false);
+    
+    v.addEventListener("play", handlePlay);
+    v.addEventListener("pause", handlePause);
+
     // Принудительная загрузка
     v.load();
 
@@ -128,6 +135,8 @@ function VideoElem() {
     return () => {
       v.removeEventListener("canplay", handleCanPlay);
       v.removeEventListener("loadeddata", handleLoadedData);
+      v.removeEventListener("play", handlePlay);
+      v.removeEventListener("pause", handlePause);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -144,6 +153,16 @@ function VideoElem() {
       // Ignore localStorage errors
     }
   }, [muted, volume, isVideoReady]);
+
+  // Сохранение состояния воспроизведения в localStorage
+  useEffect(() => {
+    if (!isVideoReady) return;
+    try {
+      localStorage.setItem("video-playing", String(isPlaying));
+    } catch (e) {
+      // Ignore localStorage errors
+    }
+  }, [isPlaying, isVideoReady]);
 
   function handleToggleMute() {
     const v = videoRef.current;
@@ -171,22 +190,11 @@ function VideoElem() {
     if (!v) return;
     
     if (v.paused) {
-      v.play()
-        .then(() => {
-          setIsPlaying(true);
-          try {
-            localStorage.setItem("video-playing", "true");
-          } catch (e) {}
-        })
-        .catch(() => {
-          console.warn("Не удалось воспроизвести видео");
-        });
+      v.play().catch(() => {
+        console.warn("Не удалось воспроизвести видео");
+      });
     } else {
       v.pause();
-      setIsPlaying(false);
-      try {
-        localStorage.setItem("video-playing", "false");
-      } catch (e) {}
     }
   }
 
