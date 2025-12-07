@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageContext } from "../../context/LanguageContext.jsx";
@@ -9,16 +9,33 @@ import { ThemeContext } from "../../context/ThemeContext.jsx";
 // Компонент навигации с мобильным меню, переключателями темы и языка
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // Состояние мобильного меню
+  const [isScrolled, setIsScrolled] = useState(false); // Состояние прокрутки
   const { theme, setTheme, christmasMode, setChristmasMode, autumnMode, setAutumnMode } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
   const pathname = usePathname();
   
-  // На главной странице (с видео) всегда используем белый текст для контраста
+  // Отслеживание прокрутки страницы
+  useEffect(() => {
+    const handleScroll = () => {
+      // Считаем что прокрутились, если прошли больше высоты экрана (видео)
+      setIsScrolled(window.scrollY > window.innerHeight * 0.8);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Проверяем начальное положение
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  // На главной странице (с видео) цвет текста зависит от прокрутки
   const isHomePage = pathname === '/' || pathname === '/home';
-  const navTextClass = isHomePage 
+  
+  // Если главная страница и не прокрутили - белый текст, иначе адаптивный
+  const navTextClass = (isHomePage && !isScrolled)
     ? "text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-blue-300" 
     : "text-[var(--text-primary)] hover:text-blue-500";
-  const burgerBgClass = isHomePage ? "bg-white" : "bg-[var(--text-primary)]";
+  const burgerBgClass = (isHomePage && !isScrolled) ? "bg-white" : "bg-[var(--text-primary)]";
 
   const handleChristmasToggle = () => {
     if (!christmasMode) {
@@ -39,7 +56,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-background/10 to-background/6 backdrop-blur-sm border-b border-gray-700/10">
+    <nav className={`fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-background/10 to-background/6 backdrop-blur-sm border-b border-gray-700/10 transition-colors duration-300`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <div className="w-10 h-10 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg flex items-center justify-center font-bold text-white group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all duration-300">
