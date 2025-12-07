@@ -9,22 +9,34 @@ function VideoElem() {
 
   // Инициализация состояния - всегда начинаем с выключенным звуком для автовоспроизведения
   const [muted, setMuted] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(() => {
+    try {
+      const saved = localStorage.getItem("video-playing");
+      // Валидация: только 'true' или 'false'
+      if (saved === "true") return true;
+      if (saved === "false") return false;
+      // Если значение некорректное, используем по умолчанию
+      return true;
+    } catch (e) {
+      return true;
+    }
+  });
 
   const [volume, setVolume] = useState(() => {
     try {
       const saved = localStorage.getItem("video-volume");
-      return saved !== null ? Number(saved) : 0.5;
+      if (saved !== null) {
+        const parsed = Number(saved);
+        // Валидация: число должно быть в диапазоне 0-1 и не NaN
+        if (!isNaN(parsed) && parsed >= 0 && parsed <= 1) {
+          return parsed;
+        }
+        // Если значение некорректное, удаляем и используем по умолчанию
+        localStorage.removeItem("video-volume");
+      }
+      return 0.5;
     } catch (e) {
       return 0.5;
-    }
-  });
-
-  const [useLegacyFilter, setUseLegacyFilter] = useState(() => {
-    try {
-      const saved = localStorage.getItem("video-legacy-filter");
-      return saved !== null ? saved === "1" : true;
-    } catch (e) {
-      return true;
     }
   });
 
@@ -47,6 +59,30 @@ function VideoElem() {
       // Принудительно выключаем звук для надежного автовоспроизведения
       v.muted = true;
 
+      // Проверяем сохраненное состояние воспроизведения
+      let shouldPlay = true;
+      try {
+        const saved = localStorage.getItem("video-playing");
+        // Валидация: только 'true' или 'false'
+        if (saved === "true") {
+          shouldPlay = true;
+        } else if (saved === "false") {
+          shouldPlay = false;
+        } else if (saved !== null) {
+          // Некорректное значение - удаляем
+          localStorage.removeItem("video-playing");
+          shouldPlay = true;
+        }
+      } catch (e) {
+        shouldPlay = true;
+      }
+
+      // Если пользователь остановил видео, не запускаем его
+      if (!shouldPlay) {
+        setIsPlaying(false);
+        return;
+      }
+
       // Множественные попытки для обеспечения воспроизведения
       const attemptPlay = () => {
         const playPromise = v.play();
@@ -54,6 +90,7 @@ function VideoElem() {
           playPromise
             .then(() => {
               // Autoplay succeeded
+              setIsPlaying(true);
             })
             .catch((error) => {
               console.warn("Попытка автовоспроизведения не удалась:", error);
@@ -61,6 +98,7 @@ function VideoElem() {
               setTimeout(() => {
                 v.play().catch(() => {
                   console.warn("Повторная попытка также не удалась");
+                  setIsPlaying(false);
                 });
               }, 500);
             });
@@ -128,12 +166,28 @@ function VideoElem() {
     setVolume(val);
   }
 
-  function handleToggleFilter() {
-    const next = !useLegacyFilter;
-    setUseLegacyFilter(next);
-    try {
-      localStorage.setItem("video-legacy-filter", next ? "1" : "0");
-    } catch (e) {}
+  function handleTogglePlayPause() {
+    const v = videoRef.current;
+    if (!v) return;
+    
+    if (v.paused) {
+      v.play()
+        .then(() => {
+          setIsPlaying(true);
+          try {
+            localStorage.setItem("video-playing", "true");
+          } catch (e) {}
+        })
+        .catch(() => {
+          console.warn("Не удалось воспроизвести видео");
+        });
+    } else {
+      v.pause();
+      setIsPlaying(false);
+      try {
+        localStorage.setItem("video-playing", "false");
+      } catch (e) {}
+    }
   }
 
   return (
@@ -147,7 +201,7 @@ function VideoElem() {
         playsInline
         preload="auto"
         id="video"
-        style={{ filter: useLegacyFilter ? legacyFilter : "none", transition: "filter 300ms ease, opacity 300ms ease" }}
+        style={{ filter: legacyFilter, transition: "filter 300ms ease, opacity 300ms ease" }}
       >
         <source src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/video/kek.mp4`} type="video/mp4" />
         Your browser does not support the video tag.
@@ -203,42 +257,30 @@ function VideoElem() {
 
         <button
           type="button"
-          onClick={handleToggleFilter}
-          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-all duration-200 ease-in-out transform hover:scale-105"
-          aria-label={t("video.toggleFilter")}
-          title={t("video.toggleFilter")}
+          onClick={handleTogglePlayPause}
+          className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white bg-opacity-20 hover:bg-opacity-40 text-white shadow-lg backdrop-blur-md transition-all duration-200 ease-in-out transform hover:scale-105 btn-press"
+          aria-label={isPlaying ? t("video.pause") || "Pause" : t("video.play") || "Play"}
+          title={isPlaying ? t("video.pause") || "Pause" : t("video.play") || "Play"}
         >
-          {useLegacyFilter ? (
-            // Иконка фильтр ВКЛ - больше контраста/яркости
+          {isPlaying ? (
+            // Иконка паузы
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 h-5 sm:w-6 sm:h-6"
-              fill="none"
+              fill="currentColor"
               viewBox="0 0 24 24"
-              stroke="currentColor"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-              />
+              <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
             </svg>
           ) : (
-            // Иконка фильтр ВЫКЛ - простой круг
+            // Иконка плея
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 h-5 sm:w-6 sm:h-6"
-              fill="none"
+              fill="currentColor"
               viewBox="0 0 24 24"
-              stroke="currentColor"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-              />
+              <path d="M8 5v14l11-7z" />
             </svg>
           )}
         </button>

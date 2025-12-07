@@ -37,12 +37,21 @@ function Home() {
       const visited = localStorage.getItem("home_visited");
       const saved = sessionStorage.getItem("home_scroll");
       const videoElement = document.getElementById("video");
-      if (!visited) {
+      
+      // Валидация: visited должен быть "1" или null
+      if (!visited || visited !== "1") {
         if (videoElement) setTimeout(() => videoElement.scrollIntoView({ block: "start", behavior: "auto" }), 50);
         localStorage.setItem("home_visited", "1");
       } else if (saved) {
-        // восстановление предыдущей позиции прокрутки
-        window.scrollTo(0, Number(saved));
+        // Валидация: saved должен быть корректным числом
+        const parsedScroll = Number(saved);
+        if (!isNaN(parsedScroll) && parsedScroll >= 0) {
+          // восстановление предыдущей позиции прокрутки
+          window.scrollTo(0, parsedScroll);
+        } else {
+          // Некорректное значение - удаляем
+          sessionStorage.removeItem("home_scroll");
+        }
       }
     } catch (e) {}
 

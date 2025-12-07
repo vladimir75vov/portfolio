@@ -44,8 +44,12 @@ export function ThemeProvider({ children }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem("theme");
+      // Валидация: только 'light' или 'dark'
       if (saved && (saved === "light" || saved === "dark")) {
         setTheme(saved);
+      } else if (saved !== null) {
+        // Если значение некорректное, удаляем его и используем по умолчанию
+        localStorage.removeItem("theme");
       }
 
       // Проверяем, есть ли сохраненные настройки сезонных тем
@@ -66,16 +70,32 @@ export function ThemeProvider({ children }) {
           setAutumnMode(false);
         }
       } else {
-        // Если есть сохраненные настройки, используем их
+        // Если есть сохраненные настройки, используем их с валидацией
         if (savedChristmas !== null) {
-          setChristmasMode(savedChristmas === "true");
+          // Валидация: только 'true' или 'false'
+          if (savedChristmas === "true" || savedChristmas === "false") {
+            setChristmasMode(savedChristmas === "true");
+          } else {
+            localStorage.removeItem("christmasMode");
+            setChristmasMode(false);
+          }
         }
         if (savedAutumn !== null) {
-          setAutumnMode(savedAutumn === "true");
+          // Валидация: только 'true' или 'false'
+          if (savedAutumn === "true" || savedAutumn === "false") {
+            setAutumnMode(savedAutumn === "true");
+          } else {
+            localStorage.removeItem("autumnMode");
+            setAutumnMode(false);
+          }
         }
       }
     } catch (e) {
       console.error("Failed to load theme:", e);
+      // При ошибке устанавливаем безопасные значения по умолчанию
+      setTheme("dark");
+      setChristmasMode(false);
+      setAutumnMode(false);
     }
     setIsHydrated(true);
   }, []);

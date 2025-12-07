@@ -167,7 +167,8 @@ export function LanguageProvider({ children }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem("lang");
-      if (saved) {
+      // Валидация: только 'en' или 'ru'
+      if (saved && (saved === 'en' || saved === 'ru')) {
         setLang(saved);
       } else {
         // Определяем язык браузера
@@ -176,7 +177,10 @@ export function LanguageProvider({ children }) {
         setLang(detectedLang);
         localStorage.setItem("lang", detectedLang);
       }
-    } catch (e) {}
+    } catch (e) {
+      // При ошибке устанавливаем английский по умолчанию
+      setLang('en');
+    }
     setIsHydrated(true);
   }, []);
 
