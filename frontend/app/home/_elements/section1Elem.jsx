@@ -62,7 +62,7 @@ function Section1Elem() {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {lang === "en" ? "What I Offer" : "Что я предлагаю"}
           </h2>
-          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-3xl mx-auto text-justify-content">
             {lang === "en"
               ? "Professional full-stack development services with focus on quality, performance, and user experience"
               : "Профессиональные услуги full-stack разработки с фокусом на качество, производительность и пользовательский опыт"}

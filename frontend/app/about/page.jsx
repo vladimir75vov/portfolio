@@ -175,7 +175,7 @@ export default function About() {
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
             {lang === "en" ? "About Me" : "Обо мне"}
           </h1>
-          <p className="text-lg text-[var(--text-secondary)] leading-relaxed">{aboutText}</p>
+          <p className="text-lg text-[var(--text-secondary)] leading-relaxed text-justify-content">{aboutText}</p>
         </div>
 
         {/* Experience Cards */}
@@ -215,7 +215,7 @@ export default function About() {
                   <span className="text-sm text-[var(--text-muted)] mt-1 md:mt-0">{work.period}</span>
                 </div>
                 <p className="text-[var(--text-secondary)] font-medium mb-2">{work.company}</p>
-                <p className="text-[var(--text-muted)] text-sm leading-relaxed">{work.description}</p>
+                <p className="text-[var(--text-muted)] text-sm leading-relaxed text-justify-content">{work.description}</p>
               </div>
             ))}
           </div>

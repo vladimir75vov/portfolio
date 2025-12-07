@@ -338,23 +338,20 @@ html {
   }
 }
 
-/* Text Justification - красивое выравнивание текста по ширине */
-p, .text-content, .description, li {
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -moz-hyphens: auto;
-  word-spacing: 0.05em;
+/* Text Justification - применяется только к длинным текстам с классом text-justify-content */
+/* На мобильных (< 640px) выравнивание по левому краю для лучшей читаемости */
+.text-justify-content {
+  text-align: left;
 }
 
-/* Исключения: заголовки, центрированный текст, короткие тексты */
-h1, h2, h3, h4, h5, h6, 
-.text-center, .text-left, .text-right,
-button, a, 
-input, textarea, select,
-.no-justify {
-  text-align: inherit !important;
-  text-justify: auto !important;
-  hyphens: none !important;
+/* На планшетах и десктопах (>= 640px) - красивое выравнивание по ширине */
+@media (min-width: 640px) {
+  .text-justify-content {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    word-spacing: 0.05em;
+  }
 }

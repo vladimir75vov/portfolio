@@ -36,7 +36,7 @@ function Section2Elem() {
         <h3 className="text-3xl mb-2 font-semibold leading-normal text-[var(--text-primary)] break-words">
           {t("home.section2.title")}
         </h3>
-        <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-[var(--text-secondary)] break-words">
+        <p className="text-lg font-light leading-relaxed mt-4 mb-4 text-[var(--text-secondary)] break-words text-justify-content">
           {lang === "en"
             ? "Full-stack developer with 4+ years of experience. Specialized in frontend development, backend systems, testing, and technical support. Focused on creating efficient, scalable, and user-friendly applications."
             : "Full-stack разработчик с опытом 4+ года. Специализируюсь на frontend-разработке, backend-системах, тестировании и технической поддержке. Ориентирован на создание эффективных, масштабируемых и удобных приложений."}
