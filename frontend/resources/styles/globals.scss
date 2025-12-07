@@ -339,19 +339,18 @@ html {
 }
 
 /* Text Justification - применяется только к длинным текстам с классом text-justify-content */
-/* На мобильных (< 640px) выравнивание по левому краю для лучшей читаемости */
 .text-justify-content {
-  text-align: left;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  word-spacing: 0.05em;
 }
 
-/* На планшетах и десктопах (>= 640px) - красивое выравнивание по ширине */
-@media (min-width: 640px) {
+/* На мобильных уменьшаем word-spacing для более компактного вида */
+@media (max-width: 639px) {
   .text-justify-content {
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    word-spacing: 0.05em;
+    word-spacing: 0.02em;
   }
 }
