@@ -9,6 +9,18 @@
 
 **🌐 Live Demo:** [vladimir75vov.github.io/portfolio](https://vladimir75vov.github.io/portfolio/)
 
+![main](photo/main.png)
+#### Профессиональное вступление с чистым, современным дизайном: заголовок и слоган, которые передают суть специалиста | Professional introduction with a clean, modern design, headline and tagline that captures the professional’s essence
+![whatioffer](photo/whatioffer.png)
+#### Обзор ключевых услуг и ценностного предложения: навыки и решения представлены с помощью иконок и кратких описаний — с акцентом на выгоды для клиента | Overview of core services and value proposition: skills and solutions presented via icons and short descriptions, focusing on client benefits
+![trustedbyorganizations](photo/trustedbyorganizations.png)
+#### Раздел, подтверждающий надёжность: логотипы компаний и клиентов, с которыми работал специалист, — социальное доказательство компетентности и надёжности | Credibility section featuring logos of companies and clients the professional has worked with — social proof of reliability
+![myprojects](photo/myprojects.png)
+#### Портфолио завершённых проектов: миниатюры изображений, названия и краткие описания, демонстрирующие опыт и результаты, достигнутые для клиентов | Showcase of completed projects: thumbnail images, titles and brief descriptions demonstrating experience and results delivered to clients
+![myskills](photo/myskills.png)
+#### Краткий обзор ключевых компетенций с использованием иконок, прогресс‑баров или оценок — демонстрирует технические навыки, мягкие навыки (soft skills) и области специализации | Snapshot of key competencies using icons, progress bars or ratings — shows technical abilities, soft skills and areas of specialization
+![getintouch](photo/getintouch.png)
+#### Раздел контактов: электронная почта, телефон, ссылки на соцсети и/или форма обратной связи — мотивирует посетителей связаться для сотрудничества | Contact section with email, phone, social media links and/or contact form — encourages visitors to reach out for collaboration
 ---
 
 ## 📋 Содержание | Table of Contents
