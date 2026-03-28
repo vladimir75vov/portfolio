@@ -21,7 +21,12 @@
 Краткий обзор ключевых компетенций с использованием иконок, прогресс‑баров или оценок — демонстрирует технические навыки, мягкие навыки (soft skills) и области специализации | Snapshot of key competencies using icons, progress bars or ratings — shows technical abilities, soft skills and areas of specialization
 ![getintouch](photo/getintouch.png)
 Раздел контактов: электронная почта, телефон, ссылки на соцсети и/или форма обратной связи — мотивирует посетителей связаться для сотрудничества | Contact section with email, phone, social media links and/or contact form — encourages visitors to reach out for collaboration
-
+![getintouch](photo/christmastheme.png)
+Праздничное оформление в красных, зелёных, золотых и серебряных тонах с элементами: снежинки, ёлочные ветки, подарки и огни. Создаёт радостное и уютное настроение — идеальна для сезонных кампаний и праздничных страниц | Festive design in red, green, gold and silver tones, featuring elements such as snowflakes, Christmas tree branches, gifts and lights. It creates a joyful and cozy mood — ideal for seasonal campaigns and holiday‑themed pages
+![getintouch](photo/autumntheme.png)
+ёплая палитра (янтарные, охровые, бордовые, золотистые тона) с акцентами в виде кленовых листьев, тыкв и вязаных текстур. Передаёт атмосферу уюта и ностальгии — подходит для сезонных промоакций и контента о природе или путешествиях | A warm colour palette (amber, ocher, burgundy, golden tones) with accents like maple leaves, pumpkins and knitted textures. It conveys an atmosphere of coziness and nostalgia — suitable for seasonal promotions and content about nature or travel
+![getintouch](photo/whitetheme.png)
+Лаконичный дизайн с белым фоном, сдержанными акцентами и простой навигацией. Подчёркивает контент, создаёт ощущение профессионализма и лёгкости восприятия — подходит для деловых и технологичных проектов | A concise design with a white background, restrained accents and simple navigation. It emphasizes the content and creates a sense of professionalism and ease of perception — suitable for business and tech‑oriented projects
 
 ## 📋 Содержание | Table of Contents
 
