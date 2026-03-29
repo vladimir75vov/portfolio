@@ -5,7 +5,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.7-black?style=flat&logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18.3.1-blue?style=flat&logo=react)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.15-38bdf8?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-Unlicense-green.svg)](LICENSE)
 
 **🌐 Live Demo:** [vladimir75vov.github.io/portfolio](https://vladimir75vov.github.io/portfolio/)
 
