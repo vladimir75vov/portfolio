@@ -6,8 +6,6 @@
 [![React](https://img.shields.io/badge/React-18.3.1-blue?style=flat&logo=react)](https://reactjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.15-38bdf8?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-Unlicense-green.svg)](LICENSE)
-[![Build & Deploy](https://img.shields.io/github/actions/workflow/status/vladimir75vov/portfolio/nextjs.yml?branch=master&label=Build%20%26%20Deploy)](https://github.com/vladimir75vov/portfolio/actions/workflows/deploy.yml)
-[![Tests](https://img.shields.io/github/actions/workflow/status/vladimir75vov/portfolio/test.yml?label=Tests)](https://github.com/vladimir75vov/portfolio/actions/workflows/ci.yml)
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Visit%20Site-brightgreen)](https://vladimir75vov.github.io/portfolio/)
 [![Languages](https://img.shields.io/badge/Languages-RU%20%7C%20EN-blue)](https://vladimir75vov.github.io/portfolio/)
 [![Last Commit](https://img.shields.io/github/last-commit/vladimir75vov/portfolio)](https://github.com/vladimir75vov/portfolio/commits)
